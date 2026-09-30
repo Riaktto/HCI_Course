@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --um6p-orange: #D7492A;
+  --um6p-orange-light: #ED6E47;
+  --um6p-charcoal: #2D2D2E;
+  --um6p-charcoal-muted: #6E6D70;
+  --um6p-bg-stone: #F7F5F1;
+  --um6p-card-bg: #FFFFFF;
+  --um6p-border: #E8E2D9;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F7F5F1;
+  color: #2D2D2E;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.font-sans-body {
+  font-family: var(--font-sans);
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Light theme subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(45, 45, 46, 0.04);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(215, 73, 42, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(215, 73, 42, 0.6);
+}
+
+/* Presentation Canvas shadow and light subtle texture */
+.um6p-canvas-shadow {
+  box-shadow: 0 10px 40px -10px rgba(45, 45, 46, 0.08), 0 2px 10px -2px rgba(45, 45, 46, 0.04);
+}
+
+.um6p-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E8E2D9;
+  box-shadow: 0 4px 20px -2px rgba(45, 45, 46, 0.04);
+}

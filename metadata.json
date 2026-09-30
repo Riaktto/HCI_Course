@@ -1,0 +1,6 @@
+{
+  "name": "UM6P HCI Course — Session 1: Human-Computer Interaction",
+  "description": "Interactive university lecture laboratory for Session 1 of Human-Computer Interaction: Understanding the Interaction Between People and Technology.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
