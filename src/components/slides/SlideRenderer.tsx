@@ -272,116 +272,50 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 1) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-6 lg:p-8 bg-[#FAF9F6] relative overflow-hidden select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-10 lg:p-14 xl:p-16 bg-[#FAF9F6] relative overflow-hidden">
         {/* Subtle Moroccan Architectural Terracotta Motif Accent */}
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#E5391C]/5 pointer-events-none blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#1F2421]/5 pointer-events-none blur-3xl" />
 
         {/* Academic Institutional Header with Official UM6P Logo */}
-        <div className="flex items-center justify-between pb-3 lg:pb-4 border-b border-[#E8E2D9] flex-shrink-0">
-          <UM6PLogo variant="full" theme="color" className="h-8 lg:h-10" />
+        <div className="flex items-center justify-between pb-6 border-b border-[#E8E2D9] flex-shrink-0">
+          <UM6PLogo variant="full" theme="color" className="h-10 lg:h-12" />
 
-          <div className="flex items-center gap-3 font-mono text-xs sm:text-sm">
-            <span className="px-3 py-1 bg-[#FDF5F2] border border-[#FAD6CF] rounded-lg font-bold text-[#E5391C]">
-              SESSION 01 · FOUNDATIONS
-            </span>
-            <span className="text-[#6E6D70] hidden sm:inline">Fall Term 2026</span>
+          <div className="text-right font-mono text-xs sm:text-sm text-[#6E6D70]">
+            <span className="font-bold text-[#E5391C]">SESSION 01</span>
           </div>
         </div>
 
-        {/* Hero Two-Column Layout Fully Utilizing 16:9 Canvas */}
-        <div className="flex-1 w-full max-w-[1760px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center py-3 min-h-0">
-          {/* Left Column (7 cols): Hero Title & Call to Action */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-4 lg:space-y-6">
-            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-widest text-[#E5391C] bg-[#FDF5F3] px-3.5 py-1.5 rounded-full border border-[#FAD6CF] font-bold self-start">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#E5391C]" />
-              <span>Master Course · Human-Centered Systems Engineering</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif-display font-medium text-[#2D2D2E] tracking-tight leading-[1.08] text-balance">
-              Human-Computer Interaction
-            </h1>
-
-            <p className="text-lg sm:text-xl lg:text-2xl text-[#525254] font-light leading-relaxed max-w-2xl">
-              Understanding the continuous sensory, cognitive, and physical dialogue between human biology and computational systems.
-            </p>
-
-            {/* Quick Metrics Bar */}
-            <div className="grid grid-cols-3 gap-3 max-w-xl font-mono text-xs pt-1">
-              <div className="p-3 bg-white border border-[#E8E2D9] rounded-xl shadow-2xs">
-                <div className="text-[#E5391C] font-bold text-lg">45 Slides</div>
-                <div className="text-stone-500">Full Curriculum</div>
-              </div>
-              <div className="p-3 bg-white border border-[#E8E2D9] rounded-xl shadow-2xs">
-                <div className="text-emerald-700 font-bold text-lg">6 Live Labs</div>
-                <div className="text-stone-500">Interactive Benches</div>
-              </div>
-              <div className="p-3 bg-white border border-[#E8E2D9] rounded-xl shadow-2xs">
-                <div className="text-stone-900 font-bold text-lg">ISO 9241-11</div>
-                <div className="text-stone-500">Empirical Usability</div>
-              </div>
-            </div>
-
-            <div className="pt-2 flex items-center gap-4 flex-wrap">
-              <button
-                onClick={onNextSlide}
-                className="px-8 lg:px-10 py-3.5 lg:py-4 bg-[#E5391C] hover:bg-[#C92B10] text-white font-semibold text-base lg:text-lg rounded-xl transition-all shadow-md flex items-center gap-3 group cursor-pointer active:scale-98"
-              >
-                <span>Launch Presentation</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-              </button>
-              <div className="text-xs font-mono text-stone-500">
-                Press <kbd className="px-2 py-1 bg-stone-200 rounded text-stone-800 font-bold">Space</kbd> or <kbd className="px-2 py-1 bg-stone-200 rounded text-stone-800 font-bold">→</kbd> to navigate
-              </div>
-            </div>
+        {/* Hero Title Core (Large Presentation Typography scaling for 1920x1080) */}
+        <div className="flex-1 flex flex-col justify-center w-full max-w-6xl xl:max-w-7xl space-y-6 lg:space-y-10 py-6">
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm lg:text-base font-mono uppercase tracking-widest text-[#E5391C] bg-[#FDF5F3] px-4 py-1.5 rounded-full border border-[#FAD6CF] font-bold self-start">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#E5391C]" />
+            <span>Master Course · Human-Centered Systems</span>
           </div>
 
-          {/* Right Column (5 cols): Session 1 Master Architecture Overview Card */}
-          <div className="lg:col-span-5 bg-white border-2 border-[#E8E2D9] rounded-3xl p-5 lg:p-6 shadow-sm flex flex-col justify-between space-y-4">
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-[#E5391C] font-bold uppercase tracking-wider">
-                  Session 1 Roadmap · 6 Core Acts
-                </span>
-                <span className="text-stone-500">Full 3-Hour Arc</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-serif-display font-medium text-stone-900">
-                Course Architecture &amp; Core Theses
-              </h3>
-            </div>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-serif-display font-medium text-[#2D2D2E] tracking-tight leading-[1.05] text-balance">
+            Human-Computer Interaction
+          </h1>
 
-            {/* 6 Acts List */}
-            <div className="space-y-2 font-mono text-xs">
-              {[
-                { act: 'Act 1', title: 'The Starting Experience', desc: 'The Everyday Paradox & Norman Doors', color: 'border-l-red-500' },
-                { act: 'Act 2', title: 'The Structure of Interaction', desc: 'H·C·I Triad & Norman’s Twin Gulfs', color: 'border-l-amber-500' },
-                { act: 'Act 3', title: 'Understanding the User', desc: 'Fallacy of Average & Diversity Lab', color: 'border-l-emerald-500' },
-                { act: 'Act 4', title: 'When Design Goes Wrong', desc: '6 Design Crimes & Fatal High-Stakes Disasters', color: 'border-l-purple-500' },
-                { act: 'Act 5', title: 'Usability as Empirical Science', desc: 'ISO 9241-11 & Nielsen’s 5-User Law', color: 'border-l-blue-500' },
-                { act: 'Act 6', title: 'The Engineering Process', desc: 'Boehm’s Curve, 12-Session Plan & Infusion Pump', color: 'border-l-[#E5391C]' },
-              ].map((item, idx) => (
-                <div key={idx} className={`p-2 bg-[#FAF9F6] border-l-4 ${item.color} border border-stone-200 rounded-lg flex items-center justify-between`}>
-                  <div>
-                    <span className="font-bold text-stone-900">{item.act}: </span>
-                    <span className="text-stone-700">{item.title}</span>
-                    <div className="text-[10px] text-stone-500">{item.desc}</div>
-                  </div>
-                  <span className="text-stone-400 font-bold">➔</span>
-                </div>
-              ))}
-            </div>
+          <p className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-[#525254] font-light max-w-5xl leading-relaxed">
+            Understanding the interaction between people and technology.
+          </p>
 
-            <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-[11px] font-mono text-stone-600">
-              <span>College of Computing</span>
-              <span className="font-bold text-[#2D2D2E]">Mohammed VI Polytechnic University</span>
-            </div>
+          <div className="pt-4 flex items-center gap-6">
+            <button
+              onClick={onNextSlide}
+              className="px-8 lg:px-12 py-4 lg:py-5 bg-[#E5391C] hover:bg-[#C92B10] text-white font-semibold text-lg lg:text-xl rounded-xl transition-all shadow-md flex items-center gap-3 group cursor-pointer active:scale-98"
+            >
+              <span>Begin Session 1</span>
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />
+            </button>
           </div>
         </div>
 
         {/* Institutional Footer Credits */}
-        <div className="pt-3 border-t border-[#E8E2D9] flex items-center justify-between text-xs sm:text-sm text-[#6E6D70] font-mono flex-shrink-0">
-          <div>Mohammed VI Polytechnic University · Ben Guerir, Morocco</div>
-          <div className="font-semibold text-[#2D2D2E]">Lecturer: Prof. Yassine Ben-Aboud</div>
+        <div className="pt-6 border-t border-[#E8E2D9] flex items-center justify-between text-xs sm:text-sm lg:text-base text-[#6E6D70] font-mono flex-shrink-0">
+          <div>Mohammed VI Polytechnic University</div>
+          <div className="font-semibold text-[#2D2D2E]">Prof. Yassine Ben-Aboud</div>
         </div>
       </div>
     );
@@ -392,7 +326,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 2) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -497,7 +431,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 3) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -584,7 +518,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 5) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -715,7 +649,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 6) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -840,7 +774,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     };
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -1125,133 +1059,34 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 8) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-6 lg:p-8 bg-[#FAF9F6] select-text">
-        {/* Header Bar */}
-        <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] text-center">
+        <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <UM6PLogo variant="compact" theme="color" className="h-7 lg:h-8 w-auto" />
+            <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
             <div className="h-4 w-px bg-[#E8E2D9]" />
             <span className="text-xs sm:text-sm font-mono uppercase text-[#E5391C] tracking-wider font-bold">
-              Act 1 · Core Aha Moment &amp; Epiphany
+              Act 1 · Core Aha Moment
             </span>
           </div>
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 8 / 45</span>
         </div>
 
-        {/* Main Content Area */}
-        <div className="flex-1 w-full max-w-[1760px] mx-auto flex flex-col justify-between py-2 gap-3.5 min-h-0">
-          {/* Top Hero Quote Banner */}
-          <div className="p-5 lg:p-6 bg-white border-2 border-[#E5391C] rounded-2xl shadow-xs flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
-            <div className="w-14 h-14 rounded-2xl bg-[#FDF5F2] border border-[#FAD6CF] flex items-center justify-center text-[#E5391C] shrink-0">
-              <Sparkles className="w-7 h-7" />
-            </div>
-            <div className="space-y-1 text-center sm:text-left">
-              <span className="text-[11px] font-mono uppercase text-[#E5391C] font-bold tracking-wider">
-                The Foundational Epiphany of HCI · Prof. Don Norman &amp; Michel Beaudouin-Lafon
-              </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-display font-medium text-[#2D2D2E] leading-tight">
-                "The interaction between human and computer is itself a designable artifact."
-              </h2>
-              <p className="text-sm sm:text-base text-[#525254] font-light">
-                It is not secondary decoration. It is not skin deep. It is the primary medium through which human intention becomes computational reality.
-              </p>
-            </div>
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-center py-6 lg:py-10 space-y-8 lg:space-y-12">
+          <div className="w-24 h-24 rounded-full bg-[#FDF5F2] border-2 border-[#E5391C] flex items-center justify-center mx-auto text-[#E5391C] shadow-sm">
+            <Sparkles className="w-12 h-12" />
           </div>
 
-          {/* Three Structural Pillar Cards Filling Vertical and Horizontal Canvas */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 flex-1 items-stretch min-h-0">
-            {/* Pillar 1 */}
-            <div className="bg-white border-2 border-[#E8E2D9] rounded-2xl p-5 flex flex-col justify-between shadow-xs hover:border-[#E5391C]/50 transition-colors space-y-3">
-              <div className="space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#E5391C] font-bold uppercase tracking-wider px-2 py-0.5 bg-[#FDF5F2] border border-[#FAD6CF] rounded-md">
-                    PILLAR 01
-                  </span>
-                  <Layers className="w-4 h-4 text-stone-400" />
-                </div>
-                <h3 className="text-xl sm:text-2xl font-serif-display font-medium text-[#2D2D2E]">
-                  Beyond Visual Decoration
-                </h3>
-                <p className="text-xs sm:text-sm text-[#525254] leading-relaxed">
-                  Traditional engineering treats UI as a superficial coat of cosmetic paint applied at the end. HCI treats interaction as the foundational boundary where human biology meets silicon logic.
-                </p>
-                <div className="p-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs font-mono text-stone-700">
-                  <strong>The Empirical Reality:</strong> Over 70% of enterprise software failures occur at the user boundary, not in database queries or server logic.
-                </div>
-              </div>
-              <div className="text-[11px] font-mono font-bold text-stone-500 pt-2 border-t border-stone-200 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span>Interaction is First-Class Engineering</span>
-              </div>
-            </div>
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif-display font-medium text-[#2D2D2E] leading-tight max-w-6xl mx-auto">
+            "The interaction between human and computer is itself a designable artifact."
+          </h2>
 
-            {/* Pillar 2 */}
-            <div className="bg-white border-2 border-[#E8E2D9] rounded-2xl p-5 flex flex-col justify-between shadow-xs hover:border-[#E5391C]/50 transition-colors space-y-3">
-              <div className="space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#E5391C] font-bold uppercase tracking-wider px-2 py-0.5 bg-[#FDF5F2] border border-[#FAD6CF] rounded-md">
-                    PILLAR 02
-                  </span>
-                  <Target className="w-4 h-4 text-stone-400" />
-                </div>
-                <h3 className="text-xl sm:text-2xl font-serif-display font-medium text-[#2D2D2E]">
-                  The Medium of Intention
-                </h3>
-                <p className="text-xs sm:text-sm text-[#525254] leading-relaxed">
-                  Humans never want to "click buttons" or "type form fields"—they want to enroll in university, triage a patient, or reserve a train seat. The interface either clarifies or breaks that intention.
-                </p>
-                <div className="p-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs font-mono text-stone-700">
-                  <strong>The Cognitive Gap:</strong> Norman's Twin Gulfs (Execution &amp; Evaluation) dictate whether the user feels in complete mastery or helpless frustration.
-                </div>
-              </div>
-              <div className="text-[11px] font-mono font-bold text-stone-500 pt-2 border-t border-stone-200 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#E5391C]" />
-                <span>Goal-First Intent Over Raw CRUD Tasks</span>
-              </div>
-            </div>
-
-            {/* Pillar 3 */}
-            <div className="bg-white border-2 border-[#E8E2D9] rounded-2xl p-5 flex flex-col justify-between shadow-xs hover:border-[#E5391C]/50 transition-colors space-y-3">
-              <div className="space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#E5391C] font-bold uppercase tracking-wider px-2 py-0.5 bg-[#FDF5F2] border border-[#FAD6CF] rounded-md">
-                    PILLAR 03
-                  </span>
-                  <Activity className="w-4 h-4 text-stone-400" />
-                </div>
-                <h3 className="text-xl sm:text-2xl font-serif-display font-medium text-[#2D2D2E]">
-                  Interaction Has Physical Laws
-                </h3>
-                <p className="text-xs sm:text-sm text-[#525254] leading-relaxed">
-                  Just as mechanical engineering obeys stress equations, interaction design obeys biological psychophysics: Fitts’ Law (motor targets), Hick’s Law (decision latency), and Miller’s Limit (working memory).
-                </p>
-                <div className="p-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs font-mono text-stone-700">
-                  <strong>The Engineering Standard:</strong> Usability is an optimization problem governed by ISO 9241-11: Effectiveness, Efficiency, and Human Satisfaction.
-                </div>
-              </div>
-              <div className="text-[11px] font-mono font-bold text-stone-500 pt-2 border-t border-stone-200 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-blue-500" />
-                <span>Repeatable, Testable, Verifiable</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Key Principle Footer Banner */}
-          <div className="p-3.5 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
-            <p className="text-sm sm:text-base lg:text-lg text-[#2D2D2E] leading-relaxed">
-              <strong className="text-[#E5391C] font-serif-display text-base sm:text-lg font-bold mr-2">
-                The Master Takeaway:
-              </strong>
-              If you engineer the database and APIs but neglect the interaction, you have built only half a system. The interaction is where engineering succeeds or dies.
-            </p>
-            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
-              Act 1 Epiphany
-            </span>
-          </div>
+          <p className="text-2xl sm:text-3xl lg:text-4xl text-[#525254] font-light max-w-4xl mx-auto leading-relaxed">
+            It is not secondary decoration. It is not skin deep. It is the primary medium through which human intention becomes computational reality.
+          </p>
         </div>
 
-        <div className="text-center text-xs sm:text-sm font-mono text-[#6E6D70] flex-shrink-0">
-          Entering Act 2: Understanding the Structure of Interaction (H · C · I)
+        <div className="p-4 bg-white border border-[#E8E2D9] rounded-2xl max-w-2xl mx-auto text-xs sm:text-sm font-mono text-[#6E6D70] flex-shrink-0">
+          Entering Act 2: Understanding the Structure of Interaction
         </div>
       </div>
     );
@@ -1262,7 +1097,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 9) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -1405,7 +1240,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
         {/* Header with UM6P Official Clean Logo */}
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -1860,7 +1695,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     };
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
         {/* Header with UM6P Official Logo */}
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -2106,7 +1941,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 12) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -2267,7 +2102,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     const activeStage = stages[interactiveLoopStep % stages.length];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
         {/* Clean Header with UM6P Emblem */}
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -2405,7 +2240,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 15) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
         {/* Header with Clean UM6P Emblem */}
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -2755,7 +2590,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 16) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -2865,7 +2700,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     };
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -3296,7 +3131,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -3377,7 +3212,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -3626,7 +3461,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     const currentAxis = diversityAxes[slide20ActiveAxis];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -3893,7 +3728,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         : {};
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text relative">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text relative">
         {/* W3C Brettel/Viénot Deuteranopia SVG Matrix Definition */}
         <svg style={{ position: 'absolute', width: 0, height: 0, pointerEvents: 'none' }} aria-hidden="true">
           <defs>
@@ -4747,7 +4582,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     const cur = scenarios[slide22Scenario];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -4924,7 +4759,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 23) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -5190,7 +5025,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -5299,7 +5134,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 26) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -5451,35 +5286,35 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         tag: 'Developer Blindness',
         icon: Brain,
         statement: 'Once you understand the system architecture, you cannot imagine what it feels like to be ignorant.',
-        symptom: 'Engineers build shortcuts assuming everyone knows what an "OAuth Token", "CRN", or "Payload" is.',
-        remedy: 'Conduct think-aloud testing with fresh novices who have zero context.',
+        symptom: 'Engineers design shortcuts assuming everyone understands what an "OAuth Token", "CRN", or "Payload" is.',
+        remedy: 'Conduct think-aloud usability testing with fresh novices who have zero prior system context.',
       },
       {
         id: 1,
         name: "Conway's Law in UI",
         tag: 'Database Reflection',
         icon: Database,
-        statement: 'Organizations design systems that mirror their internal database tables and department org charts.',
-        symptom: 'A 24-field form with 4 nested tabs because the back-end has 4 normalized relational SQL tables.',
-        remedy: 'Design for human goals first; let the middle-tier orchestrate the data mapping silently.',
+        statement: 'Organizations design interfaces that mirror their internal database tables and department org charts.',
+        symptom: 'A 24-field form with 4 nested tabs because the backend has 4 normalized relational SQL tables.',
+        remedy: 'Design strictly for human goals first; let the orchestration layer map data silently behind the scenes.',
       },
       {
         id: 2,
         name: 'The "Human Error" Fallacy',
         tag: 'Victim Blaming',
         icon: AlertTriangle,
-        statement: 'Treating design-induced cognitive slips as user negligence rather than system failure.',
-        symptom: 'Saying "They should have read the modal carefully" when the modal was 4 paragraphs of legalese.',
-        remedy: 'Assume human distraction, fatigue, and cognitive load are guaranteed design constraints.',
+        statement: 'Treating design-induced cognitive slips as user negligence rather than system architecture failures.',
+        symptom: 'Blaming the user ("They should have read the modal") when the modal was 4 paragraphs of legalese.',
+        remedy: 'Treat human distraction, fatigue, and limited working memory as immutable engineering constraints.',
       },
       {
         id: 3,
         name: 'Feature Creep vs Empathy',
         tag: 'Spec Sheet Bias',
         icon: Layers,
-        statement: 'Engineering sprints measure feature volume delivered, never human friction eliminated.',
-        symptom: 'Adding 15 configuration toggles to avoid making a difficult default decision.',
-        remedy: 'Measure time-to-value, error recovery time, and cognitive simplicity as P0 deliverables.',
+        statement: 'Engineering sprints measure feature volume shipped, never human cognitive friction eliminated.',
+        symptom: 'Adding 15 configuration toggles to avoid making a difficult product decision on intelligent defaults.',
+        remedy: 'Measure time-to-value, error recovery time, and cognitive simplicity as P0 engineering deliverables.',
       },
     ];
 
@@ -5490,7 +5325,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         level: 1,
         title: '1. Cognitive Hesitation',
         time: '0s – 5s',
-        mentalState: 'Visual search fails. The user looks for "Register" but sees "Academic Lifecycle Action Module".',
+        mentalState: 'Visual search fails. The user looks for "Enroll in Course" but sees "Academic Lifecycle Action Module".',
         load: '30% Load',
         color: 'border-yellow-300 bg-yellow-50 text-yellow-950',
       },
@@ -5506,7 +5341,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         level: 3,
         title: '3. Rage Clicks & Panic',
         time: '25s – 60s',
-        mentalState: 'Heart rate spikes. Rapid multi-clicking on disabled submit button. Working memory completely saturated.',
+        mentalState: 'Heart rate spikes. Rapid multi-clicking on disabled submit button. Working memory saturated.',
         load: '95% Load',
         color: 'border-red-400 bg-red-50 text-red-950',
       },
@@ -5521,7 +5356,8 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
+        {/* Top Header */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-7 lg:h-8 w-auto" />
@@ -5533,7 +5369,9 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 27 / 45</span>
         </div>
 
+        {/* Main Content Area */}
         <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-2 gap-4 min-h-0">
+          {/* Title Header */}
           <div className="space-y-1 flex-shrink-0">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif-display font-medium text-[#2D2D2E]">
               The Anatomy of Frustration
@@ -5544,7 +5382,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           </div>
 
           {/* 4 Root Causes Selector Tabs */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 flex-shrink-0">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 flex-shrink-0">
             {causes.map((c) => {
               const IconComponent = c.icon;
               const isSelected = slide27Cause === c.id;
@@ -5552,24 +5390,24 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 <button
                   key={c.id}
                   onClick={() => setSlide27Cause(c.id)}
-                  className={`p-3.5 sm:p-4 rounded-2xl border-2 text-left transition-all cursor-pointer flex flex-col justify-between shadow-xs ${
+                  className={`p-4 sm:p-5 rounded-2xl border-2 text-left transition-all cursor-pointer flex flex-col justify-between shadow-xs ${
                     isSelected
                       ? 'bg-stone-900 border-[#E5391C] text-white ring-4 ring-[#E5391C]/20 shadow-md scale-[1.01]'
                       : 'bg-white border-[#E8E2D9] hover:border-stone-400 text-[#2D2D2E]'
                   }`}
                 >
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className={`text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${
+                      <span className={`text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${
                         isSelected ? 'bg-[#E5391C] text-white' : 'bg-stone-100 text-stone-700'
                       }`}>
                         {c.tag}
                       </span>
-                      <IconComponent className={`w-4 h-4 ${isSelected ? 'text-[#E5391C]' : 'text-stone-400'}`} />
+                      <IconComponent className={`w-5 h-5 ${isSelected ? 'text-[#E5391C]' : 'text-stone-400'}`} />
                     </div>
-                    <h4 className="text-sm sm:text-base font-bold font-serif-display pt-1">{c.name}</h4>
+                    <h4 className="text-base sm:text-lg font-bold font-serif-display pt-1">{c.name}</h4>
                   </div>
-                  <div className={`text-[11px] font-mono pt-2 border-t mt-2 font-bold ${
+                  <div className={`text-xs font-mono pt-2.5 border-t mt-2.5 font-bold ${
                     isSelected ? 'border-stone-700 text-[#E5391C]' : 'border-stone-200 text-stone-500'
                   }`}>
                     {isSelected ? '● ACTIVE TRAP' : 'INSPECT TRAP'}
@@ -5583,37 +5421,43 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-stretch min-h-0">
             {/* Left Column: Trap Deep Dive (7 cols) */}
             <div className="lg:col-span-7 bg-white border-2 border-[#E8E2D9] rounded-3xl p-6 lg:p-7 flex flex-col justify-between shadow-xs space-y-4">
-              <div className="space-y-3">
+              <div className="space-y-3.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#E5391C] bg-[#FDF5F2] border border-[#FAD6CF] px-3 py-1 rounded-xl">
-                    Cognitive Pathology 0{currentCause.id + 1}
+                  <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#E5391C] bg-[#FDF5F2] border border-[#FAD6CF] px-3.5 py-1 rounded-xl">
+                    Cognitive Pathology 0{currentCause.id + 1} · Root Cause Analysis
                   </span>
-                  <span className="text-xs font-mono text-stone-500">Root Cause Analysis</span>
+                  <span className="text-xs sm:text-sm font-mono text-stone-500 font-semibold">Psychological Breakdown</span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif-display font-bold text-[#2D2D2E]">
                   {currentCause.name}
                 </h3>
-                <p className="text-base sm:text-lg text-stone-700 italic border-l-4 border-[#E5391C] pl-4 py-1 bg-stone-50 rounded-r-xl">
+                <p className="text-lg sm:text-xl text-stone-800 italic border-l-4 border-[#E5391C] pl-4 py-2 bg-stone-50 rounded-r-2xl font-serif-display leading-relaxed">
                   &ldquo;{currentCause.statement}&rdquo;
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-2xl space-y-1.5">
-                    <span className="text-xs font-mono font-bold uppercase text-red-700">How It Manifests in UI:</span>
-                    <p className="text-xs sm:text-sm text-red-950 font-medium leading-relaxed">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+                  <div className="p-4 sm:p-5 bg-red-50 border border-red-200 rounded-2xl space-y-2">
+                    <span className="text-xs sm:text-sm font-mono font-bold uppercase text-red-700 flex items-center gap-1.5">
+                      <AlertTriangle className="w-4 h-4 text-red-600" />
+                      <span>How It Manifests in UI:</span>
+                    </span>
+                    <p className="text-sm sm:text-base text-red-950 font-medium leading-relaxed">
                       {currentCause.symptom}
                     </p>
                   </div>
-                  <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-1.5">
-                    <span className="text-xs font-mono font-bold uppercase text-emerald-800">The Ergonomic Antidote:</span>
-                    <p className="text-xs sm:text-sm text-emerald-950 font-medium leading-relaxed">
+                  <div className="p-4 sm:p-5 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-2">
+                    <span className="text-xs sm:text-sm font-mono font-bold uppercase text-emerald-800 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <span>The Ergonomic Antidote:</span>
+                    </span>
+                    <p className="text-sm sm:text-base text-emerald-950 font-medium leading-relaxed">
                       {currentCause.remedy}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="p-3 bg-stone-100 rounded-xl text-xs font-mono text-stone-600 flex items-center justify-between">
+              <div className="p-3.5 bg-stone-100 rounded-xl text-xs sm:text-sm font-mono text-stone-700 flex items-center justify-between">
                 <span>Psychological Impact: Systemic Cognitive Dissonance</span>
                 <span className="font-bold text-stone-900">Severity: P0 Blocker</span>
               </div>
@@ -5623,37 +5467,37 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
             <div className="lg:col-span-5 bg-[#FDF5F2] border-2 border-[#E5391C] rounded-3xl p-6 lg:p-7 flex flex-col justify-between shadow-xs space-y-3">
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold uppercase text-[#E5391C] tracking-wider">
+                  <span className="text-xs sm:text-sm font-mono font-bold uppercase text-[#E5391C] tracking-wider">
                     The Human Escalation Curve
                   </span>
-                  <span className="text-[11px] font-mono text-stone-500">Compounding Stress</span>
+                  <span className="text-xs font-mono text-stone-500 font-semibold">Compounding Stress</span>
                 </div>
                 <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-[#2D2D2E]">
                   How Humans Break Under Friction
                 </h4>
               </div>
 
-              <div className="space-y-2 flex-1 flex flex-col justify-center">
+              <div className="space-y-2.5 flex-1 flex flex-col justify-center">
                 {frustrationCurve.map((step) => {
                   const isActive = slide27CurveStep === step.level;
                   return (
                     <div
                       key={step.level}
                       onClick={() => setSlide27CurveStep(step.level)}
-                      className={`p-3 rounded-2xl border-2 transition-all cursor-pointer ${
+                      className={`p-3.5 rounded-2xl border-2 transition-all cursor-pointer ${
                         isActive
                           ? `${step.color} shadow-sm scale-[1.02] ring-2 ring-red-400/30`
                           : 'bg-white border-stone-200 text-stone-600 hover:border-stone-400'
                       }`}
                     >
-                      <div className="flex items-center justify-between text-xs font-mono font-bold">
+                      <div className="flex items-center justify-between text-xs sm:text-sm font-mono font-bold">
                         <span>{step.title}</span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] bg-black/5 px-2 py-0.5 rounded">{step.time}</span>
-                          <span className="text-[10px] uppercase font-black">{step.load}</span>
+                          <span className="text-xs bg-black/5 px-2 py-0.5 rounded font-mono">{step.time}</span>
+                          <span className="text-xs uppercase font-black">{step.load}</span>
                         </div>
                       </div>
-                      <p className="text-xs pt-1.5 font-sans leading-snug">
+                      <p className="text-xs sm:text-sm pt-2 font-sans leading-snug">
                         {step.mentalState}
                       </p>
                     </div>
@@ -5661,21 +5505,21 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 })}
               </div>
 
-              <div className="text-[11px] font-mono text-stone-600 text-center pt-1 border-t border-[#FAD6CF]">
+              <div className="text-xs font-mono text-stone-600 text-center pt-2 border-t border-[#FAD6CF]">
                 Click stages to trace how cognitive friction escalates into total abandonment.
               </div>
             </div>
           </div>
 
           {/* Key Principle Footer Banner */}
-          <div className="p-3.5 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
-            <p className="text-sm sm:text-base lg:text-lg text-[#2D2D2E] leading-relaxed">
-              <strong className="text-[#E5391C] font-serif-display text-base sm:text-lg font-bold mr-2">
+          <div className="p-4 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
+            <p className="text-base sm:text-lg lg:text-xl text-[#2D2D2E] leading-relaxed">
+              <strong className="text-[#E5391C] font-serif-display text-lg sm:text-xl font-bold mr-2">
                 Entering Act 4:
               </strong>
               Next is the live university course registration challenge. You will experience all four of these cognitive traps firsthand.
             </p>
-            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
+            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3.5 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
               Live Challenge Ahead
             </span>
           </div>
@@ -5700,7 +5544,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         severity: 'Critical',
         crime: 'Hidden affordances & mysterious nested menus.',
         evidence: 'Course enrollment was buried under "Administrative Records > Academic Lifecycle Tools > Portal Sub-system". Zero direct search affordances.',
-        cognitiveViolation: 'Norman Gulf of Execution: The user cannot translate their goal ("Enroll in CS301") into actionable system steps.',
+        cognitiveViolation: 'Norman Gulf of Execution: The user cannot translate their goal ("Enroll in CS-4010") into actionable system steps.',
         remedy: 'Goal-First Information Architecture with omni-search bar and 1-tap course pinning.',
       },
       {
@@ -5708,7 +5552,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         name: "Fitts's Law Target Violation",
         scientificTerm: "Fitts's Law (MT = a + b log2(2D/W))",
         severity: 'Severe',
-        crime: 'Microscopic 12px touch button placed 2px next to Destructive Reset.',
+        crime: 'Microscopic 8px touch button placed 2px next to Destructive Reset.',
         evidence: 'Submit button width was 14px with zero visual margin, placed directly adjacent to "Clear Form & Abort Session".',
         cognitiveViolation: "Fitts's Law: Movement time increases exponentially as target width W shrinks. Rapid clicks slip onto adjacent destructive targets.",
         remedy: 'Minimum touch targets ≥ 48px with generous 24px spatial buffer isolating destructive actions.',
@@ -5731,14 +5575,14 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         crime: 'Unintelligible confirmation modals with inverted logic.',
         evidence: '"Are you sure you do not want to cancel the non-submission of your courses? [Cancel] [OK]".',
         cognitiveViolation: 'Working Memory Load: Negative propositions require 3x mental processing steps to parse. Under stress, users guess randomly.',
-        remedy: 'Single declarative active-voice confirmations: "Do you want to enroll in CS301? [Enroll Now] [Keep Browsing]".',
+        remedy: 'Single declarative active-voice confirmations: "Do you want to enroll in CS-4010? [Enroll Now] [Keep Browsing]".',
       },
       {
         id: 4,
         name: 'Hostile State & Session Loss',
         scientificTerm: 'Human Investment Destruction',
         severity: 'Catastrophic',
-        crime: 'Wiping all 20 form inputs upon a single validation error.',
+        crime: 'Wiping all form inputs upon a single validation error.',
         evidence: 'Typing an invalid phone format wiped student biography, address, and 5 selected electives, resetting form to blank.',
         cognitiveViolation: 'Violates Human Psychological Investment: Wiping user input induces intense helplessness and software distrust.',
         remedy: 'Immutable Local State Preservation: Preserve all valid inputs, highlight the single erroneous field inline with restorative guidance.',
@@ -5751,17 +5595,17 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         crime: 'Throwing raw database exception strings at human beings.',
         evidence: '"ERROR 0x882B: NULL_POINTER_EXCEPTION AT INDEX_TBL_ALLOC".',
         cognitiveViolation: 'Gulf of Evaluation: The human has zero mental bridge between database null pointers and what they need to fix.',
-        remedy: 'Actionable Human Errors: State what happened in plain English, explain why, and provide a 1-click button to fix it.',
+        remedy: 'Actionable Human Errors: State what happened in plain language, explain why, and provide a 1-click button to fix it.',
       },
     ];
 
     const currentCrime = crimes[slide29Crime];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
-        <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] overflow-y-auto select-text">
+        <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <UM6PLogo variant="compact" theme="color" className="h-7 lg:h-8 w-auto" />
+            <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
             <div className="h-4 w-px bg-[#E8E2D9]" />
             <span className="text-xs sm:text-sm font-mono uppercase text-[#E5391C] tracking-wider font-bold">
               Act 4 · Forensic Usability Inspection
@@ -5770,44 +5614,44 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 29 / 45</span>
         </div>
 
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-2 gap-4 min-h-0">
-          <div className="space-y-1 flex-shrink-0">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif-display font-medium text-[#2D2D2E]">
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-4 lg:py-6 gap-6 min-h-0">
+          <div className="space-y-3 flex-shrink-0">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif-display font-medium text-[#2D2D2E]">
               Forensic Autopsy: The 6 Design Crimes
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-[#6E6D70] font-light">
-              Deconstructing what broke in the portal challenge. Every trap has a formal scientific name in cognitive engineering.
+            <p className="text-xl sm:text-2xl text-[#6E6D70] font-light">
+              Deconstructing what broke in the portal challenge. Every trap has a formal scientific law in cognitive engineering.
             </p>
           </div>
 
-          {/* 6 Crime Forensic Tabs */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 flex-shrink-0">
+          {/* 6 Crime Forensic Selector Tabs */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 flex-shrink-0">
             {crimes.map((c) => {
               const isSelected = slide29Crime === c.id;
               return (
                 <button
                   key={c.id}
                   onClick={() => setSlide29Crime(c.id)}
-                  className={`p-3 rounded-2xl border-2 text-left transition-all cursor-pointer flex flex-col justify-between shadow-xs ${
+                  className={`p-4 sm:p-5 rounded-2xl border-2 text-left transition-all cursor-pointer flex flex-col justify-between shadow-xs ${
                     isSelected
                       ? 'bg-stone-900 border-[#E5391C] text-white ring-4 ring-[#E5391C]/20 shadow-md scale-[1.01]'
                       : 'bg-white border-[#E8E2D9] hover:border-stone-400 text-[#2D2D2E]'
                   }`}
                 >
-                  <div className="space-y-1">
-                    <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${
+                  <div className="space-y-2">
+                    <span className={`text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-md inline-block ${
                       isSelected ? 'bg-[#E5391C] text-white' : 'bg-red-100 text-red-800'
                     }`}>
                       Crime 0{c.id + 1}
                     </span>
-                    <h4 className="text-xs sm:text-sm font-bold font-serif-display leading-tight pt-1">
+                    <h4 className="text-base sm:text-lg font-bold font-serif-display leading-snug pt-1">
                       {c.name}
                     </h4>
                   </div>
-                  <div className={`text-[10px] font-mono pt-1.5 border-t mt-1.5 font-bold ${
+                  <div className={`text-xs sm:text-sm font-mono pt-2.5 border-t mt-3 font-bold ${
                     isSelected ? 'border-stone-700 text-[#E5391C]' : 'border-stone-200 text-stone-500'
                   }`}>
-                    {isSelected ? '● INSPECTING' : 'VIEW CASE'}
+                    {isSelected ? '● INSPECTING' : 'VIEW CASE FILE'}
                   </div>
                 </button>
               );
@@ -5815,91 +5659,99 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           </div>
 
           {/* Forensic Deep Dive Case File */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-stretch min-h-0">
-            {/* Crime Dossier Box (8 cols) */}
-            <div className="lg:col-span-8 bg-white border-2 border-stone-300 rounded-3xl p-6 lg:p-7 flex flex-col justify-between shadow-xs space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold uppercase text-red-700 bg-red-100 px-3 py-1 rounded-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 items-stretch min-h-0">
+            {/* Crime Dossier Box (7 cols) */}
+            <div className="lg:col-span-7 bg-white border-2 border-stone-300 rounded-3xl p-6 lg:p-8 flex flex-col justify-between shadow-xs space-y-4">
+              <div className="space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-stone-200">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-xs sm:text-sm font-mono font-bold uppercase text-red-700 bg-red-100 px-3.5 py-1.5 rounded-xl">
                       Severity: {currentCrime.severity}
                     </span>
-                    <span className="text-xs font-mono text-stone-600 font-bold">
-                      Formal Name: {currentCrime.scientificTerm}
+                    <span className="text-xs sm:text-sm font-mono text-stone-800 font-bold bg-stone-100 px-3 py-1.5 rounded-xl border border-stone-200">
+                      Scientific Law: {currentCrime.scientificTerm}
                     </span>
                   </div>
-                  <span className="text-xs font-mono text-stone-400">Case File #ACT4-0{currentCrime.id + 1}</span>
+                  <span className="text-xs sm:text-sm font-mono text-stone-500 font-bold">Case File #ACT4-0{currentCrime.id + 1}</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">
+                <h3 className="text-3xl sm:text-4xl font-serif-display font-bold text-[#2D2D2E]">
                   Crime 0{currentCrime.id + 1}: {currentCrime.name}
                 </h3>
 
-                <div className="p-4 bg-stone-100 rounded-2xl border border-stone-300 space-y-1">
-                  <span className="text-xs font-mono font-bold text-stone-700 uppercase">Field Evidence in Portal:</span>
-                  <p className="text-xs sm:text-sm text-stone-900 font-mono font-medium">
+                <div className="p-4 sm:p-5 bg-stone-100 rounded-2xl border border-stone-300 space-y-1.5">
+                  <span className="text-xs sm:text-sm font-mono font-bold text-stone-700 uppercase tracking-wide">
+                    Observed Field Evidence:
+                  </span>
+                  <p className="text-base sm:text-lg text-stone-900 font-mono font-medium leading-relaxed">
                     &ldquo;{currentCrime.evidence}&rdquo;
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-2xl space-y-1">
-                    <span className="text-xs font-mono font-bold uppercase text-red-800">Cognitive Science Breach:</span>
-                    <p className="text-xs sm:text-sm text-red-950 font-medium leading-relaxed">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <div className="p-5 bg-red-50/80 border border-red-200 rounded-2xl space-y-2">
+                    <span className="text-xs sm:text-sm font-mono font-bold uppercase text-red-800 flex items-center gap-2">
+                      <AlertTriangle className="w-5 h-5 text-red-600 shrink-0" />
+                      <span>Cognitive Breach:</span>
+                    </span>
+                    <p className="text-base sm:text-lg text-red-950 font-medium leading-relaxed">
                       {currentCrime.cognitiveViolation}
                     </p>
                   </div>
 
-                  <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-1">
-                    <span className="text-xs font-mono font-bold uppercase text-emerald-800">HCI Architectural Remedy:</span>
-                    <p className="text-xs sm:text-sm text-emerald-950 font-medium leading-relaxed">
+                  <div className="p-5 bg-emerald-50/80 border border-emerald-200 rounded-2xl space-y-2">
+                    <span className="text-xs sm:text-sm font-mono font-bold uppercase text-emerald-800 flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                      <span>HCI Remedy:</span>
+                    </span>
+                    <p className="text-base sm:text-lg text-emerald-950 font-medium leading-relaxed">
                       {currentCrime.remedy}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="p-3 bg-stone-50 border border-stone-200 rounded-xl text-xs font-mono text-stone-600 flex items-center justify-between">
-                <span>Diagnostic Category: Cognitive Human-System Mismatch</span>
-                <span className="text-emerald-700 font-bold">Preventable by HCI Rules: 100%</span>
+              <div className="p-4 bg-stone-50 border border-stone-200 rounded-2xl text-sm sm:text-base font-mono text-stone-700 flex items-center justify-between">
+                <span>Diagnostic Category: <strong>Cognitive Human-System Mismatch</strong></span>
+                <span className="text-emerald-700 font-bold bg-emerald-100/70 px-3 py-1 rounded-xl">Preventable by HCI Rules: 100%</span>
               </div>
             </div>
 
-            {/* Right Summary Card (4 cols) */}
-            <div className="lg:col-span-4 bg-red-50/70 border-2 border-red-300 rounded-3xl p-6 lg:p-7 flex flex-col justify-between shadow-xs space-y-4">
-              <div className="space-y-3">
-                <span className="text-xs font-mono uppercase text-red-700 font-bold tracking-wider px-2.5 py-1 bg-red-100 rounded-lg">
+            {/* Right Summary Card (5 cols) */}
+            <div className="lg:col-span-5 bg-red-50/70 border-2 border-red-300 rounded-3xl p-6 lg:p-8 flex flex-col justify-between shadow-xs space-y-4">
+              <div className="space-y-4">
+                <span className="text-xs sm:text-sm font-mono uppercase text-red-700 font-bold tracking-wider px-3.5 py-1.5 bg-red-100 rounded-xl inline-block">
                   Forensic Synthesis
                 </span>
-                <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-red-950">
+                <h4 className="text-2xl sm:text-3xl lg:text-4xl font-serif-display font-bold text-red-950">
                   Interaction Bugs vs Software Bugs
                 </h4>
-                <p className="text-xs sm:text-sm text-red-900 leading-relaxed">
+                <p className="text-base sm:text-lg text-red-900 leading-relaxed">
                   A software bug throws an uncaught exception on your server.
                 </p>
-                <p className="text-xs sm:text-sm text-red-950 font-bold leading-relaxed bg-white p-3.5 rounded-xl border border-red-200 shadow-2xs">
-                  An interaction bug crashes the cognitive apparatus of a living human being.
-                </p>
-                <p className="text-xs text-stone-600 leading-relaxed">
+                <div className="text-xl sm:text-2xl font-serif-display font-bold leading-snug bg-white p-6 rounded-2xl border-2 border-red-200 shadow-sm text-red-950">
+                  &ldquo;An interaction bug crashes the cognitive apparatus of a living human being.&rdquo;
+                </div>
+                <p className="text-sm sm:text-base text-stone-700 leading-relaxed">
                   Notice that every single trap in this challenge was technically &ldquo;functional&rdquo;: the database saved records, HTTP returned 200 OK, and CSS loaded. Yet the human system failed completely.
                 </p>
               </div>
 
-              <div className="p-3 bg-red-100 rounded-xl text-xs font-mono text-red-900 font-bold text-center">
+              <div className="p-4 bg-red-100 rounded-2xl text-sm sm:text-base font-mono text-red-900 font-bold text-center">
                 Functionality = 100% · Usability = 0%
               </div>
             </div>
           </div>
 
           {/* Key Principle Footer Banner */}
-          <div className="p-3.5 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
-            <p className="text-sm sm:text-base lg:text-lg text-[#2D2D2E] leading-relaxed">
-              <strong className="text-[#E5391C] font-serif-display text-base sm:text-lg font-bold mr-2">
+          <div className="p-5 lg:p-6 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs flex-shrink-0">
+            <p className="text-base sm:text-lg lg:text-xl text-[#2D2D2E] leading-relaxed">
+              <strong className="text-[#E5391C] font-serif-display text-lg sm:text-xl lg:text-2xl font-bold mr-2">
                 Engineering Discipline:
               </strong>
               Never blame the user for falling into an interface trap. If an error is possible, the interface is guilty of inducing it.
             </p>
-            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
+            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-4 py-2 rounded-xl whitespace-nowrap shadow-2xs">
               Forensic Ergonomics
             </span>
           </div>
@@ -5917,7 +5769,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 30) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] overflow-y-auto select-text">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -5929,67 +5781,73 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 30 / 45</span>
         </div>
 
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-4 lg:py-6 gap-6">
-          <div className="text-center space-y-3 flex-shrink-0">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif-display font-medium text-[#2D2D2E]">
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-3 lg:py-4 gap-4 lg:gap-5 min-h-0">
+          <div className="text-center space-y-2 flex-shrink-0">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif-display font-medium text-[#2D2D2E]">
               When Bad Interaction Kills: High-Stakes Disasters
             </h2>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-[#6E6D70] max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-[#6E6D70] max-w-4xl mx-auto font-light">
               In consumer web apps, bad design costs revenue. In aviation, medicine, and nuclear energy, it costs lives.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 items-stretch">
-            <div className="bg-white border border-[#E8E2D9] p-6 lg:p-8 xl:p-10 rounded-2xl flex flex-col justify-between shadow-xs">
-              <div className="space-y-4">
-                <span className="text-xs sm:text-sm font-mono text-red-600 font-bold uppercase tracking-wider">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 flex-1 items-stretch min-h-0">
+            <div className="bg-white border-2 border-[#E8E2D9] p-6 lg:p-8 rounded-3xl flex flex-col justify-between shadow-xs hover:border-red-300 transition-all">
+              <div className="space-y-3">
+                <span className="text-xs sm:text-sm font-mono text-red-600 font-bold uppercase tracking-wider bg-red-50 px-3.5 py-1.5 rounded-xl inline-block border border-red-200">
                   1979 · THREE MILE ISLAND
                 </span>
-                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">Hidden Relief Valve</h4>
+                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">
+                  Hidden Relief Valve
+                </h4>
                 <p className="text-base sm:text-lg lg:text-xl text-[#525254] leading-relaxed">
                   Light indicated valve switch was commanded shut, not that the valve was actually closed. The tag physically obscured the critical light.
                 </p>
               </div>
-              <div className="text-base sm:text-lg font-mono text-red-900 bg-red-50 p-4 rounded-xl border border-red-200 mt-4 font-bold flex items-center gap-2.5 shadow-xs">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-600 shrink-0" />
+              <div className="text-sm sm:text-base font-mono text-red-900 bg-red-50 p-4 rounded-2xl border border-red-200 mt-3 font-bold flex items-center gap-2.5 shadow-xs">
+                <span className="w-3 h-3 rounded-full bg-red-600 shrink-0" />
                 <span>Gulf of Evaluation: Sensor feedback contradicted reality.</span>
               </div>
             </div>
 
-            <div className="bg-white border border-[#E8E2D9] p-6 lg:p-8 xl:p-10 rounded-2xl flex flex-col justify-between shadow-xs">
-              <div className="space-y-4">
-                <span className="text-xs sm:text-sm font-mono text-red-600 font-bold uppercase tracking-wider">
+            <div className="bg-white border-2 border-[#E8E2D9] p-6 lg:p-8 rounded-3xl flex flex-col justify-between shadow-xs hover:border-red-300 transition-all">
+              <div className="space-y-3">
+                <span className="text-xs sm:text-sm font-mono text-red-600 font-bold uppercase tracking-wider bg-red-50 px-3.5 py-1.5 rounded-xl inline-block border border-red-200">
                   2018 · HAWAII MISSILE ALERT
                 </span>
-                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">The Fatal Dropdown</h4>
+                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">
+                  The Fatal Dropdown
+                </h4>
                 <p className="text-base sm:text-lg lg:text-xl text-[#525254] leading-relaxed">
                   "TEST_DRILL" was placed directly adjacent to "BALLISTIC_MISSILE_WARNING" in a plain text dropdown without confirmation guards.
                 </p>
               </div>
-              <div className="text-base sm:text-lg font-mono text-red-900 bg-red-50 p-4 rounded-xl border border-red-200 mt-4 font-bold flex items-center gap-2.5 shadow-xs">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-600 shrink-0" />
+              <div className="text-sm sm:text-base font-mono text-red-900 bg-red-50 p-4 rounded-2xl border border-red-200 mt-3 font-bold flex items-center gap-2.5 shadow-xs">
+                <span className="w-3 h-3 rounded-full bg-red-600 shrink-0" />
                 <span>Gulf of Execution: Critical action lacked cognitive friction.</span>
               </div>
             </div>
 
-            <div className="bg-[#FDF5F2] border-2 border-red-300 p-6 lg:p-8 xl:p-10 rounded-2xl flex flex-col justify-between shadow-sm">
-              <div className="space-y-4">
-                <span className="text-xs sm:text-sm font-mono text-red-600 font-bold uppercase tracking-wider">
+            <div className="bg-[#FDF5F2] border-2 border-red-300 p-6 lg:p-8 rounded-3xl flex flex-col justify-between shadow-sm">
+              <div className="space-y-3">
+                <span className="text-xs sm:text-sm font-mono text-red-700 font-bold uppercase tracking-wider bg-red-100 px-3.5 py-1.5 rounded-xl inline-block border border-red-300">
                   2019 · BOEING 737 MAX
                 </span>
-                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">MCAS Sensor Discordance</h4>
+                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">
+                  MCAS Sensor Discordance
+                </h4>
                 <p className="text-base sm:text-lg lg:text-xl text-[#525254] leading-relaxed">
                   Automated flight trim fought pilot commands based on a single faulty angle-of-attack vane without clear cockpit alert annunciators.
                 </p>
               </div>
-              <div className="text-base sm:text-lg font-mono text-red-800 bg-white p-4 rounded-xl border border-red-200 mt-4 font-bold flex items-center gap-2.5 shadow-xs">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-600 shrink-0" />
+              <div className="text-sm sm:text-base font-mono text-red-900 bg-white p-4 rounded-2xl border-2 border-red-200 mt-3 font-bold flex items-center gap-2.5 shadow-xs">
+                <span className="w-3 h-3 rounded-full bg-red-600 shrink-0" />
                 <span>Automation Irony: System hid override behavior from pilots.</span>
               </div>
             </div>
           </div>
 
-          <div className="p-4 lg:p-5 bg-white border border-[#E8E2D9] rounded-2xl text-center text-base sm:text-lg lg:text-xl text-[#2D2D2E] font-medium shadow-xs flex-shrink-0">
+          <div className="p-4 lg:p-5 bg-white border-2 border-[#E8E2D9] rounded-2xl text-center text-base sm:text-lg lg:text-xl text-[#2D2D2E] font-medium shadow-xs flex-shrink-0">
             None of these were "pilot negligence" or "operator stupidity"—they were predictable cognitive breakdowns induced by defective interaction design.
           </div>
         </div>
@@ -6036,10 +5894,10 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
-        <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] overflow-y-auto select-text">
+        <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <UM6PLogo variant="compact" theme="color" className="h-7 lg:h-8 w-auto" />
+            <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
             <div className="h-4 w-px bg-[#E8E2D9]" />
             <span className="text-xs sm:text-sm font-mono uppercase text-[#E5391C] tracking-wider font-bold">
               Act 4 Synthesis · The Core Ergonomic Law
@@ -6048,53 +5906,53 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 31 / 45</span>
         </div>
 
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-2 gap-4 min-h-0">
-          <div className="space-y-1 flex-shrink-0">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif-display font-medium text-[#2D2D2E]">
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-3 lg:py-4 gap-4 lg:gap-5 min-h-0">
+          <div className="space-y-1.5 text-center flex-shrink-0">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-display font-medium text-[#2D2D2E]">
               Bad Design Induces Cognitive Failure
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-[#6E6D70] font-light">
+            <p className="text-lg sm:text-xl lg:text-2xl text-[#6E6D70] font-light max-w-4xl mx-auto">
               Human performance is a direct mathematical function of interface design.
             </p>
           </div>
 
-          {/* Grand Contrast Banner: The Traditional Engineering Fallacy vs Ergonomic Reality */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-shrink-0">
-            <div className="p-4 bg-red-50/70 border-2 border-red-300 rounded-2xl flex items-start gap-3">
-              <span className="w-8 h-8 rounded-xl bg-red-200 text-red-800 flex items-center justify-center font-bold text-sm shrink-0">
+          {/* Contrast Strip: Traditional Mindset vs Ergonomic Reality */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 flex-shrink-0">
+            <div className="p-3.5 sm:p-4 bg-red-50/80 border-2 border-red-300 rounded-2xl flex items-center gap-3 shadow-xs">
+              <span className="w-8 h-8 rounded-xl bg-red-200 text-red-900 flex items-center justify-center font-bold text-base shrink-0">
                 ✕
               </span>
               <div>
-                <span className="text-xs font-mono font-bold uppercase text-red-800 block">The Flawed Mindset:</span>
-                <p className="text-xs sm:text-sm font-medium text-red-950 mt-0.5 leading-snug">
-                  &ldquo;The user didn&apos;t read the manual, rushed through the steps, and clicked the wrong button.&rdquo;
+                <span className="text-xs font-mono font-bold uppercase text-red-800 tracking-wider block">Flawed Traditional Mindset:</span>
+                <p className="text-sm sm:text-base font-medium text-red-950 leading-snug">
+                  &ldquo;The user didn&apos;t read the documentation, rushed, and clicked the wrong button.&rdquo;
                 </p>
               </div>
             </div>
 
-            <div className="p-4 bg-emerald-50/70 border-2 border-emerald-300 rounded-2xl flex items-start gap-3">
-              <span className="w-8 h-8 rounded-xl bg-emerald-200 text-emerald-800 flex items-center justify-center font-bold text-sm shrink-0">
+            <div className="p-3.5 sm:p-4 bg-emerald-50/80 border-2 border-emerald-300 rounded-2xl flex items-center gap-3 shadow-xs">
+              <span className="w-8 h-8 rounded-xl bg-emerald-200 text-emerald-900 flex items-center justify-center font-bold text-base shrink-0">
                 ✓
               </span>
               <div>
-                <span className="text-xs font-mono font-bold uppercase text-emerald-800 block">The Ergonomic Reality:</span>
-                <p className="text-xs sm:text-sm font-medium text-emerald-950 mt-0.5 leading-snug">
-                  &ldquo;The interface violated human mental models, hid system state, and set an active cognitive trap.&rdquo;
+                <span className="text-xs font-mono font-bold uppercase text-emerald-800 tracking-wider block">Ergonomic Scientific Reality:</span>
+                <p className="text-sm sm:text-base font-medium text-emerald-950 leading-snug">
+                  &ldquo;The interface violated mental models, concealed critical state, and set an active trap.&rdquo;
                 </p>
               </div>
             </div>
           </div>
 
-          {/* 3 Full-Height Synthesis Pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 flex-1 items-stretch min-h-0">
+          {/* 3 Synthesis Pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 flex-1 items-stretch min-h-0">
             {pillars.map((p) => {
               const IconComp = p.icon;
               return (
                 <div
                   key={p.id}
-                  className="bg-white border-2 border-[#E8E2D9] p-6 lg:p-7 rounded-3xl flex flex-col justify-between shadow-xs hover:border-[#E5391C]/50 transition-all space-y-3"
+                  className="bg-white border-2 border-[#E8E2D9] p-5 lg:p-6 rounded-2xl flex flex-col justify-between shadow-xs hover:border-[#E5391C]/50 transition-all space-y-3"
                 >
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 bg-[#FDF5F2] border border-[#FAD6CF] rounded-xl text-[#E5391C]">
                         {p.badge}
@@ -6104,16 +5962,16 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                     <h3 className="text-xl sm:text-2xl font-serif-display font-bold text-[#2D2D2E]">
                       {p.title}
                     </h3>
-                    <p className="text-sm sm:text-base font-semibold text-[#E5391C] leading-snug">
+                    <p className="text-sm sm:text-base font-bold text-[#E5391C] leading-snug">
                       {p.summary}
                     </p>
-                    <p className="text-xs sm:text-sm text-[#525254] leading-relaxed">
+                    <p className="text-sm sm:text-base text-[#525254] leading-relaxed">
                       {p.body}
                     </p>
                   </div>
 
-                  <div className="p-3 bg-stone-100 rounded-2xl border border-stone-200 text-xs font-mono font-bold text-stone-800 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#E5391C] shrink-0" />
+                  <div className="p-3 bg-stone-100 rounded-xl border border-stone-200 text-xs sm:text-sm font-mono font-bold text-stone-800 flex items-center gap-2.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#E5391C] shrink-0" />
                     <span>{p.telemetry}</span>
                   </div>
                 </div>
@@ -6122,20 +5980,20 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           </div>
 
           {/* Key Principle Footer Banner */}
-          <div className="p-3.5 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
-            <p className="text-sm sm:text-base lg:text-lg text-[#2D2D2E] leading-relaxed">
-              <strong className="text-[#E5391C] font-serif-display text-base sm:text-lg font-bold mr-2">
+          <div className="p-4 lg:p-5 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
+            <p className="text-base sm:text-lg text-[#2D2D2E] leading-relaxed">
+              <strong className="text-[#E5391C] font-serif-display text-lg sm:text-xl font-bold mr-2">
                 Transition to Act 5:
               </strong>
               If bad interaction is provably dangerous, how do we evaluate systems objectively? We measure usability as an empirical engineering science.
             </p>
-            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
+            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3.5 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
               Act 5 Ahead
             </span>
           </div>
         </div>
 
-        <div className="text-center text-xs sm:text-sm font-mono text-[#6E6D70] flex-shrink-0">
+        <div className="text-center text-xs font-mono text-[#6E6D70] flex-shrink-0 pt-1">
           Next: Act 5 — Beyond Taste: Usability as Empirical Science
         </div>
       </div>
@@ -6146,49 +6004,38 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // SLIDE 32: BEYOND TASTE: USABILITY AS EMPIRICAL SCIENCE
   // --------------------------------------------------------------------------
   if (slide.id === 32) {
-    const metrics = [
+    const coreMetrics = [
       {
-        name: 'Task Completion Rate',
+        pillar: '01 · EFFICACY',
+        name: 'Task Completion Rate & Error Recovery',
         formula: 'Completed Tasks / Total Attempts (%)',
         unit: 'Percentage (%)',
         target: '≥ 95% in Primary Workflows',
-        description: 'Measures binary efficacy: did the human successfully reach their intended goal without external help?',
+        description: 'Measures binary efficacy: did the human successfully reach their intended goal without external intervention? Also measures restorative recovery time from cognitive slips.',
       },
       {
-        name: 'Time-on-Task (Latency)',
+        pillar: '02 · EFFICIENCY',
+        name: 'Time-on-Task & Interaction Latency',
         formula: 'Total Seconds to Goal State',
         unit: 'Seconds / Milliseconds',
-        target: 'Optimal Fitts / Hick Benchmark',
-        description: 'Quantifies human interaction latency. Every extraneous click, submenu, or mental pause compounds duration.',
+        target: 'Optimal Fitts & Hick Benchmark',
+        description: 'Quantifies human interaction latency. Every extraneous click, deep submenu, visual ambiguity, or mental pause compounds duration and elevates user fatigue.',
       },
       {
-        name: 'Error Frequency & Recovery',
-        formula: 'Total Slips & Time to Recover',
-        unit: 'Count / Mean Seconds',
-        target: '0 Critical Safety Errors',
-        description: 'Identifies cognitive friction points, modal slips, and whether the interface provides intuitive restorative pathways.',
-      },
-      {
-        name: 'System Usability Scale (SUS)',
-        formula: '10-Item Standardized Psychometric (0–100)',
-        unit: 'SUS Score',
-        target: '≥ 80.3 (Grade A / Top 10%)',
-        description: 'Validated psychometric instrument allowing comparative benchmarking across diverse software products.',
-      },
-      {
-        name: 'Cognitive Workload (NASA-TLX)',
-        formula: 'Mental, Temporal & Effort Demands (0–100)',
-        unit: 'Index Score',
-        target: '< 30 Low Cognitive Burden',
-        description: 'Measures biological working memory load, subjective stress, and mental exertion during interaction.',
+        pillar: '03 · COGNITIVE LOAD',
+        name: 'Workload & Standardized SUS Index',
+        formula: 'NASA-TLX & SUS Instrument (0–100)',
+        unit: 'Index Score (0–100)',
+        target: 'SUS ≥ 80.3 · NASA-TLX < 30',
+        description: 'Measures biological working memory load, subjective stress, and standardized psychometric satisfaction across diverse human populations.',
       },
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
-        <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6] select-text">
+        <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <UM6PLogo variant="compact" theme="color" className="h-7 lg:h-8 w-auto" />
+            <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
             <div className="h-4 w-px bg-[#E8E2D9]" />
             <span className="text-xs sm:text-sm font-mono uppercase text-[#E5391C] tracking-wider font-bold">
               Act 5 · Empirical Foundations
@@ -6197,22 +6044,22 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 32 / 45</span>
         </div>
 
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-2 gap-4 min-h-0">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-shrink-0">
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-4 lg:py-6 gap-6 min-h-0">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 flex-shrink-0">
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif-display font-medium text-[#2D2D2E]">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif-display font-medium text-[#2D2D2E]">
                 Beyond Taste: Usability as Empirical Science
               </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-[#6E6D70] font-light">
-                Why &ldquo;I like it&rdquo; or &ldquo;It feels clean&rdquo; is never an engineering argument.
+              <p className="text-xl sm:text-2xl text-[#6E6D70] font-light mt-1">
+                Why &ldquo;I like it&rdquo; or &ldquo;It feels sleek&rdquo; is never an engineering argument.
               </p>
             </div>
 
             {/* Interactive Paradigm Switcher */}
-            <div className="flex items-center gap-2 bg-white p-1.5 rounded-2xl border border-[#E8E2D9] shadow-xs self-start sm:self-auto">
+            <div className="flex items-center gap-2 bg-white p-2 rounded-2xl border-2 border-[#E8E2D9] shadow-xs self-start sm:self-auto shrink-0">
               <button
                 onClick={() => setSlide32ReviewMode('subjective')}
-                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-bold cursor-pointer transition-all ${
+                className={`px-5 py-2.5 rounded-xl text-sm sm:text-base font-mono font-bold cursor-pointer transition-all ${
                   slide32ReviewMode === 'subjective'
                     ? 'bg-red-600 text-white shadow-xs'
                     : 'text-stone-600 hover:text-stone-900'
@@ -6222,7 +6069,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
               </button>
               <button
                 onClick={() => setSlide32ReviewMode('empirical')}
-                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-bold cursor-pointer transition-all ${
+                className={`px-5 py-2.5 rounded-xl text-sm sm:text-base font-mono font-bold cursor-pointer transition-all ${
                   slide32ReviewMode === 'empirical'
                     ? 'bg-emerald-600 text-white shadow-xs'
                     : 'text-stone-600 hover:text-stone-900'
@@ -6235,69 +6082,70 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
 
           {/* Interactive Contrast Arena */}
           {slide32ReviewMode === 'subjective' ? (
-            <div className="bg-red-50/70 border-2 border-red-300 rounded-3xl p-6 lg:p-8 flex flex-col justify-between shadow-xs space-y-4 flex-1">
-              <div className="space-y-3">
+            <div className="bg-red-50/80 border-2 border-red-300 rounded-3xl p-6 lg:p-10 flex flex-col justify-between shadow-xs space-y-6 flex-1">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold uppercase text-red-700 bg-red-100 px-3 py-1 rounded-xl">
+                  <span className="text-xs sm:text-sm font-mono font-bold uppercase text-red-800 bg-red-100 px-4 py-1.5 rounded-xl border border-red-200">
                     Anti-Pattern: The HiPPO Effect (Highest Paid Person&apos;s Opinion)
                   </span>
-                  <span className="text-xs font-mono text-red-800 font-bold">Unfalsifiable Bikeshedding</span>
+                  <span className="text-sm font-mono text-red-800 font-bold">Unfalsifiable Bikeshedding</span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif-display font-bold text-red-950">
-                  What Happens When Design is Treated as &ldquo;Personal Preference&rdquo;
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif-display font-bold text-red-950">
+                  What Happens When Interaction Design is Treated as &ldquo;Personal Opinion&rdquo;
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-                  <div className="p-4 bg-white rounded-2xl border border-red-200 space-y-1 shadow-2xs">
-                    <span className="text-xs font-mono font-bold text-red-800">1. Endless Design Debates</span>
-                    <p className="text-xs sm:text-sm text-stone-700">
-                      Teams spend 4 weeks arguing whether buttons should be rounded or square based on executive whims.
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+                  <div className="p-6 bg-white rounded-3xl border-2 border-red-200 space-y-3 shadow-sm">
+                    <span className="text-sm font-mono font-bold text-red-800 uppercase tracking-wide">1. Endless Design Debates</span>
+                    <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">Bikeshedding &amp; Delays</h4>
+                    <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
+                      Engineering teams spend weeks arguing whether buttons should be rounded or square based on executive mood swings.
                     </p>
                   </div>
-                  <div className="p-4 bg-white rounded-2xl border border-red-200 space-y-1 shadow-2xs">
-                    <span className="text-xs font-mono font-bold text-red-800">2. Zero Engineering Accountability</span>
-                    <p className="text-xs sm:text-sm text-stone-700">
-                      If an app fails, nobody knows why. There are no benchmarks, no baseline metrics, and no regression tracking.
+                  <div className="p-6 bg-white rounded-3xl border-2 border-red-200 space-y-3 shadow-sm">
+                    <span className="text-sm font-mono font-bold text-red-800 uppercase tracking-wide">2. Zero Accountability</span>
+                    <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">No Measurable Baselines</h4>
+                    <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
+                      If an app fails, nobody knows why. There are no baseline metrics, no error classification, and no regression tracking.
                     </p>
                   </div>
-                  <div className="p-4 bg-white rounded-2xl border border-red-200 space-y-1 shadow-2xs">
-                    <span className="text-xs font-mono font-bold text-red-800">3. Blind Feature Accumulation</span>
-                    <p className="text-xs sm:text-sm text-stone-700">
-                      More features get bolted onto confusing screens, compounding user frustration until total churn occurs.
+                  <div className="p-6 bg-white rounded-3xl border-2 border-red-200 space-y-3 shadow-sm">
+                    <span className="text-sm font-mono font-bold text-red-800 uppercase tracking-wide">3. Feature Bloat &amp; Churn</span>
+                    <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">Compounding Friction</h4>
+                    <p className="text-base sm:text-lg text-stone-700 leading-relaxed">
+                      More features get bolted onto confusing screens, compounding user cognitive friction until catastrophic churn occurs.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="p-3 bg-red-100 rounded-xl text-xs sm:text-sm font-mono text-red-900 font-bold text-center">
-                Analogy: A software engineer saying &ldquo;I feel like my SQL query runs fast&rdquo; instead of profiling execution time.
+              <div className="p-5 bg-red-100/90 rounded-2xl text-base sm:text-lg font-mono text-red-950 font-bold text-center border border-red-300">
+                Engineering Parallel: Imagine a backend engineer saying &ldquo;I feel like my database query runs fast&rdquo; instead of measuring p99 latency in milliseconds.
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-3.5 flex-1 items-stretch min-h-0">
-              {metrics.map((m, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 flex-1 items-stretch min-h-0">
+              {coreMetrics.map((m, idx) => (
                 <div
                   key={idx}
-                  className="bg-white border-2 border-[#E8E2D9] p-5 rounded-2xl flex flex-col justify-between shadow-xs hover:border-emerald-500 transition-all space-y-2.5"
+                  className="bg-white border-2 border-[#E8E2D9] p-6 lg:p-8 xl:p-10 rounded-3xl flex flex-col justify-between shadow-xs hover:border-emerald-500 transition-all space-y-4"
                 >
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-md">
-                        Metric 0{idx + 1}
-                      </span>
-                    </div>
-                    <h4 className="text-base sm:text-lg font-serif-display font-bold text-[#2D2D2E] leading-tight">
+                  <div className="space-y-3.5">
+                    <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider px-3.5 py-1.5 bg-emerald-100 text-emerald-900 rounded-xl inline-block">
+                      {m.pillar}
+                    </span>
+                    <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E] leading-snug">
                       {m.name}
                     </h4>
-                    <div className="p-2 bg-stone-100 rounded-xl font-mono text-[10px] text-stone-700 space-y-0.5">
+                    <div className="p-3.5 bg-stone-100 rounded-2xl font-mono text-xs sm:text-sm text-stone-800 space-y-1">
                       <div>Formula: <strong>{m.formula}</strong></div>
-                      <div>Unit: <span className="text-stone-900">{m.unit}</span></div>
+                      <div>Unit: <span className="text-stone-900 font-bold">{m.unit}</span></div>
                     </div>
-                    <p className="text-xs text-[#525254] leading-relaxed">
+                    <p className="text-base sm:text-lg text-[#525254] leading-relaxed">
                       {m.description}
                     </p>
                   </div>
 
-                  <div className="p-2.5 bg-emerald-50 rounded-xl border border-emerald-200 text-[11px] font-mono font-bold text-emerald-900">
+                  <div className="p-4 bg-emerald-50 rounded-2xl border-2 border-emerald-200 text-sm sm:text-base font-mono font-bold text-emerald-950 shadow-xs">
                     Target: {m.target}
                   </div>
                 </div>
@@ -6306,14 +6154,14 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           )}
 
           {/* Key Principle Footer Banner */}
-          <div className="p-3.5 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
-            <p className="text-sm sm:text-base lg:text-lg text-[#2D2D2E] leading-relaxed">
-              <strong className="text-[#E5391C] font-serif-display text-base sm:text-lg font-bold mr-2">
+          <div className="p-5 lg:p-6 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs flex-shrink-0">
+            <p className="text-base sm:text-lg lg:text-xl text-[#2D2D2E] leading-relaxed">
+              <strong className="text-[#E5391C] font-serif-display text-lg sm:text-xl lg:text-2xl font-bold mr-2">
                 The Engineering Parallel:
               </strong>
               When building back-end systems, you benchmark p99 latency in milliseconds. When engineering human interaction, you benchmark human task latency and error frequency.
             </p>
-            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
+            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-4 py-2 rounded-xl whitespace-nowrap shadow-2xs">
               Observable Science
             </span>
           </div>
@@ -6331,7 +6179,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 33) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -6418,20 +6266,23 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   // SLIDE 35: QUANTITATIVE DATA VS QUALITATIVE INSIGHT
   // --------------------------------------------------------------------------
+  // --------------------------------------------------------------------------
+  // SLIDE 35: QUANTITATIVE DATA VS QUALITATIVE INSIGHT
+  // --------------------------------------------------------------------------
   if (slide.id === 35) {
     const funnelSteps = [
       { id: 1, name: '1. Catalog Browse', users: 12450, drop: '0%', time: '18s', status: 'normal' },
-      { id: 2, name: '2. Course Pick', users: 10820, drop: '13.1%', time: '34s', status: 'normal' },
+      { id: 2, name: '2. Course Selection', users: 10820, drop: '13.1%', time: '34s', status: 'normal' },
       { id: 3, name: '3. Fast-Track Verify', users: 3895, drop: '64.0%', time: '184s', status: 'critical' },
       { id: 4, name: '4. Confirmed Seat', users: 3505, drop: '10.0%', time: '8s', status: 'success' },
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] overflow-y-auto select-text">
         {/* Header Bar */}
-        <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
+        <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
-            <UM6PLogo variant="compact" theme="color" className="h-7 lg:h-8 w-auto" />
+            <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
             <div className="h-4 w-px bg-[#E8E2D9]" />
             <span className="text-xs sm:text-sm font-mono uppercase text-[#E5391C] tracking-wider font-bold">
               Act 5 · Empirical Usability Science
@@ -6441,23 +6292,23 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
         </div>
 
         {/* Main Body */}
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-2 gap-3.5 min-h-0">
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-3 lg:py-4 gap-4 lg:gap-5 min-h-0">
           {/* Title Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-shrink-0">
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-serif-display font-medium text-[#2D2D2E]">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-display font-medium text-[#2D2D2E]">
                 Quantitative Data vs. Qualitative Insight
               </h2>
-              <p className="text-sm sm:text-base lg:text-lg text-[#6E6D70] font-light">
+              <p className="text-base sm:text-lg lg:text-xl text-[#6E6D70] font-light mt-0.5">
                 Telemetry tells you <strong>WHAT</strong> is happening. Contextual inquiry tells you <strong>WHY</strong> it happens.
               </p>
             </div>
 
             {/* Mode Switcher Tabs */}
-            <div className="flex items-center gap-1.5 bg-white p-1 rounded-2xl border-2 border-[#E8E2D9] shadow-2xs shrink-0">
+            <div className="flex items-center gap-2 bg-white p-1.5 rounded-2xl border-2 border-[#E8E2D9] shadow-xs shrink-0">
               <button
                 onClick={() => setSlide35Tab('triangulation')}
-                className={`px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
                   slide35Tab === 'triangulation'
                     ? 'bg-[#E5391C] text-white shadow-xs'
                     : 'text-stone-600 hover:text-stone-900'
@@ -6467,7 +6318,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
               </button>
               <button
                 onClick={() => setSlide35Tab('quant')}
-                className={`px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
                   slide35Tab === 'quant'
                     ? 'bg-blue-600 text-white shadow-xs'
                     : 'text-stone-600 hover:text-stone-900'
@@ -6477,7 +6328,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
               </button>
               <button
                 onClick={() => setSlide35Tab('qual')}
-                className={`px-3 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
                   slide35Tab === 'qual'
                     ? 'bg-emerald-700 text-white shadow-xs'
                     : 'text-stone-600 hover:text-stone-900'
@@ -6492,76 +6343,76 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           {slide35Tab === 'triangulation' && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 flex-1 items-stretch min-h-0">
               {/* Left Column: Quantitative Telemetry */}
-              <div className="bg-white border-2 border-blue-200 rounded-3xl p-5 lg:p-6 flex flex-col justify-between shadow-xs space-y-4">
+              <div className="bg-white border-2 border-blue-200 rounded-2xl p-5 lg:p-6 flex flex-col justify-between shadow-xs space-y-3">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono uppercase text-blue-700 font-bold px-2.5 py-1 bg-blue-50 border border-blue-200 rounded-lg flex items-center gap-1.5">
-                      <BarChart3 className="w-3.5 h-3.5" />
-                      <span>Quantitative Data (The "What")</span>
+                    <span className="text-xs font-mono uppercase text-blue-700 font-bold px-3 py-1 bg-blue-50 border border-blue-200 rounded-lg flex items-center gap-1.5">
+                      <BarChart3 className="w-4 h-4" />
+                      <span>Quantitative Telemetry (The "What")</span>
                     </span>
-                    <span className="text-xs font-mono font-bold text-stone-500">Sample N = 10,000+</span>
+                    <span className="text-xs font-mono font-bold text-stone-600 bg-stone-100 px-2.5 py-0.5 rounded-md">Sample N = 10,000+</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-serif-display font-medium text-stone-900">
+                  <h3 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">
                     Big Data &amp; Telemetry Analytics
                   </h3>
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                    Automated event logs, conversion funnels, heatmaps, and latency timers. Essential for identifying <em>where</em> problems occur and proving statistical significance ($p &lt; 0.05$).
+                  <p className="text-sm sm:text-base text-stone-700 leading-relaxed">
+                    Automated event logs, conversion funnels, and latency timers. Essential for proving statistical significance ($p &lt; 0.05$) and identifying precisely <em>where</em> users drop off.
                   </p>
-                  <div className="space-y-2 pt-2">
-                    <div className="p-3 bg-blue-50/60 rounded-xl border border-blue-100 flex items-center justify-between text-xs font-mono">
-                      <span className="text-stone-600">Metric 1: Task Completion Rate</span>
-                      <strong className="text-blue-900">35.8% (Target &ge; 90%)</strong>
+                  <div className="space-y-2 pt-1">
+                    <div className="p-3 bg-blue-50/70 rounded-xl border border-blue-200 flex items-center justify-between text-xs sm:text-sm font-mono">
+                      <span className="text-stone-700">Metric 1: Task Completion Rate</span>
+                      <strong className="text-blue-950 font-bold">35.8% (Target &ge; 90%)</strong>
                     </div>
-                    <div className="p-3 bg-blue-50/60 rounded-xl border border-blue-100 flex items-center justify-between text-xs font-mono">
-                      <span className="text-stone-600">Metric 2: Funnel Drop-off Spike</span>
+                    <div className="p-3 bg-blue-50/70 rounded-xl border border-blue-200 flex items-center justify-between text-xs sm:text-sm font-mono">
+                      <span className="text-stone-700">Metric 2: Funnel Drop-off Spike</span>
                       <strong className="text-red-700 font-bold">64.0% Loss at Step 3</strong>
                     </div>
-                    <div className="p-3 bg-blue-50/60 rounded-xl border border-blue-100 flex items-center justify-between text-xs font-mono">
-                      <span className="text-stone-600">Metric 3: Time on Step 3</span>
-                      <strong className="text-amber-800">184s (15x over baseline)</strong>
+                    <div className="p-3 bg-blue-50/70 rounded-xl border border-blue-200 flex items-center justify-between text-xs sm:text-sm font-mono">
+                      <span className="text-stone-700">Metric 3: Time on Step 3</span>
+                      <strong className="text-amber-900 font-bold">184s (15x baseline)</strong>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-xs font-mono text-red-900 flex items-start gap-2">
+                <div className="p-3.5 bg-red-50 border-2 border-red-200 rounded-xl text-xs sm:text-sm font-mono text-red-950 flex items-start gap-2.5">
                   <AlertTriangle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong>The Fatal Blindspot of Pure Analytics:</strong> Telemetry proves 64% abandoned at Step 3, but CANNOT explain if they hated the price, hit a bug, or got confused by terminology.
+                    <strong>The Fatal Blindspot of Pure Analytics:</strong> Telemetry proves 64% abandoned at Step 3, but CANNOT tell you if they hated the price, hit a crash, or got confused by wording.
                   </div>
                 </div>
               </div>
 
               {/* Right Column: Qualitative Think-Aloud */}
-              <div className="bg-white border-2 border-emerald-200 rounded-3xl p-5 lg:p-6 flex flex-col justify-between shadow-xs space-y-4">
+              <div className="bg-white border-2 border-emerald-200 rounded-2xl p-5 lg:p-6 flex flex-col justify-between shadow-xs space-y-3">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono uppercase text-emerald-800 font-bold px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center gap-1.5">
-                      <Eye className="w-3.5 h-3.5" />
+                    <span className="text-xs font-mono uppercase text-emerald-800 font-bold px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center gap-1.5">
+                      <Eye className="w-4 h-4" />
                       <span>Qualitative Inquiry (The "Why")</span>
                     </span>
-                    <span className="text-xs font-mono font-bold text-stone-500">Sample N = 5 Users</span>
+                    <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-md">Sample N = 5 Users</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-serif-display font-medium text-stone-900">
-                    Think-Aloud Testing &amp; Cognitive Protocols
+                  <h3 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">
+                    Think-Aloud Testing &amp; Protocols
                   </h3>
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                    Direct human observation, verbalized mental models, eye-tracking saccades, and video debriefs. Essential for discovering the <em>root psychological cause</em> of friction.
+                  <p className="text-sm sm:text-base text-stone-700 leading-relaxed">
+                    Direct human observation, verbalized mental models, and video debriefs. Essential for discovering the <em>root psychological cause</em> of cognitive friction.
                   </p>
-                  <div className="space-y-2 pt-2">
-                    <div className="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 text-xs font-sans text-stone-800 space-y-1">
-                      <div className="font-mono text-[10px] text-emerald-800 font-bold uppercase">Participant 02 (2nd-Year Eng):</div>
-                      <p className="italic font-serif-display text-sm">
-                        "Wait... why is there a flashing green button that says 'Fast-Track Verify'? It looks like a spam pop-up ad from an untrusted site. I'm afraid it will charge my bank card, so I'm closing the tab."
+                  <div className="space-y-2 pt-1">
+                    <div className="p-3 bg-emerald-50/70 rounded-xl border border-emerald-200 text-stone-900 space-y-1">
+                      <div className="font-mono text-[11px] font-bold text-emerald-900 uppercase">Participant 02 (2nd-Year Engineering):</div>
+                      <p className="italic font-serif-display text-sm sm:text-base leading-relaxed text-stone-900">
+                        &ldquo;Wait... why is there a flashing green button that says &apos;Fast-Track Verify&apos;? It looks like a spam pop-up ad from an untrusted site. I&apos;m afraid it will charge my card, so I&apos;m closing the tab.&rdquo;
                       </p>
                     </div>
-                    <div className="p-3 bg-emerald-50/60 rounded-xl border border-emerald-100 flex items-center justify-between text-xs font-mono">
-                      <span className="text-stone-600">Cognitive Diagnosis:</span>
-                      <strong className="text-emerald-950">Affordance &amp; Mental Model Collision</strong>
+                    <div className="p-3 bg-emerald-50/70 rounded-xl border border-emerald-200 flex items-center justify-between text-xs sm:text-sm font-mono">
+                      <span className="text-stone-700">Root Cause Diagnosis:</span>
+                      <strong className="text-emerald-950 font-bold">Affordance &amp; Mental Model Collision</strong>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-mono text-emerald-900 flex items-start gap-2">
+                <div className="p-3.5 bg-emerald-50 border-2 border-emerald-200 rounded-xl text-xs sm:text-sm font-mono text-emerald-950 flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                   <div>
                     <strong>The Breakthrough Power of Qualitative:</strong> Watching just 3 students for 90 seconds discovered the exact root cause that 10,000 server logs could never reveal.
@@ -6572,15 +6423,15 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           )}
 
           {slide35Tab === 'quant' && (
-            <div className="bg-white border-2 border-[#E8E2D9] rounded-3xl p-5 lg:p-6 flex-1 flex flex-col justify-between shadow-xs space-y-4 min-h-0">
-              <div className="space-y-2">
+            <div className="bg-white border-2 border-[#E8E2D9] rounded-2xl p-5 lg:p-6 flex-1 flex flex-col justify-between shadow-xs space-y-4 min-h-0">
+              <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-blue-700 font-bold px-2.5 py-1 bg-blue-50 border border-blue-200 rounded-lg">
-                    Real-Time Telemetry Dashboard · UM6P Portal
+                  <span className="text-xs font-mono uppercase text-blue-700 font-bold px-3 py-1 bg-blue-50 border border-blue-200 rounded-lg">
+                    Real-Time Telemetry Dashboard · UM6P Student Portal
                   </span>
-                  <span className="text-xs font-mono text-stone-500">12,450 Total Inbound Sessions</span>
+                  <span className="text-xs font-mono text-stone-600 font-bold">12,450 Total Inbound Sessions</span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-serif-display font-medium text-stone-900">
+                <h3 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">
                   Interactive Conversion Funnel: The 64% Abandonment Cliff
                 </h3>
               </div>
@@ -6593,14 +6444,14 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                     onClick={() => setSlide35ActiveStep(step.id)}
                     className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between space-y-3 ${
                       slide35ActiveStep === step.id
-                        ? 'border-[#E5391C] bg-[#FDF5F2] ring-2 ring-[#E5391C]/20 shadow-sm'
+                        ? 'border-[#E5391C] bg-[#FDF5F2] ring-3 ring-[#E5391C]/20 shadow-md scale-[1.01]'
                         : 'border-[#E8E2D9] bg-[#FAF9F6] hover:border-stone-400'
                     }`}
                   >
                     <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="font-bold text-stone-800">{step.name}</span>
+                      <span className="font-bold text-stone-900">{step.name}</span>
                       <span className={`px-2 py-0.5 rounded font-bold ${
-                        step.status === 'critical' ? 'bg-red-200 text-red-900' : 'bg-stone-200 text-stone-700'
+                        step.status === 'critical' ? 'bg-red-200 text-red-950' : 'bg-stone-200 text-stone-800'
                       }`}>
                         {step.drop} Drop
                       </span>
@@ -6609,11 +6460,11 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                       <div className="text-2xl sm:text-3xl font-mono font-bold text-stone-900">
                         {step.users.toLocaleString()}
                       </div>
-                      <div className="text-xs font-mono text-stone-500">Users Reached</div>
+                      <div className="text-xs font-mono text-stone-500 mt-0.5">Users Reached</div>
                     </div>
                     <div className="text-xs font-mono pt-2 border-t border-stone-200 flex items-center justify-between">
-                      <span className="text-stone-500">Avg Time:</span>
-                      <strong className={step.status === 'critical' ? 'text-red-700' : 'text-stone-800'}>
+                      <span className="text-stone-600">Avg Time on Step:</span>
+                      <strong className={step.status === 'critical' ? 'text-red-700' : 'text-stone-900'}>
                         {step.time}
                       </strong>
                     </div>
@@ -6621,9 +6472,9 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 ))}
               </div>
 
-              <div className="p-4 bg-stone-900 text-stone-100 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+              <div className="p-4 bg-stone-900 text-stone-100 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm font-mono">
                 <div>
-                  <strong>ENGINEERING TELEMETRY SUMMARY:</strong> Severe friction identified at Step 3 (Fast-Track Verify). 8,555 students lost.
+                  <strong>ENGINEERING SUMMARY:</strong> Friction located at Step 3 (Fast-Track Verify). 8,555 students lost before checkout.
                 </div>
                 <button
                   onClick={() => setSlide35Tab('qual')}
@@ -6636,67 +6487,67 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           )}
 
           {slide35Tab === 'qual' && (
-            <div className="bg-white border-2 border-[#E8E2D9] rounded-3xl p-5 lg:p-6 flex-1 flex flex-col justify-between shadow-xs space-y-4 min-h-0">
-              <div className="space-y-2">
+            <div className="bg-white border-2 border-[#E8E2D9] rounded-2xl p-5 lg:p-6 flex-1 flex flex-col justify-between shadow-xs space-y-4 min-h-0">
+              <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-emerald-800 font-bold px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-lg">
+                  <span className="text-xs font-mono uppercase text-emerald-800 font-bold px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-lg">
                     Lab Observation Session Transcript · 5 User Sample
                   </span>
-                  <span className="text-xs font-mono text-stone-500">Protocol: Concurrent Think-Aloud (Ericsson &amp; Simon)</span>
+                  <span className="text-xs font-mono text-stone-600 font-bold">Protocol: Concurrent Think-Aloud</span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-serif-display font-medium text-stone-900">
+                <h3 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">
                   Qualitative Video Capture: Uncovering Mental Model Collisions
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="p-4 bg-stone-50 border border-stone-200 rounded-2xl space-y-2.5">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                <div className="p-4 bg-stone-50 border-2 border-stone-200 rounded-2xl space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="font-bold text-stone-900">Student 1 (AI Master)</span>
-                    <span className="text-red-700 font-bold">ABANDONED</span>
+                    <span className="text-red-700 font-bold bg-red-100 px-2 py-0.5 rounded-md">ABANDONED</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-stone-700 italic font-serif-display">
-                    "I was looking for 'Enroll in Course'. The button says 'Fast-Track Verify'. In my mental model, verify means identity check, not enrollment. I thought I was in the wrong menu."
+                  <p className="text-xs sm:text-sm text-stone-800 italic font-serif-display leading-relaxed">
+                    &ldquo;I was looking for &apos;Enroll in Course&apos;. The button says &apos;Fast-Track Verify&apos;. In my mental model, verify means identity check, not enrollment.&rdquo;
                   </p>
-                  <div className="text-[11px] font-mono text-stone-500 pt-2 border-t">
-                    Root Cause: Terminology Mismatch (Norman’s Gulf of Execution)
+                  <div className="text-[11px] font-mono text-stone-600 pt-1.5 border-t">
+                    Root Cause: Terminology Mismatch (Gulf of Execution)
                   </div>
                 </div>
 
-                <div className="p-4 bg-stone-50 border border-stone-200 rounded-2xl space-y-2.5">
+                <div className="p-4 bg-stone-50 border-2 border-stone-200 rounded-2xl space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="font-bold text-stone-900">Student 2 (BioTech BSc)</span>
-                    <span className="text-red-700 font-bold">ABANDONED</span>
+                    <span className="text-red-700 font-bold bg-red-100 px-2 py-0.5 rounded-md">ABANDONED</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-stone-700 italic font-serif-display">
-                    "The flashing green outline made it look like a deceptive banner ad. At UM6P we take cyber-safety seriously, so I reported the portal to IT security and logged out."
+                  <p className="text-xs sm:text-sm text-stone-800 italic font-serif-display leading-relaxed">
+                    &ldquo;The flashing green outline made it look like a deceptive banner ad. At UM6P we take cyber-safety seriously, so I logged out.&rdquo;
                   </p>
-                  <div className="text-[11px] font-mono text-stone-500 pt-2 border-t">
-                    Root Cause: Styling Affordance (Deceptive Pattern Lookalike)
+                  <div className="text-[11px] font-mono text-stone-600 pt-1.5 border-t">
+                    Root Cause: Styling Affordance (Deceptive Lookalike)
                   </div>
                 </div>
 
-                <div className="p-4 bg-stone-50 border border-stone-200 rounded-2xl space-y-2.5">
+                <div className="p-4 bg-stone-50 border-2 border-stone-200 rounded-2xl space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="font-bold text-stone-900">Student 3 (Industrial PhD)</span>
-                    <span className="text-amber-700 font-bold">DELAYED (240s)</span>
+                    <span className="text-amber-700 font-bold bg-amber-100 px-2 py-0.5 rounded-md">DELAYED (240s)</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-stone-700 italic font-serif-display">
-                    "I had to open my phone, call my lab colleague, and ask 'Is this real or a phishing test?' Only after she confirmed did I click it."
+                  <p className="text-xs sm:text-sm text-stone-800 italic font-serif-display leading-relaxed">
+                    &ldquo;I had to call my lab colleague and ask &apos;Is this real or phishing?&apos; Only after she confirmed did I click it.&rdquo;
                   </p>
-                  <div className="text-[11px] font-mono text-stone-500 pt-2 border-t">
+                  <div className="text-[11px] font-mono text-stone-600 pt-1.5 border-t">
                     Root Cause: Lack of Institutional Trust Signifiers
                   </div>
                 </div>
               </div>
 
-              <div className="p-3.5 bg-emerald-50 border border-emerald-300 rounded-2xl flex items-center justify-between text-xs sm:text-sm font-mono text-emerald-950">
+              <div className="p-3.5 bg-emerald-50 border-2 border-emerald-300 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs sm:text-sm font-mono text-emerald-950">
                 <span>
-                  ✓ <strong>Design Solution:</strong> Replace flashing green button with plain "Confirm Course Enrollment" with official UM6P seal. 64% drop-off vanished to 4.2%!
+                  ✓ <strong>Design Solution:</strong> Replace flashing button with plain &ldquo;Confirm Course Enrollment&rdquo; with UM6P seal. 64% drop-off vanished to 4.2%!
                 </span>
                 <button
                   onClick={() => setSlide35Tab('triangulation')}
-                  className="underline font-bold ml-2 cursor-pointer"
+                  className="underline font-bold ml-1 cursor-pointer shrink-0"
                 >
                   Back to Matrix
                 </button>
@@ -6705,20 +6556,20 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           )}
 
           {/* Key Principle Footer Banner */}
-          <div className="p-3.5 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
-            <p className="text-sm sm:text-base lg:text-lg text-[#2D2D2E] leading-relaxed">
-              <strong className="text-[#E5391C] font-serif-display text-base sm:text-lg font-bold mr-2">
+          <div className="p-4 lg:p-5 bg-white border-2 border-[#E5391C] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs flex-shrink-0">
+            <p className="text-base sm:text-lg text-[#2D2D2E] leading-relaxed">
+              <strong className="text-[#E5391C] font-serif-display text-lg sm:text-xl font-bold mr-2">
                 The Empirical Triangulation Law:
               </strong>
               Quantitative telemetry provides the macro-map of where users stumble; qualitative inquiry provides the diagnostic microscope to discover why and how to redesign.
             </p>
-            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
+            <span className="text-xs sm:text-sm font-mono text-white bg-[#E5391C] font-bold px-3.5 py-1.5 rounded-xl whitespace-nowrap shadow-2xs">
               Quant + Qual
             </span>
           </div>
         </div>
 
-        <div className="text-center text-xs sm:text-sm font-mono text-[#6E6D70] flex-shrink-0">
+        <div className="text-center text-xs font-mono text-[#6E6D70] flex-shrink-0 pt-1">
           Next: Formative vs. Summative Evaluation (Tasting the Soup vs. Serving the Guests)
         </div>
       </div>
@@ -6771,7 +6622,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     const currentPhase = phases[slide36TimelinePhase - 1];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -6975,7 +6826,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     const usabilityFoundPct = Math.round((1 - Math.pow(1 - 0.31, n)) * 1000) / 10;
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] select-text">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] select-text">
         {/* Header Bar */}
         <div className="pb-3 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
@@ -7144,7 +6995,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 38) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -7241,7 +7092,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 39) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -7336,7 +7187,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] overflow-y-auto select-text">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -7348,19 +7199,19 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 40 / 45</span>
         </div>
 
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-4 lg:py-6 gap-6">
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-3 lg:py-4 gap-4 lg:gap-5 min-h-0">
           <div className="text-center space-y-2 flex-shrink-0">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif-display font-medium text-[#2D2D2E]">
               The 12-Session Curriculum Architecture
             </h2>
-            <p className="text-lg sm:text-xl lg:text-2xl text-[#6E6D70] max-w-3xl mx-auto">
-              From cognitive biology to high-fidelity evaluated systems.
+            <p className="text-lg sm:text-xl lg:text-2xl text-[#6E6D70] max-w-4xl mx-auto font-light">
+              From cognitive biology to high-fidelity evaluated interactive systems.
             </p>
           </div>
 
-          {/* Interactive 12-Session Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 flex-1 items-stretch">
-            {sessions.map(s => {
+          {/* Interactive 12-Session Grid with Large Prominent Text */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 flex-1 items-stretch min-h-0">
+            {sessions.map((s) => {
               const isSelected = selectedRoadmapSession === s.num;
               const isCurrent = s.num === 1;
 
@@ -7368,43 +7219,61 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 <div
                   key={s.num}
                   onClick={() => setSelectedRoadmapSession(s.num)}
-                  className={`p-4 rounded-xl border text-left cursor-pointer transition-all flex flex-col justify-between ${
+                  className={`p-4 sm:p-5 rounded-2xl border-2 text-left cursor-pointer transition-all flex flex-col justify-between ${
                     isCurrent
-                      ? 'border-2 border-[#E5391C] bg-[#FDF5F2] shadow-xs'
+                      ? 'border-[#E5391C] bg-[#FDF5F2] shadow-sm ring-2 ring-[#E5391C]/20'
                       : isSelected
-                      ? 'border-[#E5391C] bg-white shadow-xs'
-                      : 'border-[#E8E2D9] bg-white hover:border-[#C5BFB7]'
+                      ? 'border-[#E5391C] bg-white shadow-md'
+                      : 'border-[#E8E2D9] bg-white hover:border-stone-400'
                   }`}
                 >
-                  <div>
-                    <div className="flex items-center justify-between text-xs font-mono font-bold mb-1.5">
-                      <span className={isCurrent ? 'text-[#E5391C]' : 'text-[#6E6D70]'}>S{s.num.toString().padStart(2, '0')}</span>
-                      {isCurrent && <span className="bg-[#E5391C] text-white px-1.5 py-0.5 rounded text-[10px]">NOW</span>}
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between font-mono font-bold">
+                      <span className={`text-xs sm:text-sm px-2.5 py-0.5 rounded-md ${
+                        isCurrent
+                          ? 'bg-[#E5391C] text-white'
+                          : isSelected
+                          ? 'bg-stone-900 text-white'
+                          : 'bg-stone-100 text-stone-700'
+                      }`}>
+                        S{s.num.toString().padStart(2, '0')}
+                      </span>
+                      {isCurrent && (
+                        <span className="text-[11px] font-mono text-[#E5391C] font-black uppercase tracking-wider">
+                          NOW
+                        </span>
+                      )}
                     </div>
-                    <div className="text-sm sm:text-base font-bold text-[#2D2D2E] truncate font-serif-display">{s.name}</div>
+                    <div className="text-base sm:text-lg font-bold text-[#2D2D2E] font-serif-display leading-snug pt-1">
+                      {s.name}
+                    </div>
                   </div>
-                  <div className="text-xs sm:text-sm text-[#6E6D70] line-clamp-2 mt-1">{s.desc}</div>
+                  <div className="text-xs sm:text-sm text-[#525254] font-medium mt-2 leading-relaxed">
+                    {s.desc}
+                  </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Selected Session Detail Card */}
-          <div className="p-5 lg:p-6 bg-white border border-[#E8E2D9] rounded-2xl flex items-center justify-between flex-shrink-0 shadow-xs">
-            <div>
-              <span className="text-base sm:text-lg font-mono text-[#E5391C] font-bold">
-                Session {selectedRoadmapSession}: {sessions.find(s => s.num === selectedRoadmapSession)?.name}
+          {/* Selected Session Detail Highlight Card */}
+          <div className="p-5 lg:p-6 bg-white border-2 border-[#E8E2D9] rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-shrink-0 shadow-xs">
+            <div className="space-y-1">
+              <span className="text-lg sm:text-xl lg:text-2xl font-serif-display font-bold text-[#E5391C]">
+                Session {selectedRoadmapSession}: {sessions.find((s) => s.num === selectedRoadmapSession)?.name}
               </span>
-              <p className="text-sm sm:text-base text-[#525254] mt-1">
-                {sessions.find(s => s.num === selectedRoadmapSession)?.desc} · Comprehensive Interactive Lecture & Studio Lab.
+              <p className="text-base sm:text-lg text-[#2D2D2E] font-medium leading-relaxed">
+                {sessions.find((s) => s.num === selectedRoadmapSession)?.desc} · Comprehensive Interactive Lecture, Design Studio &amp; Telemetry Lab.
               </p>
             </div>
-            <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Click any session node to inspect</span>
+            <span className="text-xs sm:text-sm font-mono text-stone-500 font-bold bg-stone-100 px-3.5 py-2 rounded-xl whitespace-nowrap self-start sm:self-auto">
+              Click any session node to inspect
+            </span>
           </div>
         </div>
 
         <div className="text-center text-xs sm:text-sm font-mono text-[#6E6D70] flex-shrink-0">
-          Next: The semester capstone project
+          Next: The Semester Capstone Project Brief
         </div>
       </div>
     );
@@ -7415,7 +7284,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 41) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] overflow-y-auto select-text">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -7427,69 +7296,77 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 41 / 45</span>
         </div>
 
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-4 lg:py-6 gap-6">
-          <div className="text-center space-y-3 flex-shrink-0">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif-display font-medium text-[#2D2D2E]">
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-3 lg:py-4 gap-4 lg:gap-5 min-h-0">
+          <div className="text-center space-y-2 flex-shrink-0">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif-display font-medium text-[#2D2D2E]">
               The Semester Capstone Project
             </h2>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-[#6E6D70] max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-[#6E6D70] max-w-4xl mx-auto font-light">
               You will not just study HCI theory; you will engineer and evaluate a real interactive system.
             </p>
           </div>
 
           {/* 4 Pillars of the Semester Project */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 flex-1 items-stretch">
-            <div className="bg-white border border-[#E8E2D9] p-6 lg:p-8 rounded-2xl flex flex-col justify-between shadow-xs">
-              <div className="space-y-3">
-                <span className="text-sm font-mono text-[#E5391C] font-bold tracking-wider">PHASE 1</span>
-                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">Discovery & Needs</h4>
-                <p className="text-base sm:text-lg text-[#525254] leading-relaxed">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 flex-1 items-stretch min-h-0">
+            <div className="bg-white border-2 border-[#E8E2D9] p-5 lg:p-6 rounded-3xl flex flex-col justify-between shadow-xs hover:border-stone-400 transition-all">
+              <div className="space-y-2.5">
+                <span className="text-xs font-mono text-[#E5391C] font-bold tracking-wider bg-red-50 px-3 py-1 rounded-xl inline-block">
+                  PHASE 1
+                </span>
+                <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-[#2D2D2E]">Discovery & Needs</h4>
+                <p className="text-sm sm:text-base text-[#525254] leading-relaxed">
                   Conduct ethnographic user interviews, observe field contexts, synthesize personas and user journey maps.
                 </p>
               </div>
-              <div className="text-sm sm:text-base font-mono font-bold text-[#2D2D2E] bg-[#FAF9F6] p-3 rounded-xl border border-[#E8E2D9] mt-3 flex items-center gap-2">
+              <div className="text-xs sm:text-sm font-mono font-bold text-[#2D2D2E] bg-[#FAF9F6] p-3 rounded-2xl border border-[#E8E2D9] mt-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#E5391C] shrink-0" />
                 <span>Output: Empathy Maps & Needs Spec</span>
               </div>
             </div>
 
-            <div className="bg-white border border-[#E8E2D9] p-6 lg:p-8 rounded-2xl flex flex-col justify-between shadow-xs">
-              <div className="space-y-3">
-                <span className="text-sm font-mono text-[#E5391C] font-bold tracking-wider">PHASE 2</span>
-                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">Architecture</h4>
-                <p className="text-base sm:text-lg text-[#525254] leading-relaxed">
+            <div className="bg-white border-2 border-[#E8E2D9] p-5 lg:p-6 rounded-3xl flex flex-col justify-between shadow-xs hover:border-stone-400 transition-all">
+              <div className="space-y-2.5">
+                <span className="text-xs font-mono text-stone-700 font-bold tracking-wider bg-stone-100 px-3 py-1 rounded-xl inline-block">
+                  PHASE 2
+                </span>
+                <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-[#2D2D2E]">Architecture</h4>
+                <p className="text-sm sm:text-base text-[#525254] leading-relaxed">
                   Information architecture, mental model alignment, paper prototyping, low-fidelity wireframing.
                 </p>
               </div>
-              <div className="text-sm sm:text-base font-mono font-bold text-[#2D2D2E] bg-[#FAF9F6] p-3 rounded-xl border border-[#E8E2D9] mt-3 flex items-center gap-2">
+              <div className="text-xs sm:text-sm font-mono font-bold text-[#2D2D2E] bg-[#FAF9F6] p-3 rounded-2xl border border-[#E8E2D9] mt-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#6E6D70] shrink-0" />
                 <span>Output: Low-Fi Validated Prototype</span>
               </div>
             </div>
 
-            <div className="bg-white border border-[#E8E2D9] p-6 lg:p-8 rounded-2xl flex flex-col justify-between shadow-xs">
-              <div className="space-y-3">
-                <span className="text-sm font-mono text-[#E5391C] font-bold tracking-wider">PHASE 3</span>
-                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">Interactive Build</h4>
-                <p className="text-base sm:text-lg text-[#525254] leading-relaxed">
+            <div className="bg-white border-2 border-[#E8E2D9] p-5 lg:p-6 rounded-3xl flex flex-col justify-between shadow-xs hover:border-stone-400 transition-all">
+              <div className="space-y-2.5">
+                <span className="text-xs font-mono text-stone-700 font-bold tracking-wider bg-stone-100 px-3 py-1 rounded-xl inline-block">
+                  PHASE 3
+                </span>
+                <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-[#2D2D2E]">Interactive Build</h4>
+                <p className="text-sm sm:text-base text-[#525254] leading-relaxed">
                   High-fidelity responsive interface, component design system, rich feedback loops, micro-interactions.
                 </p>
               </div>
-              <div className="text-sm sm:text-base font-mono font-bold text-[#2D2D2E] bg-[#FAF9F6] p-3 rounded-xl border border-[#E8E2D9] mt-3 flex items-center gap-2">
+              <div className="text-xs sm:text-sm font-mono font-bold text-[#2D2D2E] bg-[#FAF9F6] p-3 rounded-2xl border border-[#E8E2D9] mt-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#6E6D70] shrink-0" />
                 <span>Output: Functional Interactive App</span>
               </div>
             </div>
 
-            <div className="bg-[#FDF5F2] border-2 border-[#E5391C] p-6 lg:p-8 rounded-2xl flex flex-col justify-between shadow-sm">
-              <div className="space-y-3">
-                <span className="text-sm font-mono text-[#E5391C] font-bold tracking-wider">PHASE 4</span>
-                <h4 className="text-2xl sm:text-3xl font-serif-display font-bold text-[#2D2D2E]">Lab Evaluation</h4>
-                <p className="text-base sm:text-lg text-[#525254] leading-relaxed">
+            <div className="bg-[#FDF5F2] border-2 border-[#E5391C] p-5 lg:p-6 rounded-3xl flex flex-col justify-between shadow-sm">
+              <div className="space-y-2.5">
+                <span className="text-xs font-mono text-[#E5391C] font-bold tracking-wider bg-red-100 px-3 py-1 rounded-xl inline-block">
+                  PHASE 4
+                </span>
+                <h4 className="text-xl sm:text-2xl font-serif-display font-bold text-[#2D2D2E]">Lab Evaluation</h4>
+                <p className="text-sm sm:text-base text-[#525254] leading-relaxed">
                   Empirical usability testing with 5 real users, time-on-task telemetry, SUS scoring, iterative redesign.
                 </p>
               </div>
-              <div className="text-sm sm:text-base font-mono font-bold text-[#E5391C] bg-white p-3 rounded-xl border border-[#FAD6CF] mt-3 flex items-center gap-2 shadow-xs">
+              <div className="text-xs sm:text-sm font-mono font-bold text-[#E5391C] bg-white p-3 rounded-2xl border border-[#FAD6CF] mt-3 flex items-center gap-2 shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-[#E5391C] shrink-0" />
                 <span>Output: Usability Benchmark Defense</span>
               </div>
@@ -7509,7 +7386,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 44) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] overflow-y-auto select-text">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -7521,49 +7398,49 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 44 / 45</span>
         </div>
 
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-4 lg:py-6 gap-6">
-          <div className="text-center space-y-3 flex-shrink-0">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif-display font-medium text-[#2D2D2E]">
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-between py-3 lg:py-4 gap-4 lg:gap-5 min-h-0">
+          <div className="text-center space-y-2 flex-shrink-0">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-serif-display font-medium text-[#2D2D2E]">
               The Three Golden Axioms of Session 1
             </h2>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-[#6E6D70] max-w-3xl mx-auto">
-              Carry these three principles into every design review and engineering team meeting.
+            <p className="text-lg sm:text-xl lg:text-2xl text-[#6E6D70] max-w-4xl mx-auto font-light">
+              Carry these three principles into every design review and engineering architecture meeting.
             </p>
           </div>
 
-          <div className="space-y-4 flex-1 flex flex-col justify-between">
-            <div className="p-6 lg:p-8 bg-white border border-[#E8E2D9] rounded-2xl flex items-start gap-6 shadow-xs flex-1">
-              <span className="text-4xl sm:text-5xl font-serif-display font-bold text-[#E5391C]">01</span>
+          <div className="space-y-4 flex-1 flex flex-col justify-between min-h-0">
+            <div className="p-5 lg:p-6 bg-white border-2 border-[#E8E2D9] rounded-3xl flex items-start gap-5 shadow-xs flex-1 hover:border-stone-400 transition-all">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-serif-display font-bold text-[#E5391C] shrink-0">01</span>
               <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif-display font-bold text-[#2D2D2E]">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif-display font-bold text-[#2D2D2E]">
                   You Are Not The User
                 </h3>
-                <p className="text-lg sm:text-xl lg:text-2xl text-[#525254] mt-2 leading-relaxed">
-                  You know how the database works; the user does not. Never assume your mental model matches theirs.
+                <p className="text-base sm:text-lg lg:text-xl text-[#525254] mt-1.5 leading-relaxed">
+                  You know how the database and code work; the user does not. Never assume your mental model matches theirs.
                 </p>
               </div>
             </div>
 
-            <div className="p-6 lg:p-8 bg-white border border-[#E8E2D9] rounded-2xl flex items-start gap-6 shadow-xs flex-1">
-              <span className="text-4xl sm:text-5xl font-serif-display font-bold text-[#E5391C]">02</span>
+            <div className="p-5 lg:p-6 bg-white border-2 border-[#E8E2D9] rounded-3xl flex items-start gap-5 shadow-xs flex-1 hover:border-stone-400 transition-all">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-serif-display font-bold text-[#E5391C] shrink-0">02</span>
               <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif-display font-bold text-[#2D2D2E]">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif-display font-bold text-[#2D2D2E]">
                   Functionality ≠ Usability
                 </h3>
-                <p className="text-lg sm:text-xl lg:text-2xl text-[#525254] mt-2 leading-relaxed">
-                  Functionality is what the computer can compute; usability is what the human successfully achieves.
+                <p className="text-base sm:text-lg lg:text-xl text-[#525254] mt-1.5 leading-relaxed">
+                  Functionality is what the computer can compute; usability is what the human successfully achieves without suffering.
                 </p>
               </div>
             </div>
 
-            <div className="p-6 lg:p-8 bg-white border border-[#E8E2D9] rounded-2xl flex items-start gap-6 shadow-xs flex-1">
-              <span className="text-4xl sm:text-5xl font-serif-display font-bold text-[#E5391C]">03</span>
+            <div className="p-5 lg:p-6 bg-white border-2 border-[#E8E2D9] rounded-3xl flex items-start gap-5 shadow-xs flex-1 hover:border-stone-400 transition-all">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-serif-display font-bold text-[#E5391C] shrink-0">03</span>
               <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif-display font-bold text-[#2D2D2E]">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif-display font-bold text-[#2D2D2E]">
                   Usability is Observable, Measurable Science
                 </h3>
-                <p className="text-lg sm:text-xl lg:text-2xl text-[#525254] mt-2 leading-relaxed">
-                  We don't argue personal tastes. We measure task completion, duration, errors, and cognitive load.
+                <p className="text-base sm:text-lg lg:text-xl text-[#525254] mt-1.5 leading-relaxed">
+                  We don't argue personal tastes or executive opinions. We benchmark task completion, duration, errors, and workload.
                 </p>
               </div>
             </div>
@@ -7582,7 +7459,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // --------------------------------------------------------------------------
   if (slide.id === 45) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6] text-center">
+      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 bg-[#FAF9F6] overflow-y-auto select-text text-center">
         <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <UM6PLogo variant="compact" theme="color" className="h-6 lg:h-7 w-auto" />
@@ -7594,9 +7471,9 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           <span className="text-xs sm:text-sm font-mono text-[#6E6D70]">Slide 45 / 45</span>
         </div>
 
-        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-center py-6 lg:py-10 space-y-8 lg:space-y-12">
-          <div className="w-24 h-24 rounded-full bg-[#FDF5F2] border-2 border-[#E5391C] flex items-center justify-center mx-auto text-[#E5391C] shadow-sm">
-            <Brain className="w-12 h-12" />
+        <div className="flex-1 w-full max-w-[1720px] mx-auto flex flex-col justify-center py-6 lg:py-10 space-y-6 lg:space-y-10 min-h-0">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#FDF5F2] border-2 border-[#E5391C] flex items-center justify-center mx-auto text-[#E5391C] shadow-sm">
+            <Brain className="w-10 h-10 sm:w-12 sm:h-12" />
           </div>
 
           <div className="space-y-3">
@@ -7606,19 +7483,14 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
             <h2 className="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-serif-display font-medium text-[#2D2D2E]">
               The Human
             </h2>
-            <p className="text-2xl sm:text-3xl lg:text-4xl text-[#525254] font-light">
+            <p className="text-xl sm:text-2xl lg:text-3xl text-[#525254] font-light">
               Perception · Attention · Memory · Mental Models · Cognition
             </p>
           </div>
 
-          <p className="text-lg sm:text-xl lg:text-2xl text-[#6E6D70] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-[#6E6D70] max-w-3xl mx-auto leading-relaxed">
             We will dissect the biological machine: visual foveation, optical illusions, Gestalt grouping laws, and why human working memory fails at 4 items.
           </p>
-
-          <div className="p-6 bg-white border border-[#E8E2D9] rounded-2xl max-w-xl mx-auto text-sm sm:text-base text-[#6E6D70] space-y-2 shadow-xs">
-            <div className="text-[#2D2D2E] font-bold text-base sm:text-lg">Preparation Assignment:</div>
-            <div>Read Chapter 1 & 2 of Don Norman’s <em>The Design of Everyday Things</em>.</div>
-          </div>
         </div>
 
         <div className="text-center text-xs sm:text-sm font-mono text-[#6E6D70] flex-shrink-0">
@@ -7633,7 +7505,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
   // Fully fills the 16:9 canvas with large typography, key points cards, and activity prompts
   // --------------------------------------------------------------------------
   return (
-    <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6 xl:p-8 bg-[#FAF9F6]">
+    <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 lg:p-12 xl:p-14 bg-[#FAF9F6]">
       {/* Header Bar */}
       <div className="pb-3 lg:pb-4 border-b border-[#E8E2D9] flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-3">
