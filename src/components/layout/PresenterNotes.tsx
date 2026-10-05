@@ -28,7 +28,7 @@ export const PresenterNotes: React.FC<PresenterNotesProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#F0EBE3]">
           <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-[#D7492A]" />
+            <BookOpen className="w-4 h-4 text-[#E5391C]" />
             <h2 className="text-xs font-mono uppercase tracking-wider text-[#2D2D2E] font-bold">Presenter Teleprompter</h2>
           </div>
           <button
@@ -46,7 +46,7 @@ export const PresenterNotes: React.FC<PresenterNotesProps> = ({
             <strong className="text-[#2D2D2E] font-bold">{currentSlideIndex + 1}</strong>
             <span className="text-[#6E6D70]"> of {totalSlides}</span>
           </div>
-          <div className="flex items-center gap-1.5 text-[#D7492A] font-bold">
+          <div className="flex items-center gap-1.5 text-[#E5391C] font-bold">
             <Clock className="w-3.5 h-3.5" />
             <span>Target: ~{slide.speakerNotes?.timingMin || 5} min</span>
           </div>
@@ -55,7 +55,7 @@ export const PresenterNotes: React.FC<PresenterNotesProps> = ({
         {/* Section 1: Spoken Script & Opening Hook */}
         {slide.speakerNotes?.spokenScriptAdvice && (
           <div className="mb-5 space-y-2">
-            <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#D7492A] font-bold">
+            <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#E5391C] font-bold">
               <MessageSquare className="w-3.5 h-3.5" />
               <span>Suggested Spoken Script</span>
             </div>
@@ -75,7 +75,7 @@ export const PresenterNotes: React.FC<PresenterNotesProps> = ({
             <ul className="space-y-2 text-xs text-[#525254] leading-relaxed">
               {slide.speakerNotes.keyPoints.map((point, idx) => (
                 <li key={idx} className="flex items-start gap-2 bg-[#FAF9F6] p-2.5 rounded-lg border border-[#E8E2D9]">
-                  <span className="text-[#D7492A] font-bold font-mono">▸</span>
+                  <span className="text-[#E5391C] font-bold font-mono">▸</span>
                   <span>{point}</span>
                 </li>
               ))}

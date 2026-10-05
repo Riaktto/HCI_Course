@@ -19,28 +19,28 @@ export const ACTS_METADATA: ActMeta[] = [
     id: 3,
     title: 'ACT 3 — UNDERSTANDING THE USER',
     subtitle: 'User Diversity, Goals vs Tasks, and Context of Use',
-    slidesRange: 'Slides 19–25',
+    slidesRange: 'Slides 19–26',
     color: '#10b981',
   },
   {
     id: 4,
     title: 'ACT 4 — EXPERIENCE BAD DESIGN',
     subtitle: 'The Anatomy of Frustration & Cognitive Traps',
-    slidesRange: 'Slides 26–30',
+    slidesRange: 'Slides 27–31',
     color: '#ef4444',
   },
   {
     id: 5,
     title: 'ACT 5 — MAKE USABILITY MEASURABLE',
     subtitle: 'ISO 9241-11 Usability Metrics & Empirical Science',
-    slidesRange: 'Slides 31–36',
+    slidesRange: 'Slides 32–37',
     color: '#8b5cf6',
   },
   {
     id: 6,
     title: 'ACT 6 — THE HCI MINDSET',
     subtitle: 'Human-Centered Design, Course Roadmap & The Human',
-    slidesRange: 'Slides 37–44',
+    slidesRange: 'Slides 38–45',
     color: '#f59e0b',
   },
 ];
@@ -485,6 +485,28 @@ export const SLIDES_DATA: SlideData[] = [
     id: 21,
     act: 3,
     actTitle: 'ACT 3 — UNDERSTANDING THE USER',
+    title: 'User Diversity Simulation Lab: Bad vs Good Design',
+    subtitle: 'Interactive simulations across 5 human dimensions: Experience, Motor, Sensory, Cognitive, and Culture.',
+    type: 'concept_model',
+    speakerNotes: {
+      timingMin: 9,
+      keyPoints: [
+        'Dimension 1 (Experience): Cryptic syntax vs Adaptive discoverability & shortcuts.',
+        'Dimension 2 (Motor): Micro-targets and jitter catastrophe vs Generous targets and safety guards.',
+        'Dimension 3 (Sensory): Color-only cues & glare washout vs Redundant shape/text encoding & high contrast.',
+        'Dimension 4 (Cognitive): Memory recall traps under stress vs Recognition and persistent context.',
+        'Dimension 5 (Culture): Fragile hardcoded LTR layout vs Resilient bi-directional localization.',
+      ],
+      spokenScriptAdvice:
+        'Let students test each dimension. Watch how quickly an interface breaks for a real human when you assume everyone is an engineer with perfect vision, steady hands, and zero distractions.',
+      classroomFacilitationTip:
+        'Have students switch between the 5 diversity dimensions and trigger the stress tests to feel the human friction.',
+    },
+  },
+  {
+    id: 22,
+    act: 3,
+    actTitle: 'ACT 3 — UNDERSTANDING THE USER',
     title: 'The Action Hierarchy: Goals vs Tasks vs Actions',
     subtitle: 'Why engineers build for actions while humans live in goals.',
     type: 'concept_model',
@@ -502,7 +524,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 22,
+    id: 23,
     act: 3,
     actTitle: 'ACT 3 — UNDERSTANDING THE USER',
     title: 'Why Engineers Confuse Tasks with Goals',
@@ -522,7 +544,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 23,
+    id: 24,
     act: 3,
     actTitle: 'ACT 3 — UNDERSTANDING THE USER',
     title: 'Context of Use: The Missing Dimension',
@@ -542,7 +564,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 24,
+    id: 25,
     act: 3,
     actTitle: 'ACT 3 — UNDERSTANDING THE USER',
     title: 'Live Experiment: Context Changes Interaction',
@@ -563,7 +585,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 25,
+    id: 26,
     act: 3,
     actTitle: 'ACT 3 — UNDERSTANDING THE USER',
     title: 'Act 3 Axiom: You Are Not The User',
@@ -588,7 +610,7 @@ export const SLIDES_DATA: SlideData[] = [
   // ACT 4: EXPERIENCE BAD DESIGN (Slides 26–30)
   // ==========================================
   {
-    id: 26,
+    id: 27,
     act: 4,
     actTitle: 'ACT 4 — EXPERIENCE BAD DESIGN',
     title: 'The Anatomy of Frustration',
@@ -608,7 +630,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 27,
+    id: 28,
     act: 4,
     actTitle: 'ACT 4 — EXPERIENCE BAD DESIGN',
     title: 'Live Challenge: The Frustrating University Portal',
@@ -629,7 +651,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 28,
+    id: 29,
     act: 4,
     actTitle: 'ACT 4 — EXPERIENCE BAD DESIGN',
     title: 'Forensic Autopsy: The 6 Design Crimes',
@@ -648,7 +670,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 29,
+    id: 30,
     act: 4,
     actTitle: 'ACT 4 — EXPERIENCE BAD DESIGN',
     title: 'When Bad Interaction Kills: High-Stakes Disasters',
@@ -668,7 +690,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 30,
+    id: 31,
     act: 4,
     actTitle: 'ACT 4 — EXPERIENCE BAD DESIGN',
     title: 'Act 4 Takeaway: Bad Design Induces Cognitive Failure',
@@ -692,7 +714,7 @@ export const SLIDES_DATA: SlideData[] = [
   // ACT 5: MAKE USABILITY MEASURABLE (Slides 31–36)
   // ==========================================
   {
-    id: 31,
+    id: 32,
     act: 5,
     actTitle: 'ACT 5 — MAKE USABILITY MEASURABLE',
     title: 'Beyond Taste: Usability as Empirical Science',
@@ -712,7 +734,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 32,
+    id: 33,
     act: 5,
     actTitle: 'ACT 5 — MAKE USABILITY MEASURABLE',
     title: 'The ISO 9241-11 Usability Framework',
@@ -733,7 +755,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 33,
+    id: 34,
     act: 5,
     actTitle: 'ACT 5 — MAKE USABILITY MEASURABLE',
     title: 'Live Experiment: The Empirical Usability Bench',
@@ -754,7 +776,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 34,
+    id: 35,
     act: 5,
     actTitle: 'ACT 5 — MAKE USABILITY MEASURABLE',
     title: 'Quantitative Data vs Qualitative Insight',
@@ -774,7 +796,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 35,
+    id: 36,
     act: 5,
     actTitle: 'ACT 5 — MAKE USABILITY MEASURABLE',
     title: 'Formative vs Summative Evaluation',
@@ -793,7 +815,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 36,
+    id: 37,
     act: 5,
     actTitle: 'ACT 5 — MAKE USABILITY MEASURABLE',
     title: 'Act 5 Takeaway: Usability is Optimizable Engineering',
@@ -817,7 +839,7 @@ export const SLIDES_DATA: SlideData[] = [
   // ACT 6: THE HCI MINDSET (Slides 37–44)
   // ==========================================
   {
-    id: 37,
+    id: 38,
     act: 6,
     actTitle: 'ACT 6 — THE HCI MINDSET',
     title: 'Human-Centered Design (HCD)',
@@ -840,7 +862,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 38,
+    id: 39,
     act: 6,
     actTitle: 'ACT 6 — THE HCI MINDSET',
     title: 'The Economics of Iteration: Boehm’s Curve',
@@ -861,7 +883,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 39,
+    id: 40,
     act: 6,
     actTitle: 'ACT 6 — THE HCI MINDSET',
     title: 'The 12-Session Curriculum Architecture',
@@ -891,7 +913,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 40,
+    id: 41,
     act: 6,
     actTitle: 'ACT 6 — THE HCI MINDSET',
     title: 'The Semester Capstone Project',
@@ -911,7 +933,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 41,
+    id: 42,
     act: 6,
     actTitle: 'ACT 6 — THE HCI MINDSET',
     title: 'Classroom Experiment: Cognitive Load & Memory',
@@ -933,7 +955,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 42,
+    id: 43,
     act: 6,
     actTitle: 'ACT 6 — THE HCI MINDSET',
     title: 'Final Diagnostic Challenge: The Hospital Infusion Pump',
@@ -965,7 +987,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 43,
+    id: 44,
     act: 6,
     actTitle: 'ACT 6 — THE HCI MINDSET',
     title: 'The Grand Takeaway of Session 1',
@@ -985,7 +1007,7 @@ export const SLIDES_DATA: SlideData[] = [
     },
   },
   {
-    id: 44,
+    id: 45,
     act: 6,
     actTitle: 'ACT 6 — THE HCI MINDSET',
     title: 'Looking Ahead: Session 2',

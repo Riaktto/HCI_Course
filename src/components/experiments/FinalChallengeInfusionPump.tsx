@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AlertTriangle, Clock, Play, Pause, RotateCcw, Syringe } from 'lucide-react';
+import { UM6PLogo } from '../brand/UM6PLogo';
 
 export const FinalChallengeInfusionPump: React.FC = () => {
   const [timerSec, setTimerSec] = useState<number>(180); // 3 minutes
@@ -58,6 +59,8 @@ export const FinalChallengeInfusionPump: React.FC = () => {
       {/* Top Banner with Classroom Activity Timer */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#E8E2D9]">
         <div className="flex items-center gap-3">
+          <UM6PLogo variant="compact" theme="color" className="h-6 w-auto" />
+          <div className="h-4 w-px bg-[#E8E2D9]" />
           <span className="text-xs uppercase font-mono tracking-wider text-white bg-red-600 font-bold px-3 py-1 rounded">
             Capstone Diagnostic Challenge
           </span>
@@ -70,7 +73,7 @@ export const FinalChallengeInfusionPump: React.FC = () => {
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E8E2D9] rounded-lg font-mono text-xs shadow-xs">
             <span className="text-[#6E6D70]">Classroom Discussion:</span>
-            <strong className="text-[#D7492A] text-sm font-bold">{formatTimer(timerSec)}</strong>
+            <strong className="text-[#E5391C] text-sm font-bold">{formatTimer(timerSec)}</strong>
             <button
               onClick={toggleTimer}
               className="p-1 hover:bg-[#F5F2ED] rounded text-[#2D2D2E]"
@@ -90,7 +93,7 @@ export const FinalChallengeInfusionPump: React.FC = () => {
           <button
             onClick={() => setRevealAnalysis(!revealAnalysis)}
             className={`px-3.5 py-1.5 text-xs rounded-lg transition-colors font-medium ${
-              revealAnalysis ? 'bg-[#D7492A] text-white font-bold' : 'bg-white border border-[#E8E2D9] text-[#2D2D2E] hover:bg-[#F5F2ED]'
+              revealAnalysis ? 'bg-[#E5391C] text-white font-bold' : 'bg-white border border-[#E8E2D9] text-[#2D2D2E] hover:bg-[#F5F2ED]'
             }`}
           >
             {revealAnalysis ? 'Hide Analysis' : 'Reveal HCI Analysis'}
@@ -99,7 +102,7 @@ export const FinalChallengeInfusionPump: React.FC = () => {
       </div>
 
       {/* Main Dual Stage */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 py-2 items-stretch">
         {/* Left: Simulated Medical Pump Hardware Console (7 cols) */}
         <div className="lg:col-span-7 bg-white border-2 border-[#D5CFC7] rounded-2xl p-6 shadow-sm relative">
           <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#F0EBE3]">
@@ -109,7 +112,7 @@ export const FinalChallengeInfusionPump: React.FC = () => {
                 MED-TECH 3000 SMART INFUSION SYSTEM
               </span>
             </div>
-            <span className="text-xs font-mono text-[#D7492A] font-bold">PATIENT: ICU BED 04</span>
+            <span className="text-xs font-mono text-[#E5391C] font-bold">PATIENT: ICU BED 04</span>
           </div>
 
           {/* Dangerous Flawed Interface Display */}
@@ -127,8 +130,8 @@ export const FinalChallengeInfusionPump: React.FC = () => {
               <div>
                 <div className="text-[11px] text-[#6E6D70] uppercase font-bold">Current Programmed Rate</div>
                 {/* Visual flaw: tiny pixel dot makes 1.0 look like 10 */}
-                <div className="text-5xl font-bold text-[#D7492A] tracking-tighter">
-                  1<span className="text-xs text-[#B83519]">.</span>0
+                <div className="text-5xl font-bold text-[#E5391C] tracking-tighter">
+                  1<span className="text-xs text-[#C92B10]">.</span>0
                 </div>
               </div>
               <div className="text-right">
@@ -155,7 +158,7 @@ export const FinalChallengeInfusionPump: React.FC = () => {
           </div>
 
           <div className="text-xs text-[#6E6D70] flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-[#D7492A] shrink-0" />
+            <AlertTriangle className="w-4 h-4 text-[#E5391C] shrink-0" />
             <span>
               Classroom Task: Discuss with your partner for 3 minutes. How many design traps can you identify in this interface?
             </span>
@@ -165,7 +168,7 @@ export const FinalChallengeInfusionPump: React.FC = () => {
         {/* Right: Progressive HCI Forensic Analysis (5 cols) */}
         <div className="lg:col-span-5 bg-white border border-[#E8E2D9] rounded-2xl p-6 shadow-sm space-y-3">
           <div className="flex items-center justify-between pb-2 border-b border-[#F0EBE3]">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#D7492A] font-bold">HCI Forensic Evaluation</span>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#E5391C] font-bold">HCI Forensic Evaluation</span>
             {revealAnalysis && <span className="text-xs text-emerald-700 font-mono font-bold">4 FLAWS UNMASKED</span>}
           </div>
 
@@ -175,7 +178,7 @@ export const FinalChallengeInfusionPump: React.FC = () => {
                 <div
                   key={iss.id}
                   onClick={() => setSelectedIssue(selectedIssue === iss.id ? null : iss.id)}
-                  className="p-3 bg-[#FAF9F6] border border-[#E8E2D9] rounded-xl text-xs hover:border-[#D7492A] transition-all cursor-pointer"
+                  className="p-3 bg-[#FAF9F6] border border-[#E8E2D9] rounded-xl text-xs hover:border-[#E5391C] transition-all cursor-pointer"
                 >
                   <div className="font-semibold text-[#2D2D2E] mb-1 flex items-center justify-between">
                     <span>{iss.title}</span>
@@ -186,7 +189,7 @@ export const FinalChallengeInfusionPump: React.FC = () => {
               ))}
 
               <div className="p-3.5 bg-[#FDF5F2] border border-[#F0D5CB] rounded-xl text-xs text-[#2D2D2E] mt-2">
-                <strong className="block font-bold text-[#D7492A] mb-1">HCI Safety Solution:</strong>
+                <strong className="block font-bold text-[#E5391C] mb-1">HCI Safety Solution:</strong>
                 <p className="text-xs text-[#525254] leading-relaxed">
                   Physical guardrails, high-contrast typography, explicit unit labels, confirmation steps for lethal
                   doses, and dedicated hardware separation between emergency Bolus and alarm silence.
@@ -195,11 +198,11 @@ export const FinalChallengeInfusionPump: React.FC = () => {
             </div>
           ) : (
             <div className="py-12 text-center text-[#6E6D70] space-y-3">
-              <Clock className="w-8 h-8 mx-auto text-[#D7492A] animate-pulse" />
+              <Clock className="w-8 h-8 mx-auto text-[#E5391C] animate-pulse" />
               <p className="text-xs text-[#6E6D70] max-w-xs mx-auto">
                 Discuss with your partner. Identify the design flaws that lead to cognitive errors under high stress.
               </p>
-              <div className="text-xs font-mono text-[#D7492A] font-bold">
+              <div className="text-xs font-mono text-[#E5391C] font-bold">
                 Click "Reveal HCI Analysis" when discussion finishes
               </div>
             </div>
@@ -208,13 +211,14 @@ export const FinalChallengeInfusionPump: React.FC = () => {
       </div>
 
       {/* Classroom Takeaway Banner */}
-      <div className="p-4 bg-white border border-[#E8E2D9] rounded-xl flex items-center justify-between shadow-xs">
-        <p className="text-xs text-[#2D2D2E] leading-relaxed">
-          <strong className="text-[#D7492A] font-serif-display text-base font-bold mr-1">Conclusion of Session 1:</strong> Good interface
-          design is not about making screens look stylish. In safety-critical systems—aviation, medical, energy, finance—HCI
-          is the difference between life and death.
+      <div className="p-4 sm:p-5 lg:p-6 bg-gradient-to-r from-red-50/70 via-white to-amber-50/50 border-2 border-red-200/80 rounded-2xl flex items-center justify-between shadow-xs">
+        <p className="text-base sm:text-lg lg:text-xl text-[#2D2D2E] leading-relaxed">
+          <strong className="text-[#E5391C] font-serif-display text-lg sm:text-xl lg:text-2xl font-bold mr-2">
+            Conclusion & Key Pedagogical Insight:
+          </strong>
+          Good interface design is not about making screens look stylish. In safety-critical systems—aviation, medical, energy, finance—HCI is the difference between life and death.
         </p>
-        <span className="text-xs font-mono text-white bg-[#D7492A] font-bold px-3 py-1 rounded ml-4 whitespace-nowrap">
+        <span className="text-sm sm:text-base font-mono text-white bg-[#E5391C] font-bold px-4 py-2 rounded-xl ml-4 whitespace-nowrap shadow-xs">
           Next: Session 2 (The Human)
         </span>
       </div>

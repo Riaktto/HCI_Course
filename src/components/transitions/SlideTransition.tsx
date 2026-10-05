@@ -13,7 +13,7 @@ export const SlideTransition: React.FC<SlideTransitionProps> = ({
   children,
 }) => {
   return (
-    <div className="w-full h-full relative overflow-hidden">
+    <div className="w-full h-full relative overflow-hidden flex flex-col">
       <AnimatePresence mode="wait" custom={direction}>
         <motion.div
           key={slideKey}
@@ -41,7 +41,7 @@ export const SlideTransition: React.FC<SlideTransitionProps> = ({
               duration: 0.18,
             },
           }}
-          className="w-full h-full flex flex-col justify-between"
+          className="w-full h-full min-h-full flex flex-col justify-between overflow-y-auto"
         >
           {children}
         </motion.div>

@@ -26,7 +26,7 @@ export const SlideNavigator: React.FC<SlideNavigatorProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-[#F0EBE3]">
           <div className="flex items-center gap-3">
-            <Layers className="w-5 h-5 text-[#D7492A]" />
+            <Layers className="w-5 h-5 text-[#E5391C]" />
             <div>
               <h2 className="text-base font-bold text-[#2D2D2E] font-serif-display">Session 1 Master Slide Index</h2>
               <p className="text-xs text-[#6E6D70]">44 Slides across 6 Pedagogical Acts</p>
@@ -75,17 +75,17 @@ export const SlideNavigator: React.FC<SlideNavigatorProps> = ({
                         }}
                         className={`p-3 rounded-xl border text-left cursor-pointer transition-all ${
                           isActive
-                            ? 'border-[#D7492A] bg-[#FDF5F2] shadow-xs'
+                            ? 'border-[#E5391C] bg-[#FDF5F2] shadow-xs'
                             : 'border-[#E8E2D9] bg-[#FAF9F6] hover:bg-white hover:border-[#D5CFC7]'
                         }`}
                       >
                         <div className="flex items-center justify-between text-xs font-mono mb-1">
-                          <span className={isActive ? 'text-[#D7492A] font-bold' : 'text-[#6E6D70]'}>
+                          <span className={isActive ? 'text-[#E5391C] font-bold' : 'text-[#6E6D70]'}>
                             #{s.id}
                           </span>
-                          {isActive && <CheckCircle className="w-3.5 h-3.5 text-[#D7492A]" />}
+                          {isActive && <CheckCircle className="w-3.5 h-3.5 text-[#E5391C]" />}
                           {s.experimentId && !isActive && (
-                            <span className="text-[10px] text-[#D7492A] bg-[#FDF5F2] px-1.5 py-0.5 rounded font-bold">
+                            <span className="text-[10px] text-[#E5391C] bg-[#FDF5F2] px-1.5 py-0.5 rounded font-bold">
                               Lab
                             </span>
                           )}

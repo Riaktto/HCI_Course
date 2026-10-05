@@ -25,7 +25,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({ isOpen, onClos
                 UM6P Human-Computer Interaction Curriculum
               </h3>
               <p className="text-xs text-[#6E6D70] font-mono">
-                12 Sessions · 48 Contact Hours · Modular Academic Presentations
+                12 Sessions · Modular Academic Presentations
               </p>
             </div>
           </div>
@@ -48,12 +48,12 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({ isOpen, onClos
                   key={session.id}
                   className={`p-5 rounded-xl border transition-all text-left ${
                     isActive
-                      ? 'bg-white border-2 border-[#D7492A] shadow-md ring-2 ring-[#D7492A]/10'
+                      ? 'bg-white border-2 border-[#E5391C] shadow-md ring-2 ring-[#E5391C]/10'
                       : 'bg-white border-[#E8E2D9] hover:border-[#C5BFB7] shadow-xs'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono font-bold text-[#D7492A] bg-[#FDF5F2] px-2 py-0.5 rounded border border-[#F0D5CB]">
+                    <span className="text-xs font-mono font-bold text-[#E5391C] bg-[#FDF5F2] px-2 py-0.5 rounded border border-[#F0D5CB]">
                       {session.sessionNumber}
                     </span>
 
@@ -72,7 +72,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({ isOpen, onClos
                   <h4 className="font-serif-display font-bold text-[#2D2D2E] text-base leading-snug">
                     {session.title}
                   </h4>
-                  <p className="text-xs text-[#D7492A] font-medium mt-0.5 mb-2">
+                  <p className="text-xs text-[#E5391C] font-medium mt-0.5 mb-2">
                     {session.subtitle}
                   </p>
                   <p className="text-xs text-[#525254] leading-relaxed">
@@ -98,7 +98,7 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({ isOpen, onClos
 
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-[#D7492A] hover:bg-[#B83519] text-white text-xs font-bold rounded-lg transition-colors shadow-xs cursor-pointer"
+            className="px-4 py-2 bg-[#E5391C] hover:bg-[#C92B10] text-white text-xs font-bold rounded-lg transition-colors shadow-xs cursor-pointer"
           >
             Continue Session 1 Presentation
           </button>

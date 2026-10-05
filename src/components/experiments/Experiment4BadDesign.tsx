@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AlertCircle, Clock, ShieldAlert, CheckCircle, RotateCcw } from 'lucide-react';
+import { UM6PLogo } from '../brand/UM6PLogo';
 
 export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => {
   const [courseQuery, setCourseQuery] = useState('');
@@ -123,6 +124,8 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
       {/* Top Controller */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#E8E2D9]">
         <div className="flex items-center gap-3">
+          <UM6PLogo variant="compact" theme="color" className="h-6 w-auto" />
+          <div className="h-4 w-px bg-[#E8E2D9]" />
           <span className="text-xs uppercase font-mono tracking-wider text-white bg-red-600 font-bold px-3 py-1 rounded">
             Live Challenge 04
           </span>
@@ -133,7 +136,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
 
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#E8E2D9] rounded-lg font-mono text-xs text-[#2D2D2E]">
-            <Clock className={`w-4 h-4 ${timeLeft < 15 ? 'text-red-600 animate-spin' : 'text-[#D7492A]'}`} />
+            <Clock className={`w-4 h-4 ${timeLeft < 15 ? 'text-red-600 animate-spin' : 'text-[#E5391C]'}`} />
             <span>Session Timeout: </span>
             <strong className={`font-bold ${timeLeft < 15 ? 'text-red-600' : 'text-[#2D2D2E]'}`}>{timeLeft}s</strong>
           </div>
@@ -149,7 +152,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
       </div>
 
       {/* Main Container */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 py-2 items-stretch">
         {/* The Hostile Portal Mockup (8 cols) */}
         <div className="lg:col-span-8 bg-white border-2 border-[#D5CFC7] rounded-2xl p-6 shadow-sm relative overflow-hidden">
           {sessionExpired ? (
@@ -282,8 +285,8 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
           {/* Double Negative Modal */}
           {showConfirmModal && (
             <div className="absolute inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 z-20">
-              <div className="bg-white border-2 border-[#D7492A] rounded-2xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
-                <div className="flex items-center gap-2 text-[#D7492A] text-sm font-bold">
+              <div className="bg-white border-2 border-[#E5391C] rounded-2xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
+                <div className="flex items-center gap-2 text-[#E5391C] text-sm font-bold">
                   <ShieldAlert className="w-5 h-5 shrink-0" />
                   <span>Security Confirmation Dialog</span>
                 </div>
@@ -301,7 +304,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                   </button>
                   <button
                     onClick={() => handleModalOption('no')}
-                    className="flex-1 py-2.5 bg-[#D7492A] hover:bg-[#B83519] text-white text-xs font-mono font-bold rounded-lg shadow"
+                    className="flex-1 py-2.5 bg-[#E5391C] hover:bg-[#C92B10] text-white text-xs font-mono font-bold rounded-lg shadow"
                   >
                     No
                   </button>
@@ -314,7 +317,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
         {/* Forensic Annotations Column (4 cols) */}
         <div className="lg:col-span-4 bg-white border border-[#E8E2D9] rounded-2xl p-5 shadow-sm space-y-3">
           <div className="flex items-center justify-between pb-2 border-b border-[#F0EBE3]">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#D7492A] font-bold">Forensic Breakdown</span>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#E5391C] font-bold">Forensic Breakdown</span>
             <span className="text-[10px] text-[#6E6D70]">Select to Inspect</span>
           </div>
 
@@ -325,7 +328,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                 onClick={() => setActiveAnnotation(activeAnnotation === a.id ? null : a.id)}
                 className={`p-3 rounded-xl border text-xs cursor-pointer transition-all ${
                   activeAnnotation === a.id
-                    ? 'border-[#D7492A] bg-[#FDF5F2] text-[#2D2D2E] shadow-xs'
+                    ? 'border-[#E5391C] bg-[#FDF5F2] text-[#2D2D2E] shadow-xs'
                     : 'border-[#E8E2D9] bg-[#FAF9F6] text-[#6E6D70] hover:border-[#D5CFC7]'
                 }`}
               >
@@ -340,11 +343,12 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
       </div>
 
       {/* Classroom Takeaway Banner */}
-      <div className="p-4 bg-white border border-[#E8E2D9] rounded-xl flex items-center justify-between shadow-xs">
-        <p className="text-xs text-[#2D2D2E] leading-relaxed">
-          <strong className="text-[#D7492A] font-serif-display text-base font-bold mr-1">Key Pedagogical Principle:</strong> Bad design
-          rarely comes from malicious intent. It happens when software engineers expose the internal database architecture
-          directly to the user and assume the user shares their technical mental model.
+      <div className="p-4 sm:p-5 lg:p-6 bg-gradient-to-r from-red-50/70 via-white to-amber-50/50 border-2 border-red-200/80 rounded-2xl flex items-center justify-between shadow-xs">
+        <p className="text-base sm:text-lg lg:text-xl text-[#2D2D2E] leading-relaxed">
+          <strong className="text-[#E5391C] font-serif-display text-lg sm:text-xl lg:text-2xl font-bold mr-2">
+            Key Pedagogical Principle:
+          </strong>
+          Bad design rarely comes from malicious intent. It happens when software engineers expose the internal database architecture directly to the user and assume the user shares their technical mental model.
         </p>
       </div>
     </div>

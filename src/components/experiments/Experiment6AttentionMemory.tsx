@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Clock, HelpCircle, CheckCircle, RotateCcw, Brain, Sparkles } from 'lucide-react';
+import { UM6PLogo } from '../brand/UM6PLogo';
 
 export const Experiment6AttentionMemory: React.FC = () => {
   const [stage, setStage] = useState<'intro' | 'flash_a' | 'question_a' | 'reveal_a' | 'flash_b' | 'question_b' | 'reveal_b'>('intro');
@@ -54,8 +55,10 @@ export const Experiment6AttentionMemory: React.FC = () => {
       {/* Top Banner */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#E8E2D9]">
         <div className="flex items-center gap-3">
-          <span className="text-xs uppercase font-mono tracking-wider text-white bg-[#D7492A] font-bold px-3 py-1 rounded">
-            Live Laboratory Experiment 06
+          <UM6PLogo variant="compact" theme="color" className="h-6 w-auto" />
+          <div className="h-4 w-px bg-[#E8E2D9]" />
+          <span className="text-xs uppercase font-mono tracking-wider text-white bg-[#E5391C] font-bold px-3 py-1 rounded">
+            Live Lab 06
           </span>
           <span className="text-sm font-semibold text-[#2D2D2E]">
             Human Cognitive Architecture: Attention, Visual Saliency & Chunking
@@ -74,10 +77,10 @@ export const Experiment6AttentionMemory: React.FC = () => {
       </div>
 
       {/* Main Dynamic Stage */}
-      <div className="my-auto max-w-4xl mx-auto w-full">
+      <div className="flex-1 max-w-5xl mx-auto w-full flex flex-col justify-center py-2">
         {stage === 'intro' && (
           <div className="bg-white border border-[#E8E2D9] rounded-2xl p-8 text-center space-y-6 shadow-sm">
-            <div className="w-16 h-16 bg-[#FDF5F2] rounded-full flex items-center justify-center mx-auto text-[#D7492A] border border-[#F0D5CB]">
+            <div className="w-16 h-16 bg-[#FDF5F2] rounded-full flex items-center justify-center mx-auto text-[#E5391C] border border-[#F0D5CB]">
               <Brain className="w-8 h-8" />
             </div>
 
@@ -87,14 +90,14 @@ export const Experiment6AttentionMemory: React.FC = () => {
               </h3>
               <p className="text-base text-[#6E6D70] max-w-xl mx-auto leading-relaxed">
                 Instruct the entire lecture hall to focus on the screen. We will flash a clinical telemetry screen for
-                exactly <strong className="text-[#D7492A] font-mono">3.0 seconds</strong>, then ask two specific questions.
+                exactly <strong className="text-[#E5391C] font-mono">3.0 seconds</strong>, then ask two specific questions.
               </p>
             </div>
 
             <div className="pt-2">
               <button
                 onClick={handleStartA}
-                className="px-8 py-3.5 bg-[#D7492A] hover:bg-[#B83519] text-white font-semibold text-sm rounded-xl shadow active:scale-95 transition-all"
+                className="px-8 py-3.5 bg-[#E5391C] hover:bg-[#C92B10] text-white font-semibold text-sm rounded-xl shadow active:scale-95 transition-all"
               >
                 1. Flash Condition A: Unstructured Data Wall (3.0s)
               </button>
@@ -105,7 +108,7 @@ export const Experiment6AttentionMemory: React.FC = () => {
         {/* FLASH STAGE A: RAW UNSTRUCTURED WALL */}
         {stage === 'flash_a' && (
           <div className="bg-white border-2 border-[#D5CFC7] rounded-2xl p-8 shadow-sm relative">
-            <div className="absolute top-4 right-4 flex items-center gap-2 font-mono text-sm text-[#D7492A] font-bold">
+            <div className="absolute top-4 right-4 flex items-center gap-2 font-mono text-sm text-[#E5391C] font-bold">
               <Clock className="w-4 h-4 animate-spin" />
               <span>{countdown}s remaining</span>
             </div>
@@ -151,7 +154,7 @@ export const Experiment6AttentionMemory: React.FC = () => {
               </button>
               <button
                 onClick={handleStartB}
-                className="px-6 py-2.5 bg-[#D7492A] hover:bg-[#B83519] text-white text-xs font-semibold rounded-lg shadow"
+                className="px-6 py-2.5 bg-[#E5391C] hover:bg-[#C92B10] text-white text-xs font-semibold rounded-lg shadow"
               >
                 Now Flash Condition B: Human-Centered Chunking (3.0s)
               </button>
@@ -169,7 +172,7 @@ export const Experiment6AttentionMemory: React.FC = () => {
             </p>
             <button
               onClick={handleStartB}
-              className="px-6 py-2.5 bg-[#D7492A] hover:bg-[#B83519] text-white text-xs font-semibold rounded-lg shadow"
+              className="px-6 py-2.5 bg-[#E5391C] hover:bg-[#C92B10] text-white text-xs font-semibold rounded-lg shadow"
             >
               Test Condition B (Structured Gestalt Hierarchy)
             </button>
@@ -199,7 +202,7 @@ export const Experiment6AttentionMemory: React.FC = () => {
               {/* Blood type - Direct anchor */}
               <div className="bg-[#FAF9F6] border border-[#E8E2D9] p-5 rounded-xl text-center">
                 <span className="text-[10px] uppercase font-mono tracking-wider text-[#6E6D70] font-bold">Donor Compatibility</span>
-                <div className="text-4xl font-mono font-bold text-[#D7492A] mt-1">AB-</div>
+                <div className="text-4xl font-mono font-bold text-[#E5391C] mt-1">AB-</div>
                 <div className="text-xs font-bold text-[#2D2D2E]">BLOOD TYPE</div>
               </div>
 
@@ -240,7 +243,7 @@ export const Experiment6AttentionMemory: React.FC = () => {
         {/* REVEAL B: THE SCIENCE */}
         {stage === 'reveal_b' && (
           <div className="bg-white border border-[#E8E2D9] rounded-2xl p-6 text-left space-y-4 shadow-sm">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#D7492A] uppercase tracking-wider font-bold">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#E5391C] uppercase tracking-wider font-bold">
               <Sparkles className="w-4 h-4" />
               <span>Bridge to Session 2: Human Cognitive Architecture</span>
             </div>
@@ -270,11 +273,12 @@ export const Experiment6AttentionMemory: React.FC = () => {
       </div>
 
       {/* Classroom Takeaway Banner */}
-      <div className="p-4 bg-white border border-[#E8E2D9] rounded-xl flex items-center justify-between shadow-xs">
-        <p className="text-xs text-[#2D2D2E] leading-relaxed">
-          <strong className="text-[#D7492A] font-serif-display text-base font-bold mr-1">Session 2 Preview:</strong> The computer is
-          infinitely patient and processes gigabytes in microseconds. The human brain has rigid biological bottlenecks:
-          limited visual acuity, working memory decay, and selective attention filters. HCI is the engineering bridge between them.
+      <div className="p-4 sm:p-5 lg:p-6 bg-gradient-to-r from-red-50/70 via-white to-amber-50/50 border-2 border-red-200/80 rounded-2xl flex items-center justify-between shadow-xs">
+        <p className="text-base sm:text-lg lg:text-xl text-[#2D2D2E] leading-relaxed">
+          <strong className="text-[#E5391C] font-serif-display text-lg sm:text-xl lg:text-2xl font-bold mr-2">
+            Session 2 Preview & Key Pedagogical Insight:
+          </strong>
+          The computer is infinitely patient and processes gigabytes in microseconds. The human brain has rigid biological bottlenecks: limited visual acuity, working memory decay, and selective attention filters. HCI is the engineering bridge between them.
         </p>
       </div>
     </div>

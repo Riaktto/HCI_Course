@@ -56,10 +56,10 @@ export const ClassroomTimer: React.FC<ClassroomTimerProps> = ({
   };
 
   return (
-    <div className="fixed bottom-16 right-6 z-50 bg-white border-2 border-[#D7492A] rounded-2xl shadow-2xl p-4 w-80 text-[#2D2D2E] backdrop-blur-md animate-in fade-in slide-in-from-bottom-3 duration-200">
+    <div className="fixed bottom-16 right-6 z-50 bg-white border-2 border-[#E5391C] rounded-2xl shadow-2xl p-4 w-80 text-[#2D2D2E] backdrop-blur-md animate-in fade-in slide-in-from-bottom-3 duration-200">
       <div className="flex items-center justify-between pb-2 border-b border-[#F0EBE3]">
         <div className="flex items-center gap-2">
-          <Clock className="w-4 h-4 text-[#D7492A]" />
+          <Clock className="w-4 h-4 text-[#E5391C]" />
           <span className="text-xs font-bold uppercase tracking-wider text-[#2D2D2E]">Classroom Timer</span>
         </div>
         <button
@@ -77,7 +77,7 @@ export const ClassroomTimer: React.FC<ClassroomTimerProps> = ({
             hasFinished
               ? 'text-red-600 animate-bounce'
               : seconds < 30 && isRunning
-              ? 'text-[#D7492A] animate-pulse'
+              ? 'text-[#E5391C] animate-pulse'
               : 'text-[#2D2D2E]'
           }`}
         >
@@ -98,7 +98,7 @@ export const ClassroomTimer: React.FC<ClassroomTimerProps> = ({
           className={`flex-1 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-sm ${
             isRunning
               ? 'bg-amber-600 hover:bg-amber-700 text-white'
-              : 'bg-[#D7492A] hover:bg-[#B83519] text-white'
+              : 'bg-[#E5391C] hover:bg-[#C92B10] text-white'
           }`}
         >
           {isRunning ? (
@@ -131,25 +131,25 @@ export const ClassroomTimer: React.FC<ClassroomTimerProps> = ({
       <div className="grid grid-cols-4 gap-1.5 pt-2 border-t border-[#F0EBE3] text-[11px] font-mono">
         <button
           onClick={() => handlePreset(30)}
-          className="py-1 bg-[#FAF9F6] border border-[#E8E2D9] rounded-lg text-[#6E6D70] hover:text-[#D7492A] hover:border-[#D7492A]"
+          className="py-1 bg-[#FAF9F6] border border-[#E8E2D9] rounded-lg text-[#6E6D70] hover:text-[#E5391C] hover:border-[#E5391C]"
         >
           30s
         </button>
         <button
           onClick={() => handlePreset(60)}
-          className="py-1 bg-[#FAF9F6] border border-[#E8E2D9] rounded-lg text-[#6E6D70] hover:text-[#D7492A] hover:border-[#D7492A]"
+          className="py-1 bg-[#FAF9F6] border border-[#E8E2D9] rounded-lg text-[#6E6D70] hover:text-[#E5391C] hover:border-[#E5391C]"
         >
           1m
         </button>
         <button
           onClick={() => handlePreset(120)}
-          className="py-1 bg-[#FAF9F6] border border-[#E8E2D9] rounded-lg text-[#6E6D70] hover:text-[#D7492A] hover:border-[#D7492A]"
+          className="py-1 bg-[#FAF9F6] border border-[#E8E2D9] rounded-lg text-[#6E6D70] hover:text-[#E5391C] hover:border-[#E5391C]"
         >
           2m
         </button>
         <button
           onClick={() => handlePreset(180)}
-          className="py-1 bg-[#FAF9F6] border border-[#E8E2D9] rounded-lg text-[#6E6D70] hover:text-[#D7492A] hover:border-[#D7492A]"
+          className="py-1 bg-[#FAF9F6] border border-[#E8E2D9] rounded-lg text-[#6E6D70] hover:text-[#E5391C] hover:border-[#E5391C]"
         >
           3m
         </button>
