@@ -3796,7 +3796,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                   }`}
                 >
                   <div className="space-y-1">
-                    <span className={`text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${
+                    <span className={`text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${
                       isSelected ? 'bg-[#E5391C] text-white' : 'bg-stone-100 text-stone-700'
                     }`}>
                       {dim.badge}
@@ -3805,7 +3805,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                       {dim.name}
                     </h4>
                   </div>
-                  <div className={`text-[10px] font-mono pt-1.5 border-t mt-1.5 font-bold ${
+                  <div className={`text-xs font-mono pt-1.5 border-t mt-1.5 font-bold ${
                     isSelected ? 'border-stone-700 text-[#E5391C]' : 'border-stone-200 text-stone-500'
                   }`}>
                     {isSelected ? '● ACTIVE LAB' : 'SWITCH LAB'}
@@ -3816,11 +3816,11 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
           </div>
 
           {/* Dynamic Stress / Persona Controller Strip for Active Dimension */}
-          <div className="p-3 bg-white border-2 border-[#E8E2D9] rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs flex-shrink-0">
+          <div className="p-3.5 bg-white border-2 border-[#E8E2D9] rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs flex-shrink-0">
             <div className="flex items-center gap-2.5">
               <Sparkles className="w-5 h-5 text-[#E5391C] shrink-0" />
               <div>
-                <span className="text-xs font-mono font-bold uppercase text-[#E5391C] mr-2">
+                <span className="text-xs sm:text-sm font-mono font-bold uppercase text-[#E5391C] mr-2">
                   Simulation Variable (Applied to Both UIs):
                 </span>
                 <span className="text-xs sm:text-sm font-semibold text-[#2D2D2E]">
@@ -3974,11 +3974,11 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
             <div className="bg-red-50/70 border-2 border-red-300 rounded-3xl p-5 lg:p-6 flex flex-col justify-between shadow-xs space-y-3">
               <div className="space-y-1.5 flex-shrink-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-red-700 font-bold tracking-wider px-2.5 py-1 bg-red-100 rounded-lg flex items-center gap-1.5">
-                    <AlertTriangle className="w-3.5 h-3.5 text-red-600" />
+                  <span className="text-xs sm:text-sm font-mono uppercase text-red-700 font-bold tracking-wider px-2.5 py-1 bg-red-100 rounded-lg flex items-center gap-1.5">
+                    <AlertTriangle className="w-4 h-4 text-red-600" />
                     <span>⚠️ Bad Design: {currentLab.badTitle}</span>
                   </span>
-                  <span className="text-[11px] font-mono text-red-800 font-bold">Fragile Under Stress</span>
+                  <span className="text-xs font-mono text-red-800 font-bold">Fragile Under Stress</span>
                 </div>
                 <p className="text-xs sm:text-sm text-red-950 font-medium">
                   {currentLab.badDescription}
@@ -3998,7 +3998,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 )}
 
                 {/* Shared Environmental Condition Indicator Banner */}
-                <div className="px-2.5 py-1 bg-stone-100 border border-stone-300 rounded-lg text-[10px] font-mono font-bold text-stone-800 flex items-center justify-between flex-shrink-0">
+                <div className="px-3 py-1.5 bg-stone-100 border border-stone-300 rounded-lg text-xs font-mono font-bold text-stone-800 flex items-center justify-between flex-shrink-0">
                   <span>
                     {slide21LabAxis === 0 && (slide21ExpPersona === 'novice' ? '🎓 Testing Persona: Novice Student' : '⚡ Testing Persona: Senior Power User')}
                     {slide21LabAxis === 1 && (slide21MotorState === 'tremor' ? '🤲 Active Disturbance: 10Hz Hand Tremor' : slide21MotorState === 'transit' ? '🚌 Active Disturbance: 12Hz Bus Jitter' : '🖱️ Baseline: Steady Desk Mouse')}
@@ -4011,19 +4011,19 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
 
                 {/* Axis 0: Bad Experience (CLI/Hex trap) */}
                 {slide21LabAxis === 0 && (
-                  <div className="space-y-2.5 font-mono text-xs">
+                  <div className="space-y-2.5 font-mono text-xs sm:text-sm">
                     <div className="p-2.5 bg-stone-900 text-stone-200 rounded-xl space-y-1">
-                      <div className="text-[10px] text-stone-400">sys_shell@um6p-core:~$ db_reserve</div>
-                      <div className="text-stone-100">EXEC allocate_bench(usr_uuid, hex_mask, 0x4B2)</div>
+                      <div className="text-xs text-stone-400">sys_shell@um6p-core:~$ db_reserve</div>
+                      <div className="text-stone-100 font-bold">EXEC allocate_bench(usr_uuid, hex_mask, 0x4B2)</div>
                     </div>
                     <div>
-                      <label className="text-[11px] text-stone-700 font-bold block mb-1">
+                      <label className="text-xs text-stone-700 font-bold block mb-1">
                         ENTER WORKSTATION HEX IDENTIFIER:
                       </label>
                       <input
                         type="text"
                         placeholder="e.g. 0x00FF8C"
-                        className="w-full p-2 border border-stone-300 rounded-lg font-mono text-xs bg-stone-50"
+                        className="w-full p-2.5 border border-stone-300 rounded-lg font-mono text-xs sm:text-sm bg-stone-50"
                       />
                     </div>
                     <button
@@ -4034,7 +4034,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                             : 'FATAL 0x4092: NO_AUTOCOMPLETE. System lacks command piping, shell history, and CLI hotkeys. Senior engineer forced into slow manual trial.'
                         )
                       }
-                      className="w-full py-2 bg-stone-900 text-white rounded-lg font-bold text-xs hover:bg-stone-800 cursor-pointer"
+                      className="w-full py-2.5 bg-stone-900 text-white rounded-lg font-bold text-xs sm:text-sm hover:bg-stone-800 cursor-pointer"
                     >
                       COMMIT DIRECT SYS_CALL
                     </button>
@@ -4043,7 +4043,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                         <span>{slide21ExpBadError}</span>
                         <button
                           onClick={() => setSlide21ExpBadError(null)}
-                          className="text-[11px] font-mono underline ml-2 cursor-pointer font-bold"
+                          className="text-xs font-mono underline ml-2 cursor-pointer font-bold"
                         >
                           Clear
                         </button>
@@ -4055,10 +4055,10 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 {/* Axis 1: Bad Motor (Micro Targets with Jitter) */}
                 {slide21LabAxis === 1 && (
                   <div className="space-y-3">
-                    <div className="text-xs text-stone-600 font-medium">
+                    <div className="text-xs sm:text-sm text-stone-700 font-bold">
                       Simulated Action: Save Project Draft (Click Cancel vs Purge)
                     </div>
-                    <div className="p-4 bg-stone-100 rounded-xl border border-stone-300 flex items-center justify-center gap-1">
+                    <div className="p-4 bg-stone-100 rounded-xl border border-stone-300 flex items-center justify-center gap-1.5">
                       {/* Tiny 16px touch buttons placed 2px apart */}
                       <button
                         onClick={() => {
@@ -4068,21 +4068,21 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                             alert('Clicked Cancel safely.');
                           }
                         }}
-                        className="px-2 py-0.5 text-[10px] font-mono bg-stone-300 hover:bg-stone-400 rounded-xs text-stone-800 cursor-pointer"
+                        className="px-2.5 py-1 text-xs font-mono bg-stone-300 hover:bg-stone-400 rounded text-stone-800 cursor-pointer font-bold"
                         title="16px Target"
                       >
                         Cancel
                       </button>
                       <button
                         onClick={() => setSlide21MotorBadTriggered(true)}
-                        className="px-2 py-0.5 text-[10px] font-mono bg-red-600 hover:bg-red-700 text-white rounded-xs cursor-pointer font-bold"
+                        className="px-2.5 py-1 text-xs font-mono bg-red-600 hover:bg-red-700 text-white rounded cursor-pointer font-bold"
                         title="Dangerous Destructive Action with 2px gap"
                       >
                         PURGE ALL DATA
                       </button>
                     </div>
                     {slide21MotorBadTriggered ? (
-                      <div className="p-3 bg-red-100 border-2 border-red-400 text-red-950 rounded-xl text-xs font-semibold space-y-1">
+                      <div className="p-3 bg-red-100 border-2 border-red-400 text-red-950 rounded-xl text-xs sm:text-sm font-semibold space-y-1">
                         <div className="font-bold text-red-800 flex items-center gap-1">
                           <AlertTriangle className="w-4 h-4 text-red-600" />
                           <span>🚨 ACCIDENTAL PURGE TRIGGERED!</span>
@@ -4098,7 +4098,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                         </button>
                       </div>
                     ) : (
-                      <div className="text-[11px] font-mono text-stone-500 text-center">
+                      <div className="text-xs font-mono text-stone-600 font-semibold text-center">
                         {slide21MotorState !== 'steady'
                           ? '⚠️ Vibration Active! Try clicking "Cancel" without hitting "Purge".'
                           : 'Try switching to Hand Tremor or Bumpy Bus mode above.'}
@@ -4110,48 +4110,48 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 {/* Axis 2: Bad Sensory (Color-Only & Low Contrast) */}
                 {slide21LabAxis === 2 && (
                   <div className="space-y-3">
-                    <div className="text-xs font-mono font-bold text-stone-500 uppercase flex items-center justify-between">
+                    <div className="text-xs font-mono font-bold text-stone-600 uppercase flex items-center justify-between">
                       <span>Industrial Cooling Core · Real-time Status</span>
                       {slide21SensoryFilter === 'colorblind' && (
-                        <span className="text-[10px] text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">
+                        <span className="text-xs text-amber-700 bg-amber-100 px-2 py-0.5 rounded font-bold">
                           🔴🟢 0% Shape Encoding
                         </span>
                       )}
                     </div>
                     <div className="p-3 bg-[#FCFCFD] border border-stone-200 rounded-xl space-y-2">
                       {/* State 1: Green dot */}
-                      <div className="flex items-center justify-between p-1.5 rounded-lg hover:bg-stone-50">
+                      <div className="flex items-center justify-between p-2 rounded-lg hover:bg-stone-50">
                         <div className="flex items-center gap-2">
                           <span className="w-4 h-4 rounded-full bg-emerald-500 inline-block shrink-0 shadow-2xs" />
-                          <span className="text-xs font-mono text-[#A8A8A8]">Reactor Line A: Status</span>
+                          <span className="text-xs sm:text-sm font-mono text-stone-600 font-semibold">Reactor Line A: Status</span>
                         </div>
                         <button
                           onClick={() => setSlide21SensoryBadClick(true)}
-                          className="px-2 py-1 bg-stone-200 hover:bg-stone-300 text-stone-700 rounded text-[10px] font-mono font-bold cursor-pointer"
+                          className="px-3 py-1 bg-stone-200 hover:bg-stone-300 text-stone-800 rounded text-xs font-mono font-bold cursor-pointer"
                         >
                           Halt Line A
                         </button>
                       </div>
                       {/* State 2: Red dot */}
-                      <div className="flex items-center justify-between p-1.5 rounded-lg hover:bg-stone-50">
+                      <div className="flex items-center justify-between p-2 rounded-lg hover:bg-stone-50">
                         <div className="flex items-center gap-2">
                           <span className="w-4 h-4 rounded-full bg-red-600 inline-block shrink-0 shadow-2xs" />
-                          <span className="text-xs font-mono text-[#A8A8A8]">Reactor Line B: Status</span>
+                          <span className="text-xs sm:text-sm font-mono text-stone-600 font-semibold">Reactor Line B: Status</span>
                         </div>
                         <button
                           onClick={() => setSlide21SensoryBadClick(true)}
-                          className="px-2 py-1 bg-stone-200 hover:bg-stone-300 text-stone-700 rounded text-[10px] font-mono font-bold cursor-pointer"
+                          className="px-3 py-1 bg-stone-200 hover:bg-stone-300 text-stone-800 rounded text-xs font-mono font-bold cursor-pointer"
                         >
                           Halt Line B
                         </button>
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <div className="text-[11px] font-mono text-stone-600 text-center">
+                      <div className="text-xs font-mono text-stone-700 font-semibold text-center">
                         Task: Halt ONLY the overheating line. Which one is red vs green?
                       </div>
                       {slide21SensoryBadClick && (
-                        <div className="p-2.5 bg-red-100 border-2 border-red-300 text-red-950 rounded-xl text-xs font-semibold space-y-1">
+                        <div className="p-2.5 bg-red-100 border-2 border-red-300 text-red-950 rounded-xl text-xs sm:text-sm font-semibold space-y-1">
                           <div className="text-red-800 font-bold flex items-center gap-1.5">
                             <AlertTriangle className="w-4 h-4 text-red-600 shrink-0" />
                             <span>❌ CRITICAL AMBIGUITY FAILURE!</span>
@@ -4161,7 +4161,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                           </p>
                           <button
                             onClick={() => setSlide21SensoryBadClick(false)}
-                            className="text-[11px] font-mono text-red-700 underline font-bold cursor-pointer"
+                            className="text-xs font-mono text-red-700 underline font-bold cursor-pointer"
                           >
                             Reset Test
                           </button>
@@ -4176,27 +4176,27 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                   <div className="space-y-2.5">
                     {slide21CognitiveBadStep === 1 ? (
                       <div className="space-y-2">
-                        <div className="text-xs font-mono text-stone-600">Step 1 of 2: Session Security Token</div>
+                        <div className="text-xs sm:text-sm font-mono text-stone-700 font-semibold">Step 1 of 2: Session Security Token</div>
                         <div className="p-3 bg-stone-100 rounded-xl border border-stone-300 font-mono text-center">
-                          <span className="text-stone-500 text-xs block">MEMORIZE THIS CODE:</span>
-                          <strong className="text-base text-stone-900 tracking-wider">948-QZM-72</strong>
+                          <span className="text-stone-600 text-xs sm:text-sm block font-semibold">MEMORIZE THIS CODE:</span>
+                          <strong className="text-lg text-stone-900 tracking-wider font-bold">948-QZM-72</strong>
                         </div>
                         <button
                           onClick={() => setSlide21CognitiveBadStep(2)}
-                          className="w-full py-2 bg-stone-900 text-white rounded-lg text-xs font-bold cursor-pointer hover:bg-stone-800"
+                          className="w-full py-2 bg-stone-900 text-white rounded-lg text-xs sm:text-sm font-bold cursor-pointer hover:bg-stone-800 font-mono"
                         >
                           Proceed to Verification Screen ➔
                         </button>
                       </div>
                     ) : (
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between text-xs font-mono">
-                          <span className="text-stone-600">Step 2 of 2: Verification</span>
+                        <div className="flex items-center justify-between text-xs sm:text-sm font-mono">
+                          <span className="text-stone-700 font-bold">Step 2 of 2: Verification</span>
                           {slide21CognitiveStress === 'rush' && (
                             <span className="text-red-600 font-bold animate-pulse">⏰ 00:04s left!</span>
                           )}
                         </div>
-                        <p className="text-xs text-stone-700 font-medium">
+                        <p className="text-xs sm:text-sm text-stone-700 font-medium">
                           The previous screen has been wiped. Type the 8-character token from memory:
                         </p>
                         <input
@@ -4204,16 +4204,16 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                           value={slide21CognitiveBadCode}
                           onChange={(e) => setSlide21CognitiveBadCode(e.target.value)}
                           placeholder="Type token here..."
-                          className="w-full p-2 border border-stone-300 rounded-lg text-xs font-mono"
+                          className="w-full p-2 border border-stone-300 rounded-lg text-xs sm:text-sm font-mono"
                         />
                         <button
                           onClick={() => setSlide21CognitiveBadFailed(true)}
-                          className="w-full py-2 bg-red-600 text-white rounded-lg text-xs font-bold cursor-pointer hover:bg-red-700"
+                          className="w-full py-2 bg-red-600 text-white rounded-lg text-xs sm:text-sm font-bold cursor-pointer hover:bg-red-700 font-mono"
                         >
                           Submit from Memory
                         </button>
                         {slide21CognitiveBadFailed && (
-                          <div className="p-2 bg-red-100 border border-red-300 rounded-lg text-xs text-red-900 font-medium">
+                          <div className="p-2.5 bg-red-100 border border-red-300 rounded-lg text-xs sm:text-sm text-red-900 font-medium">
                             ❌ Recall Failure! Humans under stress lose 75% of working memory. System locked.
                             <button
                               onClick={() => {
@@ -4221,7 +4221,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                                 setSlide21CognitiveBadFailed(false);
                                 setSlide21CognitiveBadCode('');
                               }}
-                              className="block underline mt-1 font-bold font-mono"
+                              className="block underline mt-1 font-bold font-mono text-red-800"
                             >
                               Restart Step 1
                             </button>
@@ -4235,11 +4235,11 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 {/* Axis 4: Bad Cultural (Hardcoded LTR) */}
                 {slide21LabAxis === 4 && (
                   <div className="space-y-3">
-                    <div className="text-xs font-mono text-stone-500">
+                    <div className="text-xs sm:text-sm font-mono text-stone-700 font-semibold">
                       Rigid LTR CSS Container (Fixed 95px Button Width):
                     </div>
                     <div className="p-3 bg-stone-100 rounded-xl border border-stone-300 flex items-center gap-2 overflow-hidden">
-                      <div className="w-[95px] h-9 bg-white border border-stone-300 rounded-md p-1.5 text-xs truncate overflow-hidden whitespace-nowrap text-stone-800">
+                      <div className="w-[95px] h-9 bg-white border border-stone-300 rounded-md p-1.5 text-xs truncate overflow-hidden whitespace-nowrap text-stone-800 font-semibold">
                         {slide21CultureLang === 'ar' ? 'إلغاء حـ...' : slide21CultureLang === 'fr' ? 'Enregistr...' : 'Cancel'}
                       </div>
                       <div className="w-[95px] h-9 bg-stone-900 text-white rounded-md p-1.5 text-xs truncate overflow-hidden whitespace-nowrap font-bold flex items-center justify-between">
@@ -4249,7 +4249,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                         <span>➔</span>
                       </div>
                     </div>
-                    <p className="text-xs text-red-900 font-medium">
+                    <p className="text-xs sm:text-sm text-red-900 font-medium">
                       {slide21CultureLang === 'ar'
                         ? '⚠️ Critical Cultural Flaw: In Arabic, reading flows right-to-left. The forward arrow points backward, and text is truncated!'
                         : slide21CultureLang === 'fr'
@@ -4261,7 +4261,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
               </div>
 
               {/* Forensic Metrics Breakdown */}
-              <div className="p-3 bg-red-100/60 rounded-xl border border-red-200 text-xs font-mono text-red-900 flex items-center justify-between flex-shrink-0">
+              <div className="p-3 bg-red-100/60 rounded-xl border border-red-200 text-xs sm:text-sm font-mono text-red-900 flex items-center justify-between flex-shrink-0">
                 <div>• Frustration: <strong>94%</strong></div>
                 <div>• Error Rate: <strong>Severe</strong></div>
                 <div>• WCAG: <strong>FAIL</strong></div>
@@ -4274,11 +4274,11 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
             <div className="bg-emerald-50/70 border-2 border-emerald-300 rounded-3xl p-5 lg:p-6 flex flex-col justify-between shadow-xs space-y-3">
               <div className="space-y-1.5 flex-shrink-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-emerald-800 font-bold tracking-wider px-2.5 py-1 bg-emerald-100 rounded-lg flex items-center gap-1.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+                  <span className="text-xs sm:text-sm font-mono uppercase text-emerald-800 font-bold tracking-wider px-2.5 py-1 bg-emerald-100 rounded-lg flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-emerald-700" />
                     <span>✓ Good Design: {currentLab.goodTitle}</span>
                   </span>
-                  <span className="text-[11px] font-mono text-emerald-800 font-bold">Resilient Under Stress</span>
+                  <span className="text-xs font-mono text-emerald-800 font-bold">Resilient Under Stress</span>
                 </div>
                 <p className="text-xs sm:text-sm text-emerald-950 font-medium">
                   {currentLab.goodDescription}
@@ -4298,7 +4298,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 )}
 
                 {/* Shared Environmental Condition Indicator Banner */}
-                <div className="px-2.5 py-1 bg-emerald-100/80 border border-emerald-300 rounded-lg text-[10px] font-mono font-bold text-emerald-900 flex items-center justify-between flex-shrink-0">
+                <div className="px-3 py-1.5 bg-emerald-100/80 border border-emerald-300 rounded-lg text-xs font-mono font-bold text-emerald-900 flex items-center justify-between flex-shrink-0">
                   <span>
                     {slide21LabAxis === 0 && (slide21ExpPersona === 'novice' ? '🎓 Testing Persona: Novice Student' : '⚡ Testing Persona: Senior Power User')}
                     {slide21LabAxis === 1 && (slide21MotorState === 'tremor' ? '🤲 Active Disturbance: 10Hz Hand Tremor' : slide21MotorState === 'transit' ? '🚌 Active Disturbance: 12Hz Bus Jitter' : '🖱️ Baseline: Steady Desk Mouse')}
@@ -4314,7 +4314,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                   <div className="space-y-2.5">
                     {slide21ExpPersona === 'novice' ? (
                       <div className="space-y-2">
-                        <div className="text-xs font-mono text-emerald-800 font-bold">
+                        <div className="text-xs sm:text-sm font-mono text-emerald-800 font-bold">
                           Beginner Mode: Visual Recognition &amp; 1-Tap Booking
                         </div>
                         <div className="grid grid-cols-3 gap-2">
@@ -4329,45 +4329,45 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                                 setSlide21ExpGoodSelected(item.name);
                                 setSlide21ExpGoodBooked(false);
                               }}
-                              className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
+                              className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
                                 slide21ExpGoodSelected === item.name
                                   ? 'border-[#E5391C] bg-[#FDF5F2] ring-2 ring-[#E5391C]/20 font-bold text-[#E5391C]'
                                   : 'border-[#E8E2D9] bg-[#FAF9F6] text-stone-700'
                               }`}
                             >
-                              <div className="text-lg">{item.icon}</div>
-                              <div className="text-[11px]">{item.name}</div>
+                              <div className="text-xl">{item.icon}</div>
+                              <div className="text-xs font-semibold">{item.name}</div>
                             </button>
                           ))}
                         </div>
                         <button
                           onClick={() => setSlide21ExpGoodBooked(true)}
-                          className="w-full py-2 bg-[#E5391C] text-white rounded-xl font-bold text-xs hover:bg-[#C92B10] cursor-pointer shadow-xs"
+                          className="w-full py-2.5 bg-[#E5391C] text-white rounded-xl font-bold text-xs sm:text-sm hover:bg-[#C92B10] cursor-pointer shadow-xs font-mono"
                         >
                           Book {slide21ExpGoodSelected} (2 Hours)
                         </button>
                         {slide21ExpGoodBooked && (
-                          <div className="p-2 bg-emerald-100 border border-emerald-300 text-emerald-900 rounded-xl text-xs font-medium">
+                          <div className="p-2.5 bg-emerald-100 border border-emerald-300 text-emerald-900 rounded-xl text-xs sm:text-sm font-medium">
                             ✓ Instant Confirmation: {slide21ExpGoodSelected} reserved with QR key.
                           </div>
                         )}
                       </div>
                     ) : (
                       <div className="space-y-2">
-                        <div className="flex items-center justify-between text-xs font-mono text-stone-600">
+                        <div className="flex items-center justify-between text-xs sm:text-sm font-mono text-stone-600">
                           <span className="font-bold text-stone-900">Power User Command Palette (⌘K)</span>
                           <span className="text-emerald-700 font-bold">Latency: 180ms</span>
                         </div>
-                        <div className="p-2 bg-stone-900 text-stone-100 rounded-xl font-mono text-xs flex items-center justify-between">
+                        <div className="p-2.5 bg-stone-900 text-stone-100 rounded-xl font-mono text-xs sm:text-sm flex items-center justify-between">
                           <span>&gt; book:agtech duration:2h</span>
-                          <span className="text-[10px] bg-stone-700 px-1.5 py-0.5 rounded text-stone-300">Enter ↵</span>
+                          <span className="text-xs bg-stone-700 px-2 py-0.5 rounded text-stone-300 font-bold">Enter ↵</span>
                         </div>
-                        <div className="grid grid-cols-3 gap-1.5 text-[11px] font-mono text-stone-600">
-                          <span className="p-1.5 bg-[#FAF9F6] border rounded-lg text-center">[1] AgTech</span>
-                          <span className="p-1.5 bg-[#FAF9F6] border rounded-lg text-center">[2] AI Cluster</span>
-                          <span className="p-1.5 bg-[#FAF9F6] border rounded-lg text-center">[3] Pod</span>
+                        <div className="grid grid-cols-3 gap-2 text-xs font-mono text-stone-700 font-semibold">
+                          <span className="p-2 bg-[#FAF9F6] border rounded-lg text-center">[1] AgTech</span>
+                          <span className="p-2 bg-[#FAF9F6] border rounded-lg text-center">[2] AI Cluster</span>
+                          <span className="p-2 bg-[#FAF9F6] border rounded-lg text-center">[3] Pod</span>
                         </div>
-                        <div className="p-2 bg-emerald-100 text-emerald-900 rounded-xl text-xs font-medium">
+                        <div className="p-2.5 bg-emerald-100 text-emerald-900 rounded-xl text-xs sm:text-sm font-medium">
                           ⚡ Power user executed workflow with 0 clicks via motor keyboard memory.
                         </div>
                       </div>
@@ -4378,26 +4378,26 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 {/* Axis 1: Good Motor (Generous Targets & Undo Guard) */}
                 {slide21LabAxis === 1 && (
                   <div className="space-y-2.5">
-                    <div className="text-xs font-mono text-emerald-800 font-bold">
+                    <div className="text-xs sm:text-sm font-mono text-emerald-800 font-bold">
                       Fitts' Law Compliant Targets (≥52px Height) &amp; Safe Spatial Buffer
                     </div>
                     <div className="flex items-center gap-3">
                       <button
                         onClick={() => setSlide21MotorGoodConfirmed(true)}
-                        className="flex-1 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs sm:text-sm cursor-pointer shadow-xs min-h-[48px] flex items-center justify-center gap-2"
+                        className="flex-1 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-xs sm:text-sm cursor-pointer shadow-xs min-h-[48px] flex items-center justify-center gap-2 font-mono"
                       >
                         <Check className="w-4 h-4" />
                         <span>Save Research Project</span>
                       </button>
                       <button
                         onClick={() => alert('Destructive actions require secondary confirmation.')}
-                        className="py-3 px-3 border border-stone-300 hover:bg-stone-100 text-stone-600 rounded-xl text-xs cursor-pointer min-h-[48px]"
+                        className="py-3 px-3 border border-stone-300 hover:bg-stone-100 text-stone-700 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer min-h-[48px] font-mono"
                       >
                         Cancel
                       </button>
                     </div>
                     {slide21MotorGoodConfirmed && (
-                      <div className="p-2.5 bg-emerald-100 border border-emerald-300 rounded-xl text-xs text-emerald-950 font-medium flex items-center justify-between">
+                      <div className="p-2.5 bg-emerald-100 border border-emerald-300 rounded-xl text-xs sm:text-sm text-emerald-950 font-medium flex items-center justify-between">
                         <span>✓ Safely saved with 0% motor error. Undo buffer active (10s).</span>
                         <button
                           onClick={() => setSlide21MotorGoodConfirmed(false)}
@@ -4407,7 +4407,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                         </button>
                       </div>
                     )}
-                    <div className="text-[11px] font-mono text-stone-500">
+                    <div className="text-xs font-mono text-stone-600 font-semibold">
                       ✓ Even under identical 10Hz/12Hz tremor, the 52px target absorbs motor drift without misfires.
                     </div>
                   </div>
@@ -4416,48 +4416,48 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 {/* Axis 2: Good Sensory (Redundant Shape + Text + WCAG AAA) */}
                 {slide21LabAxis === 2 && (
                   <div className="space-y-2.5">
-                    <div className="text-xs font-mono font-bold text-emerald-900 uppercase">
+                    <div className="text-xs sm:text-sm font-mono font-bold text-emerald-900 uppercase">
                       Multimodal Redundant Triad (Shape + Icon + High-Contrast Text)
                     </div>
                     <div className="space-y-2">
                       {/* Normal safe status: Circular shield + Check + Bold text */}
-                      <div className="p-2.5 bg-emerald-50 border-2 border-emerald-600 rounded-xl flex items-center justify-between text-emerald-950 font-bold text-xs">
+                      <div className="p-2.5 bg-emerald-50 border-2 border-emerald-600 rounded-xl flex items-center justify-between text-emerald-950 font-bold text-xs sm:text-sm">
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-xs">
                             <Check className="w-4 h-4" />
                           </div>
                           <span>REACTOR LINE ALPHA: 4.2 BAR (NORMAL SAFE)</span>
                         </div>
-                        <span className="text-[10px] font-mono bg-emerald-200 px-2 py-0.5 rounded-md font-bold text-emerald-900">
+                        <span className="text-xs font-mono bg-emerald-200 px-2 py-0.5 rounded-md font-bold text-emerald-900">
                           AAA 9.2:1
                         </span>
                       </div>
 
                       {/* Overheat warning status: Distinct Warning Triangle + Exclamation + Bold text */}
-                      <div className="p-2.5 bg-red-100 border-2 border-red-600 rounded-xl flex items-center justify-between text-red-950 font-bold text-xs">
+                      <div className="p-2.5 bg-red-100 border-2 border-red-600 rounded-xl flex items-center justify-between text-red-950 font-bold text-xs sm:text-sm">
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6 rounded-md bg-red-600 text-white flex items-center justify-center shadow-xs">
                             <AlertTriangle className="w-4 h-4" />
                           </div>
                           <span>REACTOR LINE BETA: CRITICAL OVERHEAT</span>
                         </div>
-                        <span className="text-[10px] font-mono bg-red-200 px-2 py-0.5 rounded-md font-bold text-red-900">
+                        <span className="text-xs font-mono bg-red-200 px-2 py-0.5 rounded-md font-bold text-red-900">
                           AAA 8.8:1
                         </span>
                       </div>
                     </div>
                     <button
                       onClick={() => setSlide21SensoryGoodClick(true)}
-                      className="w-full py-2 bg-emerald-700 text-white rounded-lg text-xs font-bold font-mono hover:bg-emerald-800 cursor-pointer shadow-xs"
+                      className="w-full py-2.5 bg-emerald-700 text-white rounded-lg text-xs sm:text-sm font-bold font-mono hover:bg-emerald-800 cursor-pointer shadow-xs"
                     >
                       HALT CRITICAL LINE BETA (IDENTIFIED BY TRIANGLE &amp; TEXT)
                     </button>
                     {slide21SensoryGoodClick ? (
-                      <div className="p-2 bg-emerald-100 border border-emerald-300 text-emerald-950 rounded-lg text-xs font-semibold">
+                      <div className="p-2.5 bg-emerald-100 border border-emerald-300 text-emerald-950 rounded-lg text-xs sm:text-sm font-semibold">
                         ✓ Flawless Resolution: Even with colors washed out by deuteranopia or glare, the distinct geometric shape (Triangle vs Circle) and semantic text enabled instantaneous, 100% accurate decision.
                       </div>
                     ) : (
-                      <div className="text-xs text-stone-600 font-medium">
+                      <div className="text-xs sm:text-sm text-stone-700 font-semibold">
                         ✓ Under colorblindness or desert glare, geometric shapes (Circle vs Triangle) and bold semantic text remain 100% legible.
                       </div>
                     )}
@@ -4467,27 +4467,27 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 {/* Axis 3: Good Cognitive (Recognition over Recall & Sticky Context) */}
                 {slide21LabAxis === 3 && (
                   <div className="space-y-2.5">
-                    <div className="text-xs font-mono text-emerald-800 font-bold">
+                    <div className="text-xs sm:text-sm font-mono text-emerald-800 font-bold">
                       Recognition Over Recall: Persistent Context Drawer
                     </div>
                     <div className="p-3 bg-[#FAF9F6] border border-[#E8E2D9] rounded-xl flex items-center justify-between">
                       <div>
-                        <span className="text-[10px] font-mono text-stone-500 uppercase block">Active Verification Token:</span>
-                        <strong className="text-sm font-mono text-stone-900">948-QZM-72</strong>
+                        <span className="text-xs font-mono text-stone-600 uppercase font-bold block">Active Verification Token:</span>
+                        <strong className="text-base font-mono text-stone-900">948-QZM-72</strong>
                       </div>
                       <button
                         onClick={() => setSlide21CognitiveGoodCopied(true)}
-                        className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold font-mono cursor-pointer shadow-xs"
+                        className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs sm:text-sm font-bold font-mono cursor-pointer shadow-xs"
                       >
                         {slide21CognitiveGoodCopied ? '✓ Auto-Filled' : '1-Tap Auto Fill'}
                       </button>
                     </div>
                     {slide21CognitiveGoodCopied ? (
-                      <div className="p-2.5 bg-emerald-100 border border-emerald-300 rounded-xl text-xs text-emerald-950 font-medium">
+                      <div className="p-2.5 bg-emerald-100 border border-emerald-300 rounded-xl text-xs sm:text-sm text-emerald-950 font-medium">
                         ✓ Verified in 0.4s! Zero cognitive burden. Working memory preserved for actual thinking.
                       </div>
                     ) : (
-                      <div className="text-[11px] font-mono text-stone-500">
+                      <div className="text-xs font-mono text-stone-600 font-semibold">
                         Context is never hidden across wizard steps; system remembers for the human.
                       </div>
                     )}
@@ -4497,24 +4497,24 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 {/* Axis 4: Good Cultural (CSS Logical Properties & Dynamic RTL) */}
                 {slide21LabAxis === 4 && (
                   <div className="space-y-2.5">
-                    <div className="text-xs font-mono text-emerald-800 font-bold">
+                    <div className="text-xs sm:text-sm font-mono text-emerald-800 font-bold">
                       Native Bi-Directional Fluid Layout (CSS Logical Properties):
                     </div>
                     <div
                       dir={slide21CultureLang === 'ar' ? 'rtl' : 'ltr'}
                       className="p-3 bg-[#FAF9F6] border border-[#E8E2D9] rounded-xl flex items-center gap-2 flex-wrap"
                     >
-                      <button className="px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-xs">
+                      <button className="px-4 py-2 bg-emerald-600 text-white rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 shadow-xs font-mono">
                         <span>
                           {slide21CultureLang === 'ar' ? 'تأكيد الحجز' : slide21CultureLang === 'fr' ? 'Enregistrer les modifications' : 'Confirm Booking'}
                         </span>
                         <span>{slide21CultureLang === 'ar' ? '←' : '→'}</span>
                       </button>
-                      <button className="px-3 py-2 bg-white border border-[#E8E2D9] rounded-xl text-xs text-stone-700 hover:bg-stone-50 font-medium">
+                      <button className="px-3.5 py-2 bg-white border border-[#E8E2D9] rounded-xl text-xs sm:text-sm text-stone-800 hover:bg-stone-50 font-semibold font-mono">
                         {slide21CultureLang === 'ar' ? 'إلغاء العملية' : slide21CultureLang === 'fr' ? 'Annuler' : 'Cancel'}
                       </button>
                     </div>
-                    <p className="text-xs text-stone-600 font-medium">
+                    <p className="text-xs sm:text-sm text-stone-700 font-medium">
                       ✓ Containers auto-expand fluidly. In Arabic, layout mirrors naturally and arrows point along reading flow.
                     </p>
                   </div>
@@ -4522,7 +4522,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
               </div>
 
               {/* Validated Engineering Metrics */}
-              <div className="p-3 bg-emerald-100/60 rounded-xl border border-emerald-200 text-xs font-mono text-emerald-900 flex items-center justify-between flex-shrink-0">
+              <div className="p-3 bg-emerald-100/60 rounded-xl border border-emerald-200 text-xs sm:text-sm font-mono text-emerald-900 flex items-center justify-between flex-shrink-0">
                 <div>• Frustration: <strong>0%</strong></div>
                 <div>• Errors: <strong>0.0%</strong></div>
                 <div>• WCAG: <strong>AAA PASS</strong></div>
@@ -4810,58 +4810,58 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                   <span>TABLE: `tbl_reservations`</span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-stone-700">
+                <div className="grid grid-cols-2 gap-2.5 text-stone-700">
                   <div>
-                    <label className="text-[10px] text-stone-500 block uppercase font-bold">facility_building_fk (INT):</label>
+                    <label className="text-xs text-stone-600 block uppercase font-bold">facility_building_fk (INT):</label>
                     <input
                       disabled
                       value="bldg_id_4409 (GreenTech)"
-                      className="w-full p-2 bg-stone-100 rounded border border-stone-300 font-mono text-xs"
+                      className="w-full p-2.5 bg-stone-100 rounded-lg border border-stone-300 font-mono text-xs sm:text-sm font-semibold text-stone-900"
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] text-stone-500 block uppercase font-bold">epoch_timestamp_start:</label>
+                    <label className="text-xs text-stone-600 block uppercase font-bold">epoch_timestamp_start:</label>
                     <input
                       disabled
                       value="1711897200 (UTC Epoch)"
-                      className="w-full p-2 bg-stone-100 rounded border border-stone-300 font-mono text-xs"
+                      className="w-full p-2.5 bg-stone-100 rounded-lg border border-stone-300 font-mono text-xs sm:text-sm font-semibold text-stone-900"
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] text-stone-500 block uppercase font-bold">required_capacity_constraint:</label>
+                    <label className="text-xs text-stone-600 block uppercase font-bold">required_capacity_constraint:</label>
                     <input
                       disabled
                       value="seats >= 4"
-                      className="w-full p-2 bg-stone-100 rounded border border-stone-300 font-mono text-xs"
+                      className="w-full p-2.5 bg-stone-100 rounded-lg border border-stone-300 font-mono text-xs sm:text-sm font-semibold text-stone-900"
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] text-stone-500 block uppercase font-bold">amenity_bitmask_flags:</label>
+                    <label className="text-xs text-stone-600 block uppercase font-bold">amenity_bitmask_flags:</label>
                     <input
                       disabled
                       value="0b100101 (Screen+Silent)"
-                      className="w-full p-2 bg-stone-100 rounded border border-stone-300 font-mono text-xs"
+                      className="w-full p-2.5 bg-stone-100 rounded-lg border border-stone-300 font-mono text-xs sm:text-sm font-semibold text-stone-900"
                     />
                   </div>
                 </div>
 
                 <button
                   onClick={() => setSlide23BadSubmitted(!slide23BadSubmitted)}
-                  className="w-full py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold rounded-xl cursor-pointer transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-red-700 hover:bg-red-800 text-white font-bold rounded-xl cursor-pointer transition-colors flex items-center justify-center gap-2 text-xs sm:text-sm font-mono"
                 >
                   <Database className="w-4 h-4" />
                   <span>Execute SQL INSERT INTO `tbl_reservations`</span>
                 </button>
 
                 {slide23BadSubmitted && (
-                  <div className="p-2.5 bg-red-100 text-red-900 border border-red-300 rounded-xl text-xs font-mono animate-in fade-in duration-150">
+                  <div className="p-3 bg-red-100 text-red-950 border border-red-300 rounded-xl text-xs sm:text-sm font-mono animate-in fade-in duration-150 font-medium">
                     <strong>Error 0x884:</strong> Transaction deadlock on table `tbl_room_locks`. Foreign key constraint violation on `user_account_pk`. Please rollback and re-verify table IDs manually.
                   </div>
                 )}
               </div>
 
               {/* Pedagogical Breakdown */}
-              <div className="p-3 bg-red-100/70 rounded-xl border border-red-200 text-xs sm:text-sm font-mono text-red-900 flex items-center justify-between">
+              <div className="p-3.5 bg-red-100/70 rounded-xl border border-red-200 text-xs sm:text-sm font-mono text-red-900 flex items-center justify-between font-semibold">
                 <div>• Required Tasks: <strong>8 manual form tasks</strong></div>
                 <div>• Time Wasted: <strong>95 seconds</strong></div>
                 <div>• Mental Strain: <strong>SQL Schema</strong></div>
@@ -4887,47 +4887,47 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
               </div>
 
               {/* Realistic Mockup: Campus Room Reservation System (Good HCI) */}
-              <div className="p-4 bg-white rounded-2xl border-2 border-emerald-200 space-y-2.5 shadow-2xs">
+              <div className="p-4 bg-white rounded-2xl border-2 border-emerald-200 space-y-3 shadow-2xs">
                 <div className="flex items-center justify-between pb-1.5 border-b border-stone-200">
-                  <span className="text-xs font-mono text-stone-500 font-bold">UM6P CAMPUS SPACES</span>
-                  <span className="text-xs font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">
+                  <span className="text-xs sm:text-sm font-mono text-stone-600 font-bold">UM6P CAMPUS SPACES</span>
+                  <span className="text-xs sm:text-sm font-mono text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-md">
                     INTENT-FIRST ASSISTANT
                   </span>
                 </div>
 
                 <div className="p-3 bg-[#FAF9F6] rounded-xl border border-stone-200 space-y-1">
-                  <span className="text-[11px] font-mono text-stone-500 uppercase font-bold">Stated Student Goal:</span>
-                  <div className="text-sm sm:text-base font-serif-display font-bold text-[#2D2D2E]">
+                  <span className="text-xs font-mono text-stone-600 uppercase font-bold">Stated Student Goal:</span>
+                  <div className="text-sm sm:text-base lg:text-lg font-serif-display font-bold text-[#2D2D2E]">
                     "Find a quiet room for 4 people tomorrow at 3:00 PM"
                   </div>
                 </div>
 
                 {/* 1-Tap Smart Room Recommendation Card */}
-                <div className="p-3 bg-emerald-50/70 border border-emerald-300 rounded-xl flex items-center justify-between">
+                <div className="p-3.5 bg-emerald-50/70 border border-emerald-300 rounded-xl flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <div className="text-sm font-bold text-emerald-950 flex items-center gap-2">
+                    <div className="text-sm sm:text-base font-bold text-emerald-950 flex items-center gap-2">
                       <span>{slide23GoodRoom}</span>
-                      <span className="text-[10px] font-mono bg-emerald-200 text-emerald-900 px-1.5 py-0.5 rounded font-bold">BEST MATCH</span>
+                      <span className="text-xs font-mono bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded font-bold">BEST MATCH</span>
                     </div>
-                    <div className="text-xs text-stone-600">
+                    <div className="text-xs sm:text-sm text-stone-700 font-medium">
                       Seats 4 · 4K Screen · Acoustic Soundproofing · Free 3:00 - 5:00 PM
                     </div>
                   </div>
 
                   <button
                     onClick={() => setSlide23GoodReserved(true)}
-                    className="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-mono font-bold rounded-xl cursor-pointer transition-colors shadow-xs"
+                    className="px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs sm:text-sm font-mono font-bold rounded-xl cursor-pointer transition-colors shadow-xs"
                   >
                     {slide23GoodReserved ? '✓ Reserved!' : '1-Tap Book'}
                   </button>
                 </div>
 
                 {slide23GoodReserved && (
-                  <div className="p-2.5 bg-emerald-100 text-emerald-950 border border-emerald-300 rounded-xl text-xs font-mono animate-in fade-in duration-150 flex items-center justify-between">
+                  <div className="p-3 bg-emerald-100 text-emerald-950 border border-emerald-300 rounded-xl text-xs sm:text-sm font-mono animate-in fade-in duration-150 flex items-center justify-between">
                     <span>✓ Confirmation sent to student card & calendar invite dispatched. PIN: <strong>4892</strong></span>
                     <button
                       onClick={() => setSlide23GoodReserved(false)}
-                      className="text-[10px] text-emerald-800 underline font-bold"
+                      className="text-xs text-emerald-800 underline font-bold"
                     >
                       Reset
                     </button>
@@ -4936,7 +4936,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
               </div>
 
               {/* Pedagogical Breakdown */}
-              <div className="p-3 bg-emerald-100/70 rounded-xl border border-emerald-200 text-xs sm:text-sm font-mono text-emerald-900 flex items-center justify-between">
+              <div className="p-3.5 bg-emerald-100/70 rounded-xl border border-emerald-200 text-xs sm:text-sm font-mono text-emerald-900 flex items-center justify-between font-semibold">
                 <div>• Required Tasks: <strong>1 direct tap</strong></div>
                 <div>• Time to Goal: <strong>4 seconds</strong></div>
                 <div>• Mental Strain: <strong>Human Goal</strong></div>
@@ -6399,14 +6399,14 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                     Direct human observation, verbalized mental models, and video debriefs. Essential for discovering the <em>root psychological cause</em> of cognitive friction.
                   </p>
                   <div className="space-y-2 pt-1">
-                    <div className="p-3 bg-emerald-50/70 rounded-xl border border-emerald-200 text-stone-900 space-y-1">
-                      <div className="font-mono text-[11px] font-bold text-emerald-900 uppercase">Participant 02 (2nd-Year Engineering):</div>
-                      <p className="italic font-serif-display text-sm sm:text-base leading-relaxed text-stone-900">
+                    <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200 text-stone-900 space-y-1.5">
+                      <div className="font-mono text-xs font-bold text-emerald-900 uppercase">Participant 02 (2nd-Year Engineering):</div>
+                      <p className="italic font-serif-display text-base sm:text-lg leading-relaxed text-stone-900">
                         &ldquo;Wait... why is there a flashing green button that says &apos;Fast-Track Verify&apos;? It looks like a spam pop-up ad from an untrusted site. I&apos;m afraid it will charge my card, so I&apos;m closing the tab.&rdquo;
                       </p>
                     </div>
                     <div className="p-3 bg-emerald-50/70 rounded-xl border border-emerald-200 flex items-center justify-between text-xs sm:text-sm font-mono">
-                      <span className="text-stone-700">Root Cause Diagnosis:</span>
+                      <span className="text-stone-700 font-bold">Root Cause Diagnosis:</span>
                       <strong className="text-emerald-950 font-bold">Affordance &amp; Mental Model Collision</strong>
                     </div>
                   </div>
@@ -6426,10 +6426,10 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
             <div className="bg-white border-2 border-[#E8E2D9] rounded-2xl p-5 lg:p-6 flex-1 flex flex-col justify-between shadow-xs space-y-4 min-h-0">
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-blue-700 font-bold px-3 py-1 bg-blue-50 border border-blue-200 rounded-lg">
+                  <span className="text-xs sm:text-sm font-mono uppercase text-blue-700 font-bold px-3 py-1 bg-blue-50 border border-blue-200 rounded-lg">
                     Real-Time Telemetry Dashboard · UM6P Student Portal
                   </span>
-                  <span className="text-xs font-mono text-stone-600 font-bold">12,450 Total Inbound Sessions</span>
+                  <span className="text-xs sm:text-sm font-mono text-stone-700 font-bold">12,450 Total Inbound Sessions</span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">
                   Interactive Conversion Funnel: The 64% Abandonment Cliff
@@ -6448,7 +6448,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                         : 'border-[#E8E2D9] bg-[#FAF9F6] hover:border-stone-400'
                     }`}
                   >
-                    <div className="flex items-center justify-between text-xs font-mono">
+                    <div className="flex items-center justify-between text-xs sm:text-sm font-mono">
                       <span className="font-bold text-stone-900">{step.name}</span>
                       <span className={`px-2 py-0.5 rounded font-bold ${
                         step.status === 'critical' ? 'bg-red-200 text-red-950' : 'bg-stone-200 text-stone-800'
@@ -6460,11 +6460,11 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                       <div className="text-2xl sm:text-3xl font-mono font-bold text-stone-900">
                         {step.users.toLocaleString()}
                       </div>
-                      <div className="text-xs font-mono text-stone-500 mt-0.5">Users Reached</div>
+                      <div className="text-xs sm:text-sm font-mono text-stone-600 mt-0.5 font-semibold">Users Reached</div>
                     </div>
-                    <div className="text-xs font-mono pt-2 border-t border-stone-200 flex items-center justify-between">
-                      <span className="text-stone-600">Avg Time on Step:</span>
-                      <strong className={step.status === 'critical' ? 'text-red-700' : 'text-stone-900'}>
+                    <div className="text-xs sm:text-sm font-mono pt-2 border-t border-stone-200 flex items-center justify-between">
+                      <span className="text-stone-700 font-medium">Avg Time on Step:</span>
+                      <strong className={step.status === 'critical' ? 'text-red-700 font-bold' : 'text-stone-900 font-bold'}>
                         {step.time}
                       </strong>
                     </div>
@@ -6490,10 +6490,10 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
             <div className="bg-white border-2 border-[#E8E2D9] rounded-2xl p-5 lg:p-6 flex-1 flex flex-col justify-between shadow-xs space-y-4 min-h-0">
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-emerald-800 font-bold px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-lg">
+                  <span className="text-xs sm:text-sm font-mono uppercase text-emerald-800 font-bold px-3 py-1 bg-emerald-50 border border-emerald-200 rounded-lg">
                     Lab Observation Session Transcript · 5 User Sample
                   </span>
-                  <span className="text-xs font-mono text-stone-600 font-bold">Protocol: Concurrent Think-Aloud</span>
+                  <span className="text-xs sm:text-sm font-mono text-stone-700 font-bold">Protocol: Concurrent Think-Aloud</span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-serif-display font-bold text-stone-900">
                   Qualitative Video Capture: Uncovering Mental Model Collisions
@@ -6502,40 +6502,40 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
                 <div className="p-4 bg-stone-50 border-2 border-stone-200 rounded-2xl space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center justify-between text-xs sm:text-sm font-mono">
                     <span className="font-bold text-stone-900">Student 1 (AI Master)</span>
                     <span className="text-red-700 font-bold bg-red-100 px-2 py-0.5 rounded-md">ABANDONED</span>
                   </div>
                   <p className="text-xs sm:text-sm text-stone-800 italic font-serif-display leading-relaxed">
                     &ldquo;I was looking for &apos;Enroll in Course&apos;. The button says &apos;Fast-Track Verify&apos;. In my mental model, verify means identity check, not enrollment.&rdquo;
                   </p>
-                  <div className="text-[11px] font-mono text-stone-600 pt-1.5 border-t">
+                  <div className="text-xs font-mono text-stone-700 font-semibold pt-1.5 border-t">
                     Root Cause: Terminology Mismatch (Gulf of Execution)
                   </div>
                 </div>
 
                 <div className="p-4 bg-stone-50 border-2 border-stone-200 rounded-2xl space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center justify-between text-xs sm:text-sm font-mono">
                     <span className="font-bold text-stone-900">Student 2 (BioTech BSc)</span>
                     <span className="text-red-700 font-bold bg-red-100 px-2 py-0.5 rounded-md">ABANDONED</span>
                   </div>
                   <p className="text-xs sm:text-sm text-stone-800 italic font-serif-display leading-relaxed">
                     &ldquo;The flashing green outline made it look like a deceptive banner ad. At UM6P we take cyber-safety seriously, so I logged out.&rdquo;
                   </p>
-                  <div className="text-[11px] font-mono text-stone-600 pt-1.5 border-t">
+                  <div className="text-xs font-mono text-stone-700 font-semibold pt-1.5 border-t">
                     Root Cause: Styling Affordance (Deceptive Lookalike)
                   </div>
                 </div>
 
                 <div className="p-4 bg-stone-50 border-2 border-stone-200 rounded-2xl space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center justify-between text-xs sm:text-sm font-mono">
                     <span className="font-bold text-stone-900">Student 3 (Industrial PhD)</span>
                     <span className="text-amber-700 font-bold bg-amber-100 px-2 py-0.5 rounded-md">DELAYED (240s)</span>
                   </div>
                   <p className="text-xs sm:text-sm text-stone-800 italic font-serif-display leading-relaxed">
                     &ldquo;I had to call my lab colleague and ask &apos;Is this real or phishing?&apos; Only after she confirmed did I click it.&rdquo;
                   </p>
-                  <div className="text-[11px] font-mono text-stone-600 pt-1.5 border-t">
+                  <div className="text-xs font-mono text-stone-700 font-semibold pt-1.5 border-t">
                     Root Cause: Lack of Institutional Trust Signifiers
                   </div>
                 </div>
@@ -6873,13 +6873,13 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
                   Usability is not art. It is a mathematical trade-off between task completion latency, cognitive workload, error probabilities, and motor travel time (Fitts’ Law).
                 </p>
-                <div className="p-3 bg-[#FAF9F6] border border-[#E8E2D9] rounded-xl space-y-1.5 font-mono text-xs">
-                  <div className="text-stone-500 text-[10px] uppercase font-bold">The Engineering Objective:</div>
-                  <div className="text-[#E5391C] font-bold">min {'{'} Error_Rate + &alpha;·Time + &beta;·Workload {'}'}</div>
-                  <div className="text-stone-600 text-[11px]">Subject to WCAG AAA accessibility &amp; zero catastrophic mode errors.</div>
+                <div className="p-3 bg-[#FAF9F6] border border-[#E8E2D9] rounded-xl space-y-1.5 font-mono text-xs sm:text-sm">
+                  <div className="text-stone-600 text-xs uppercase font-bold">The Engineering Objective:</div>
+                  <div className="text-[#E5391C] font-bold text-sm sm:text-base">min {'{'} Error_Rate + &alpha;·Time + &beta;·Workload {'}'}</div>
+                  <div className="text-stone-700 text-xs font-medium">Subject to WCAG AAA accessibility &amp; zero catastrophic mode errors.</div>
                 </div>
               </div>
-              <div className="text-xs font-mono text-stone-500 pt-2 border-t border-stone-200">
+              <div className="text-xs sm:text-sm font-mono text-stone-600 font-semibold pt-2 border-t border-stone-200">
                 ✓ Usability can be calibrated, simulated, and stress-tested like any mechanical bridge.
               </div>
             </div>
@@ -6897,14 +6897,14 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                   Diminishing Returns: Why 5 Users is Enough
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                  Formula: <span className="font-mono font-bold text-stone-900">U(n) = N·(1 - (1 - L)<sup>n</sup>)</span> where <span className="font-mono">L = 0.31</span>. Test participants uncover overlapping flaws.
+                  Formula: <span className="font-mono font-bold text-stone-900">U(n) = N·(1 - (1 - L)<sup>n</sup>)</span> where <span className="font-mono font-bold">L = 0.31</span>. Test participants uncover overlapping flaws.
                 </p>
 
                 {/* Interactive Slider */}
                 <div className="p-3 bg-[#FAF9F6] border border-[#E8E2D9] rounded-xl space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono">
+                  <div className="flex items-center justify-between text-xs sm:text-sm font-mono">
                     <span className="text-stone-700 font-bold">Test Participants (n):</span>
-                    <strong className="text-base text-[#E5391C]">{n} Users</strong>
+                    <strong className="text-base sm:text-lg text-[#E5391C]">{n} Users</strong>
                   </div>
                   <input
                     type="range"
@@ -6914,7 +6914,7 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                     onChange={(e) => setSlide37UsersCount(parseInt(e.target.value))}
                     className="w-full accent-[#E5391C] cursor-pointer"
                   />
-                  <div className="flex items-center justify-between text-[11px] font-mono text-stone-500">
+                  <div className="flex items-center justify-between text-xs font-mono text-stone-600 font-semibold">
                     <span>1 user (31%)</span>
                     <span className="text-[#E5391C] font-bold">5 users (85%)</span>
                     <span>15 users (99%)</span>
@@ -6924,15 +6924,15 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 {/* Result Display */}
                 <div className="p-3 bg-emerald-50 border border-emerald-300 rounded-xl flex items-center justify-between">
                   <div>
-                    <div className="text-[10px] font-mono text-emerald-800 uppercase font-bold">Defects Uncovered:</div>
-                    <div className="text-2xl font-mono font-bold text-emerald-950">{usabilityFoundPct}%</div>
+                    <div className="text-xs font-mono text-emerald-800 uppercase font-bold">Defects Uncovered:</div>
+                    <div className="text-2xl sm:text-3xl font-mono font-bold text-emerald-950">{usabilityFoundPct}%</div>
                   </div>
-                  <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-200/80 px-2.5 py-1 rounded-lg">
+                  <span className="text-xs sm:text-sm font-mono font-bold text-emerald-900 bg-emerald-200/80 px-3 py-1 rounded-lg">
                     {n === 5 ? '★ THE GOLDEN SWEET SPOT' : n > 5 ? 'DIMINISHING RETURNS' : 'INSUFFICIENT SAMPLE'}
                   </span>
                 </div>
               </div>
-              <div className="text-xs font-mono text-stone-500 pt-2 border-t border-stone-200">
+              <div className="text-xs sm:text-sm font-mono text-stone-600 font-semibold pt-2 border-t border-stone-200">
                 Better to run 3 iterative tests of 5 users than 1 huge test of 15 users.
               </div>
             </div>
@@ -6952,18 +6952,18 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({ slide, onNextSlide
                 <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
                   In engineering and stakeholder reviews, subjective opinions ("I think this looks slick") are replaced by empirical metrics: task completion, SUS, and error counts.
                 </p>
-                <div className="space-y-2 pt-1 font-mono text-xs">
-                  <div className="p-2.5 bg-red-50 border border-red-200 rounded-xl text-red-900">
-                    <span className="font-bold block text-[10px] uppercase text-red-700">Subjective Defense (Amateur):</span>
+                <div className="space-y-2 pt-1 font-mono text-xs sm:text-sm">
+                  <div className="p-2.5 bg-red-50 border border-red-200 rounded-xl text-red-950 font-medium">
+                    <span className="font-bold block text-xs uppercase text-red-700">Subjective Defense (Amateur):</span>
                     "I think the students will prefer this modern card layout."
                   </div>
-                  <div className="p-2.5 bg-emerald-50 border border-emerald-300 rounded-xl text-emerald-950 font-bold">
-                    <span className="block text-[10px] uppercase text-emerald-800">Empirical Defense (HCI Engineer):</span>
+                  <div className="p-2.5 bg-emerald-50 border border-emerald-300 rounded-xl text-emerald-950 font-medium">
+                    <span className="block text-xs uppercase text-emerald-800 font-bold">Empirical Defense (HCI Engineer):</span>
                     "Tested with 15 students: task completion increased from 62% to 94% (p &lt; 0.01) with zero destructive errors."
                   </div>
                 </div>
               </div>
-              <div className="text-xs font-mono text-stone-500 pt-2 border-t border-stone-200">
+              <div className="text-xs sm:text-sm font-mono text-stone-600 font-semibold pt-2 border-t border-stone-200">
                 ✓ Empirical evidence silences executive opinions and builds bulletproof products.
               </div>
             </div>

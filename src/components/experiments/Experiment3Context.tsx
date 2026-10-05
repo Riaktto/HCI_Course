@@ -538,12 +538,12 @@ export const Experiment3Context: React.FC = () => {
           <div className="space-y-3.5 flex-1 flex flex-col justify-center">
             {/* Visual Dwell Glance Timer */}
             <div className="p-4 bg-[#FAF9F6] rounded-2xl border border-[#E8E2D9] space-y-1.5 shadow-2xs">
-              <div className="flex items-center justify-between text-xs font-mono text-[#6E6D70] font-bold">
+              <div className="flex items-center justify-between text-xs sm:text-sm font-mono text-[#6E6D70] font-bold">
                 <span className="flex items-center gap-1.5">
                   <Eye className="w-4 h-4 text-[#E5391C]" />
                   Total Eyes-Off-Road Glance Time
                 </span>
-                <span className="text-[11px] font-mono">Limit: 2.0s</span>
+                <span className="text-xs font-mono font-bold text-[#2D2D2E]">Limit: 2.0s</span>
               </div>
               <div className="flex items-baseline justify-between">
                 <span
@@ -554,17 +554,17 @@ export const Experiment3Context: React.FC = () => {
                   {glanceTime.toFixed(1)}s
                 </span>
                 <span
-                  className={`text-xs font-mono font-bold px-2 py-0.5 rounded ${
+                  className={`text-xs sm:text-sm font-mono font-bold px-2.5 py-1 rounded ${
                     glanceTime > 2.0 && env === 'night_drive'
-                      ? 'bg-red-100 text-red-800'
-                      : 'bg-emerald-100 text-emerald-800'
+                      ? 'bg-red-100 text-red-800 border border-red-300'
+                      : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                   }`}
                 >
                   {glanceTime > 2.0 && env === 'night_drive' ? 'CRITICAL SAFETY BREACH' : 'Nominal'}
                 </span>
               </div>
               {/* NHTSA Progress Bar */}
-              <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden mt-1">
+              <div className="w-full bg-stone-200 h-2.5 rounded-full overflow-hidden mt-1">
                 <div
                   className={`h-full transition-all duration-150 ${
                     glanceTime > 2.0 ? 'bg-red-600' : glanceTime > 1.2 ? 'bg-amber-500' : 'bg-emerald-500'
@@ -572,19 +572,19 @@ export const Experiment3Context: React.FC = () => {
                   style={{ width: `${Math.min((glanceTime / 2.0) * 100, 100)}%` }}
                 />
               </div>
-              <p className="text-[11px] font-mono text-stone-500">
+              <p className="text-xs font-mono font-medium text-stone-700">
                 At 120 km/h, 2 seconds = 66 meters driven completely blind.
               </p>
             </div>
 
             {/* Physical Motor Mis-Taps */}
-            <div className="p-4 bg-[#FAF9F6] rounded-2xl border border-[#E8E2D9] space-y-1 shadow-2xs">
-              <div className="flex items-center justify-between text-xs font-mono text-[#6E6D70] font-bold">
+            <div className="p-4 bg-[#FAF9F6] rounded-2xl border border-[#E8E2D9] space-y-1.5 shadow-2xs">
+              <div className="flex items-center justify-between text-xs sm:text-sm font-mono text-[#6E6D70] font-bold">
                 <span className="flex items-center gap-1.5">
                   <AlertTriangle className="w-4 h-4 text-amber-600" />
                   Physical Motor Drift (Mis-Taps)
                 </span>
-                <span className="text-xs font-mono">Error Count</span>
+                <span className="text-xs font-mono font-bold text-[#2D2D2E]">Error Count</span>
               </div>
               <div className="flex items-baseline justify-between">
                 <span
@@ -594,18 +594,18 @@ export const Experiment3Context: React.FC = () => {
                 >
                   {misTaps}
                 </span>
-                <span className="text-xs font-mono text-stone-600 font-bold">
+                <span className="text-xs sm:text-sm font-mono text-stone-800 font-bold">
                   {misTaps === 0 ? 'Zero Slip' : `${misTaps} Finger Slippages`}
                 </span>
               </div>
-              <p className="text-[11px] font-mono text-stone-500">
+              <p className="text-xs font-mono font-medium text-stone-700">
                 Induced by chassis road jitter + undersized touch targets (&lt;48px).
               </p>
             </div>
 
             {/* Environmental Strain Sensor Box */}
-            <div className="p-4 bg-[#FAF9F6] rounded-2xl border border-[#E8E2D9] space-y-1 shadow-2xs">
-              <div className="text-xs font-mono text-[#6E6D70] font-bold">Context Stress Factor:</div>
+            <div className="p-4 bg-[#FAF9F6] rounded-2xl border border-[#E8E2D9] space-y-1.5 shadow-2xs">
+              <div className="text-xs sm:text-sm font-mono text-[#6E6D70] font-bold">Context Stress Factor:</div>
               <div className="text-sm sm:text-base font-bold text-[#2D2D2E]">
                 {env === 'desk' && '🟢 Nominal: Zero physical or perceptual degradation'}
                 {env === 'night_drive' && '🔴 Severe: 120 km/h motor jitter + divided attention'}

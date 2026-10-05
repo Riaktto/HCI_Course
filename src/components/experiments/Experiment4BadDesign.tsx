@@ -325,20 +325,20 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                 {/* Performance Metrics */}
                 <div className="grid grid-cols-3 gap-3 max-w-md mx-auto pt-2">
                   <div className="p-3 bg-white rounded-xl border border-emerald-300 text-center font-mono">
-                    <span className="text-[10px] text-stone-500 uppercase block">Time Spent</span>
-                    <strong className="text-lg text-emerald-950">{timeTaken}s</strong>
+                    <span className="text-xs text-stone-600 uppercase font-bold block">Time Spent</span>
+                    <strong className="text-xl text-emerald-950">{timeTaken}s</strong>
                   </div>
                   <div className="p-3 bg-white rounded-xl border border-emerald-300 text-center font-mono">
-                    <span className="text-[10px] text-stone-500 uppercase block">Traps Overcome</span>
-                    <strong className="text-lg text-emerald-950">6 / 6</strong>
+                    <span className="text-xs text-stone-600 uppercase font-bold block">Traps Overcome</span>
+                    <strong className="text-xl text-emerald-950">6 / 6</strong>
                   </div>
                   <div className="p-3 bg-white rounded-xl border border-emerald-300 text-center font-mono">
-                    <span className="text-[10px] text-stone-500 uppercase block">Usability Score</span>
-                    <strong className="text-lg text-red-600">14 / 100</strong>
+                    <span className="text-xs text-stone-600 uppercase font-bold block">Usability Score</span>
+                    <strong className="text-xl text-red-600">14 / 100</strong>
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm font-mono text-stone-600 max-w-lg mx-auto pt-2">
+                <p className="text-xs sm:text-sm font-mono text-stone-700 font-medium max-w-lg mx-auto pt-2">
                   ✓ <strong>Class Takeaway:</strong> You survived only because you were paying forensic attention. Over 70% of actual students abandon or mis-register under this hostile design!
                 </p>
 
@@ -357,7 +357,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                     <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
                     <strong className="font-bold text-stone-900">ACADEMIC_SYS_ENTERPRISE_V2.1</strong>
                   </div>
-                  <span className="text-stone-500">UM6P COURSE REGISTRATION BUFFER</span>
+                  <span className="text-stone-600 font-semibold">UM6P COURSE REGISTRATION BUFFER</span>
                 </div>
 
                 {/* Error Banner */}
@@ -377,7 +377,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                     <label className="text-xs sm:text-sm font-mono text-stone-800 font-bold block">
                       Step 1: Locate Course by Database CRN:
                     </label>
-                    <span className="text-[11px] font-mono text-stone-500">Try typing "HCI" vs "CS-4010"</span>
+                    <span className="text-xs font-mono font-semibold text-stone-600">Try typing "HCI" vs "CS-4010"</span>
                   </div>
 
                   <form onSubmit={handleSearch} className="flex gap-2">
@@ -389,7 +389,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                         setCourseQuery(e.target.value);
                         handleStartInteraction();
                       }}
-                      className="flex-1 bg-[#FAF9F6] border-2 border-stone-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-stone-900 font-mono focus:border-[#E5391C] outline-none"
+                      className="flex-1 bg-[#FAF9F6] border-2 border-stone-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-stone-900 font-mono focus:border-[#E5391C] outline-none font-medium"
                     />
                     <button
                       type="submit"
@@ -416,11 +416,11 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                         <span className="font-bold text-[#2D2D2E] font-serif-display text-base sm:text-lg block">
                           CS-4010: Human-Computer Interaction
                         </span>
-                        <span className="text-xs text-stone-600 font-mono">
+                        <span className="text-xs sm:text-sm text-stone-700 font-mono font-medium">
                           Section 01 · Mon/Wed 09:00–11:00 · Prof. Yassine Ben-Aboud
                         </span>
                       </div>
-                      <span className="font-mono text-emerald-800 font-bold bg-emerald-100 border border-emerald-300 px-2.5 py-1 rounded-lg text-xs">
+                      <span className="font-mono text-emerald-800 font-bold bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-lg text-xs sm:text-sm">
                         4 SEATS OPEN
                       </span>
                     </div>
@@ -439,9 +439,9 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                             setActiveCrimeId(3);
                           }
                         }}
-                        className="w-3.5 h-3.5 accent-[#E5391C] cursor-pointer"
+                        className="w-4 h-4 accent-[#E5391C] cursor-pointer"
                       />
-                      <label htmlFor="section-check" className="cursor-pointer text-xs sm:text-sm text-stone-700 font-medium">
+                      <label htmlFor="section-check" className="cursor-pointer text-xs sm:text-sm text-stone-800 font-semibold">
                         Check microscopic 8px box to bind course record to session cart (Fitts's Law Trap)
                       </label>
                     </div>
@@ -454,7 +454,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                   <button
                     type="button"
                     onClick={handleAttemptEnroll}
-                    className="text-xs sm:text-sm text-stone-600 hover:text-stone-900 underline font-mono cursor-pointer py-1.5 px-2 rounded-lg hover:bg-stone-100 transition-colors"
+                    className="text-xs sm:text-sm text-stone-700 hover:text-stone-900 underline font-mono cursor-pointer py-2 px-3 rounded-lg hover:bg-stone-100 transition-colors font-bold"
                   >
                     [Proceed to finalize and verify registration transaction]
                   </button>
@@ -482,8 +482,8 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                   </div>
 
                   <div className="p-3 bg-red-50 border border-red-200 rounded-xl space-y-1">
-                    <span className="text-[10px] font-mono font-bold uppercase text-red-700">Crime #4 Active: Double Negative</span>
-                    <p className="text-sm sm:text-base text-stone-900 font-mono leading-relaxed">
+                    <span className="text-xs font-mono font-bold uppercase text-red-700">Crime #4 Active: Double Negative</span>
+                    <p className="text-sm sm:text-base text-stone-900 font-mono leading-relaxed font-semibold">
                       Are you absolutely certain you do <strong>NOT</strong> wish to cancel the unregistration process?
                     </p>
                   </div>
@@ -516,7 +516,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                 <span className="text-xs font-mono uppercase tracking-wider text-[#E5391C] font-bold">
                   Forensic Crime Tracker
                 </span>
-                <span className="text-xs font-mono text-stone-500">
+                <span className="text-xs font-mono font-bold text-stone-700">
                   {triggeredCrimes.size} / 6 Discovered
                 </span>
               </div>
@@ -536,7 +536,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                   <div
                     key={c.id}
                     onClick={() => setActiveCrimeId(c.id)}
-                    className={`p-3 rounded-2xl border-2 transition-all cursor-pointer ${
+                    className={`p-3.5 rounded-2xl border-2 transition-all cursor-pointer ${
                       isSelected
                         ? 'border-[#E5391C] bg-[#FDF5F2] text-[#2D2D2E] shadow-xs'
                         : isTriggered
@@ -549,7 +549,7 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                         <IconComp className={`w-4 h-4 ${isSelected ? 'text-[#E5391C]' : 'text-stone-500'}`} />
                         <span className="font-bold text-xs sm:text-sm font-mono">{c.title}</span>
                       </div>
-                      <span className={`text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded ${
+                      <span className={`text-xs font-mono font-bold uppercase px-2.5 py-0.5 rounded ${
                         isTriggered ? 'bg-[#E5391C] text-white' : 'bg-stone-200 text-stone-700'
                       }`}>
                         {isTriggered ? 'ACTIVE' : 'IDLE'}
@@ -557,11 +557,11 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
                     </div>
 
                     {isSelected && (
-                      <div className="space-y-2 pt-2 mt-2 border-t border-[#FAD6CF] text-xs font-sans">
+                      <div className="space-y-2 pt-2 mt-2 border-t border-[#FAD6CF] text-xs sm:text-sm font-sans">
                         <p className="text-stone-800 font-medium">{c.crime}</p>
-                        <div className="p-2 bg-white rounded-lg border border-[#FAD6CF] space-y-1 font-mono text-[11px]">
+                        <div className="p-2.5 bg-white rounded-lg border border-[#FAD6CF] space-y-1 font-mono text-xs">
                           <div><strong>HCI Law:</strong> {c.scientificName}</div>
-                          <div className="text-emerald-800"><strong>Ergonomic Fix:</strong> {c.antidote}</div>
+                          <div className="text-emerald-800 font-semibold"><strong>Ergonomic Fix:</strong> {c.antidote}</div>
                         </div>
                       </div>
                     )}
@@ -571,9 +571,9 @@ export const Experiment4BadDesign: React.FC<{ showForensic?: boolean }> = () => 
             </div>
 
             {/* Deep-Dive Summary for Active Crime */}
-            <div className="p-3 bg-stone-100 rounded-xl text-xs font-mono text-stone-700 flex items-center justify-between">
+            <div className="p-3 bg-stone-100 rounded-xl text-xs sm:text-sm font-mono text-stone-800 font-medium flex items-center justify-between">
               <span>Active Inspection: <strong>{currentCrime.tag}</strong></span>
-              <span className="text-[#E5391C] font-bold">Select Crime to Read Antidote</span>
+              <span className="text-[#E5391C] font-bold">Click Crime to View Antidote</span>
             </div>
           </div>
         </div>

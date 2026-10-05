@@ -440,76 +440,76 @@ export const Experiment5UsabilityMetrics: React.FC = () => {
                     Real-Time Usability Telemetry
                   </span>
                 </div>
-                <span className="text-[11px] font-mono text-[#E5391C] font-bold bg-[#FDF5F2] px-2.5 py-0.5 rounded-lg border border-[#FAD6CF]">
+                <span className="text-xs font-mono text-[#E5391C] font-bold bg-[#FDF5F2] px-2.5 py-1 rounded-lg border border-[#FAD6CF]">
                   Live Sensor
                 </span>
               </div>
 
               {/* Metric 1: Time on Task */}
-              <div className="p-3 bg-[#FAF9F6] rounded-xl border border-[#E8E2D9] space-y-1.5">
+              <div className="p-3.5 bg-[#FAF9F6] rounded-xl border border-[#E8E2D9] space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-stone-800">
-                    <Clock className="w-3.5 h-3.5 text-[#E5391C]" />
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold text-stone-800">
+                    <Clock className="w-4 h-4 text-[#E5391C]" />
                     <span>1. Time on Task (Efficiency)</span>
                   </div>
-                  <span className="text-[10px] font-mono text-stone-500">Target &le; 6.0s</span>
+                  <span className="text-xs font-mono font-semibold text-stone-600">Target &le; 6.0s</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 pt-0.5">
                   <div className="p-2.5 bg-red-50 rounded-lg border border-red-200">
-                    <span className="text-[10px] font-mono text-red-700 font-bold block">Alpha Duration:</span>
+                    <span className="text-xs font-mono text-red-700 font-bold block">Alpha Duration:</span>
                     <span className="text-xl sm:text-2xl font-mono font-bold text-red-900">{metricsA.timeSec}s</span>
                   </div>
                   <div className="p-2.5 bg-emerald-50 rounded-lg border border-emerald-200">
-                    <span className="text-[10px] font-mono text-emerald-700 font-bold block">Beta Duration:</span>
+                    <span className="text-xs font-mono text-emerald-700 font-bold block">Beta Duration:</span>
                     <span className="text-xl sm:text-2xl font-mono font-bold text-emerald-950">{metricsB.timeSec}s</span>
                   </div>
                 </div>
               </div>
 
               {/* Metric 2: Motor Actions */}
-              <div className="p-3 bg-[#FAF9F6] rounded-xl border border-[#E8E2D9] space-y-1.5">
+              <div className="p-3.5 bg-[#FAF9F6] rounded-xl border border-[#E8E2D9] space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-stone-800">
-                    <MousePointer className="w-3.5 h-3.5 text-[#E5391C]" />
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold text-stone-800">
+                    <MousePointer className="w-4 h-4 text-[#E5391C]" />
                     <span>2. Motor Load (Clicks + Keystrokes)</span>
                   </div>
-                  <span className="text-[10px] font-mono text-stone-500">Lower is better</span>
+                  <span className="text-xs font-mono font-semibold text-stone-600">Lower is better</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 pt-0.5 font-mono">
                   <div className="p-2.5 bg-red-50 rounded-lg border border-red-200">
-                    <span className="text-[10px] text-red-700 font-bold block">Alpha Actions:</span>
+                    <span className="text-xs text-red-700 font-bold block">Alpha Actions:</span>
                     <span className="text-xl sm:text-2xl font-bold text-red-900">{metricsA.clicks + metricsA.keystrokes} ops</span>
                   </div>
                   <div className="p-2.5 bg-emerald-50 rounded-lg border border-emerald-200">
-                    <span className="text-[10px] text-emerald-700 font-bold block">Beta Actions:</span>
+                    <span className="text-xs text-emerald-700 font-bold block">Beta Actions:</span>
                     <span className="text-xl sm:text-2xl font-bold text-emerald-950">{metricsB.clicks + metricsB.keystrokes} ops</span>
                   </div>
                 </div>
               </div>
 
               {/* Metric 3: Error Frequency */}
-              <div className="p-3 bg-[#FAF9F6] rounded-xl border border-[#E8E2D9] space-y-1.5">
+              <div className="p-3.5 bg-[#FAF9F6] rounded-xl border border-[#E8E2D9] space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-stone-800">
-                    <AlertOctagon className="w-3.5 h-3.5 text-[#E5391C]" />
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold text-stone-800">
+                    <AlertOctagon className="w-4 h-4 text-[#E5391C]" />
                     <span>3. Cognitive Slips (Validation Errors)</span>
                   </div>
-                  <span className="text-[10px] font-mono text-stone-500">Goal = 0</span>
+                  <span className="text-xs font-mono font-semibold text-stone-600">Goal = 0</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 pt-0.5 font-mono">
                   <div className="p-2.5 bg-red-50 rounded-lg border border-red-200">
-                    <span className="text-[10px] text-red-700 font-bold block">Alpha Errors:</span>
+                    <span className="text-xs text-red-700 font-bold block">Alpha Errors:</span>
                     <span className="text-xl sm:text-2xl font-bold text-red-900">{metricsA.errors} fails</span>
                   </div>
                   <div className="p-2.5 bg-emerald-50 rounded-lg border border-emerald-200">
-                    <span className="text-[10px] text-emerald-700 font-bold block">Beta Errors:</span>
+                    <span className="text-xs text-emerald-700 font-bold block">Beta Errors:</span>
                     <span className="text-xl sm:text-2xl font-bold text-emerald-950">{metricsB.errors} fails</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="p-3 bg-stone-900 text-stone-100 rounded-xl text-xs font-mono flex items-center justify-between">
+            <div className="p-3 bg-stone-900 text-stone-100 rounded-xl text-xs sm:text-sm font-mono flex items-center justify-between">
               <span>Scientific Result:</span>
               <strong className="text-emerald-400">Beta reduces interaction latency by ~68%</strong>
             </div>
