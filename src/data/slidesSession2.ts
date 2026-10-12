@@ -1,940 +1,2091 @@
-import { SlideData, ActMeta } from '../types';
+import { ActMeta, ActId, SlideType } from '../types';
+import type { Content, Slide2 } from './session2Types';
 
-export const ACTS_METADATA_SESSION_2: ActMeta[] = [
+/**
+ * SESSION 2 — The Human (4 hours = 240 minutes).
+ *
+ * Every idea follows the same path: concept (what it says, in plain words) -> demo (feel it) ->
+ * practice (what designers do with it). Language is deliberately plain: a term is only used when it is
+ * needed and is explained on the same slide.
+ *
+ * Slides are pure data. Layouts live in components/session2/layouts.tsx and live demos in
+ * components/experiments/session2/. Typography follows the validated design standard.
+ * Slide ids are assigned from the order below; act ranges are computed.
+ */
+
+const ACTS_BASE: ActMeta[] = [
   {
     id: 1,
-    title: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    subtitle: 'Sensory Bandwidth, Foveal Vision & Pre-Attentive Processing',
-    slidesRange: 'Slides 1–9',
+    title: 'ACT 1 · PERCEPTION',
+    subtitle: 'How people take in what is on a screen',
+    slidesRange: '',
     color: '#3b82f6',
   },
   {
     id: 2,
-    title: 'ACT 2 — THE COGNITIVE ENGINE: MEMORY & ATTENTION',
-    subtitle: 'Working Memory, Cognitive Load Theory & Recognition vs Recall',
-    slidesRange: 'Slides 10–16',
+    title: 'ACT 2 · MEMORY & ATTENTION',
+    subtitle: 'What people can hold in mind, and what they miss',
+    slidesRange: '',
     color: '#8b5cf6',
   },
   {
     id: 3,
-    title: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    subtitle: 'Predictive Mathematical Models of Movement & Decision Latency',
-    slidesRange: 'Slides 17–24',
+    title: 'ACT 3 · POINTING & CHOOSING',
+    subtitle: 'How long it takes to hit a target and to choose',
+    slidesRange: '',
     color: '#E5391C',
   },
   {
     id: 4,
-    title: 'ACT 4 — MENTAL MODELS & THE SYSTEM IMAGE',
-    subtitle: 'The Three-Part Model, The Thermostat Paradox & Metaphors',
-    slidesRange: 'Slides 25–30',
+    title: 'ACT 4 · MENTAL MODELS',
+    subtitle: 'What the user thinks the system does',
+    slidesRange: '',
     color: '#10b981',
   },
   {
     id: 5,
-    title: 'ACT 5 — INFORMATION ARCHITECTURE & WAYFINDING',
-    subtitle: 'Taxonomies, Card Sorting, Progressive Disclosure & Navigation',
-    slidesRange: 'Slides 31–35',
+    title: 'ACT 5 · YOUR COURSE PROJECT',
+    subtitle: 'Choose a broken interface and start auditing it',
+    slidesRange: '',
     color: '#d97736',
   },
   {
     id: 6,
-    title: 'ACT 6 — 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH',
-    subtitle: 'Capstone Selection, 3-Point Forensic Audit & Milestone 1 Brief',
-    slidesRange: 'Slides 36–42',
+    title: 'ACT 6 · EXAMPLE, HOMEWORK & CLOSE',
+    subtitle: 'A full class audit, what to hand in, what to remember',
+    slidesRange: '',
     color: '#059669',
   },
 ];
 
-export const SLIDES_DATA_SESSION_2: SlideData[] = [
-  // ==========================================
-  // ACT 1: THE HUMAN EYE: PERCEPTION & GESTALT (Slides 1–9)
-  // ==========================================
-  {
-    id: 1,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'Human-Computer Interaction',
-    subtitle: 'Session 02: The Human — Cognitive, Perceptual & Motor Mechanics',
-    type: 'title',
-    speakerNotes: {
-      timingMin: 5,
-      keyPoints: [
-        'Welcome students to Session 2 of Human-Computer Interaction at UM6P.',
-        'Establish institutional continuity with Session 1.',
-        'Session 2 objective: Open the human biological machine. Understand hardware limits that no software update can ever change.',
-      ],
-      spokenScriptAdvice:
-        'Good morning everyone. Welcome back to Session 2 of Human-Computer Interaction. Today, we step into the biological machine: how the human eye scans in milliseconds, how memory bottlenecks thought, and how physics governs movement across glass.',
-      classroomFacilitationTip:
-        'Project on full screen. Remind students that today ends with a 45-minute hands-on Capstone studio where they will select their term projects.',
-    },
-  },
-  {
-    id: 2,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'The Human',
-    subtitle: 'Perception · Attention · Memory · Mental Models · Cognition',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 6,
-      keyPoints: [
-        'Direct continuity from Slide 45 of Session 1.',
-        'Last week, we closed Session 1 promising to look inside the skull of the human user.',
-        'Today, we deliver on that promise: mapping biological constraints before placing another button or writing code.',
-      ],
-      spokenScriptAdvice:
-        'Notice this slide. This is the exact slide we ended Session 1 with last week. We promised that before we build another screen or debate another design choice, we would dissect the creature sitting on the other side of the glass. Today, we keep that promise.',
-      classroomFacilitationTip:
-        'Pause to let students recognize the continuity from the previous session’s concluding teaser.',
-    },
-  },
-  {
-    id: 3,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'Rapid Recall: Affordances & Signifiers in Action',
-    subtitle: 'Two Foundational Concepts from Session 1 Applied to Everyday & Digital Artifacts',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Affordance (Gibson 1977, Norman 1988): What is physically possible between actor and object.',
-        'Signifier (Norman 2013): Any perceivable indicator that communicates WHERE and HOW action should occur.',
-        'Physical example: Flat push plate (affordance: push, signifier: flat surface says push). Pull handle on a push door = conflicting signifier (Norman door!).',
-        'Digital example: Button with drop-shadow/border (signifier: clickable). Flat unstyled text with onClick handler = affordance exists in code, zero signifier in pixels.',
-      ],
-      spokenScriptAdvice:
-        'Before we look at the brain, let us do a rapid recall of the two most important concepts from Session 1: Affordances and Signifiers. Affordance is the actual possibility of action. Signifier is the perceivable clue that tells the human what to do. If a button has no signifier, the human does not click.',
-      classroomFacilitationTip:
-        'Ask two students to define affordance and signifier in their own words before advancing.',
-    },
-  },
-  {
-    id: 4,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'The Model Human Processor (MHP)',
-    subtitle: 'Card, Moran & Newell’s Engineering Specification of the Human',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'In 1983, Stuart Card, Thomas Moran, and Allen Newell formulated the Model Human Processor.',
-        'Three coupled subsystems: Perceptual Processor (~100ms cycle), Cognitive Processor (~70ms cycle), and Motor Processor (~70ms cycle).',
-        'Total reaction time is the sum of these physical biological cycles (~240ms minimum under ideal conditions).',
-      ],
-      spokenScriptAdvice:
-        'In computer science, you spend years learning clock cycles, bus speeds, and cache latency. Look at this diagram. This is the hardware specification of your user. You cannot overclock this processor. You cannot install more L1 cache. If your interface asks for 10 cognitive cycles per second, the human crashes.',
-      classroomFacilitationTip:
-        'Point to each cycle time on the slide. Emphasize that these numbers have not changed in 100,000 years of evolutionary history.',
-    },
-  },
-  {
-    id: 5,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'The Myth of Broad Vision',
-    subtitle: 'The 2° Foveal Tunnel vs Peripheral Motion Detection',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 6,
-      keyPoints: [
-        'Human vision is not a 4K camera with uniform sharpness.',
-        'Fovea centralis covers only 1° to 2° of visual arc (roughly the width of your thumbnail held at arm’s length).',
-        'Parafovea (2°–5°) has decaying acuity; Periphery (>5°) is nearly blind to color and fine text, optimized exclusively for detecting sudden motion.',
-      ],
-      spokenScriptAdvice:
-        'Hold your thumb out in front of you. Look at your thumbnail. That tiny area is the only part of your visual field capable of reading text clearly right now. Everything else is a blurry prediction filled in by your brain. So when you place an error alert in the top-right corner while the user types in the center, they literally cannot see it.',
-      classroomFacilitationTip:
-        'Have all students hold out their thumb and look at it, then notice how words just 3 inches away become unreadable without saccades.',
-    },
-  },
-  {
-    id: 6,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'Pre-Attentive Visual Processing',
-    subtitle: 'What the Visual Cortex Computes in Under 50 Milliseconds',
-    type: 'visual_story',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Pre-attentive attributes are processed in parallel by the visual cortex before conscious attention is engaged (under 50ms).',
-        'Attributes include: Color hue, size, spatial orientation, and curvature.',
-        'Text reading and semantic interpretation are serial processes requiring conscious eye saccades and cognitive cycles.',
-      ],
-      spokenScriptAdvice:
-        'Before you even realize you are looking at a screen, your low-level visual cortex has already extracted color, size, and motion. If you use pre-attentive cues properly, users find what they need instantaneously. If you rely on paragraphs of text, you force slow, serial scanning.',
-      classroomFacilitationTip:
-        'Run the live visual search challenge on the slide: have students spot the red circle versus finding a specific word in an unstyled list.',
-    },
-  },
-  {
-    id: 7,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'The Gestalt Laws of Perceptual Organization',
-    subtitle: 'How the Brain Automatically Assembles Visual Chaos into Structure',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 8,
-      keyPoints: [
-        'Formulated by Wertheimer, Koffka, and Köhler in the 1920s; essential for UI layout.',
-        'Law of Proximity: Objects placed near each other are perceived as a single functional unit.',
-        'Law of Similarity: Objects sharing visual attributes (color, shape) are assumed to have the same role.',
-        'Law of Common Region: Enclosing elements within a card or border overrides proximity.',
-        'Law of Continuity & Closure: The eye follows smooth lines and fills in missing boundaries.',
-      ],
-      spokenScriptAdvice:
-        'Your brain hates ambiguity. It is constantly grouping pixels together according to automatic geometric rules. When a form puts a label closer to the input ABOVE it than the input BELOW it, the Law of Proximity tricks the user’s brain into answering the wrong question.',
-      classroomFacilitationTip:
-        'Walk through each visual card on the slide. Ask students to spot where forms they use daily violate Proximity.',
-    },
-  },
-  {
-    id: 8,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'Live Experiment: The Gestalt Interactive Workbench',
-    subtitle: 'Transforming Data Noise into Visual Hierarchy via Perceptual Rules',
-    type: 'experiment',
-    experimentId: 'exp1',
-    speakerNotes: {
-      timingMin: 10,
-      keyPoints: [
-        'Demonstrate an unorganized, high-density industrial telemetry dashboard.',
-        'Toggle Proximity: Watch spacing group related sensors together.',
-        'Toggle Similarity: Watch color and typography differentiate critical alerts from normal readings.',
-        'Toggle Common Region: Watch container cards instantly establish visual hierarchy without adding text.',
-      ],
-      spokenScriptAdvice:
-        'Notice that we did not change a single piece of text. We did not write a new algorithm. We only applied the biological laws of visual organization. The cognitive effort required to read this dashboard dropped by over 70%.',
-      classroomFacilitationTip:
-        'Toggle the Gestalt switches one by one on the projected screen and ask the room which transformation made the biggest difference.',
-    },
-  },
-  {
-    id: 9,
-    act: 1,
-    actTitle: 'ACT 1 — THE HUMAN EYE: PERCEPTION & GESTALT',
-    title: 'Act 1 Takeaway: Visual Hierarchy is Cognitive Routing',
-    subtitle: 'Layout is not decoration; it is guiding human foveal focus',
-    type: 'summary_takeaway',
-    speakerNotes: {
-      timingMin: 4,
-      keyPoints: [
-        'Every screen has a visual hierarchy—either designed deliberately, or formed accidentally.',
-        'If everything is bold, nothing is bold. If all buttons are blue, no button is special.',
-        'Rule: Direct the fovea to the primary goal within the first 100 milliseconds.',
-      ],
-      spokenScriptAdvice:
-        'Write this down: Graphic design is what you like to look at. Visual hierarchy in HCI is where the user is forced to look. Now, let us examine where that visual information goes: the human brain.',
-      classroomFacilitationTip:
-        'Brief transition pause before moving into Act 2 (Memory and Attention).',
-    },
-  },
+const ACT_LABEL: Record<ActId, string> = Object.fromEntries(ACTS_BASE.map((a) => [a.id, a.title])) as Record<
+  ActId,
+  string
+>;
 
-  // ==========================================
-  // ACT 2: THE COGNITIVE ENGINE: MEMORY & ATTENTION (Slides 10–16)
-  // ==========================================
-  {
-    id: 10,
-    act: 2,
-    actTitle: 'ACT 2 — THE COGNITIVE ENGINE: MEMORY & ATTENTION',
-    title: 'The Working Memory Architecture',
-    subtitle: 'Baddeley’s Model: The Severe Chokepoint of Human Consciousness',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 6,
-      keyPoints: [
-        'Alan Baddeley’s Working Memory Model (1974/2000).',
-        'Central Executive allocates scarce attentional focus.',
-        'Phonological Loop processes verbal/auditory tokens; decays in 1.5–2 seconds without rehearsal.',
-        'Visuospatial Sketchpad handles spatial layouts and imagery.',
-        'Dual-coding: Multimodal interfaces (visual + audio) can expand throughput, but conflicting text and audio cause interference.',
-      ],
-      spokenScriptAdvice:
-        'Working memory is not a hard drive. It is volatile RAM with a battery life of roughly 2 seconds. When your interface forces a user to remember a code from Screen 1 while typing on Screen 2, you are asking their phonological loop to repeat the code under stress. That is where catastrophic data entry errors occur.',
-      classroomFacilitationTip:
-        'Ask students: Have you ever looked up a 6-digit SMS verification code, switched apps, and immediately forgotten the last 3 digits? That is phonological decay.',
-    },
-  },
-  {
-    id: 11,
-    act: 2,
-    actTitle: 'ACT 2 — THE COGNITIVE ENGINE: MEMORY & ATTENTION',
-    title: 'Miller’s Law vs Cowan’s Modern Reality',
-    subtitle: 'The 7±2 Myth vs The 3–4 Active Chunk Bottleneck Under Cognitive Load',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'George Miller (1956) proposed 7±2 chunks of information in working memory.',
-        'Nelson Cowan (2001) and modern neuroscience proved that without active verbal rehearsal and under stress, capacity is only 3 to 4 chunks.',
-        'Chunking: Grouping individual tokens into meaningful macro-units (e.g., telephone numbers, credit cards).',
-      ],
-      spokenScriptAdvice:
-        'For decades, developers used Miller’s "7±2" as an excuse to put 9 items in a navigation bar. But your user is not sitting in a silent laboratory. They are in a loud café, or driving a tractor, or juggling three browser tabs. Their actual working memory bandwidth is 3 or 4 chunks. Design for 4, never for 7.',
-      classroomFacilitationTip:
-        'Show an unchunked 12-digit number versus formatted chunks (3 groups of 4) to demonstrate how chunking converts 12 items into 3 items.',
-    },
-  },
-  {
-    id: 12,
-    act: 2,
-    actTitle: 'ACT 2 — THE COGNITIVE ENGINE: MEMORY & ATTENTION',
-    title: 'Sweller’s Cognitive Load Theory',
-    subtitle: 'Intrinsic, Germane, and Extraneous Cognitive Load',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'John Sweller (1988) defined three types of mental load during problem solving.',
-        'Intrinsic Load: The unavoidable mental effort required by the core task (e.g., calculating tax or diagnosing an irrigation pump).',
-        'Germane Load: Mental effort devoted to constructing schemas and learning.',
-        'Extraneous Load: Mental waste caused by poor UI, confusing navigation, deciphering bad terminology.',
-        'Total Cognitive Load = Intrinsic + Germane + Extraneous. If Total > Capacity, failure occurs.',
-      ],
-      spokenScriptAdvice:
-        'Your user has a fixed bucket of cognitive energy. As engineers, our duty is to reduce extraneous load to absolute zero so 100% of the user’s brainpower can go toward solving their actual problem.',
-      classroomFacilitationTip:
-        'Draw the "Cognitive Bucket" analogy on the chalkboard or point to the breakdown graphic on the slide.',
-    },
-  },
-  {
-    id: 13,
-    act: 2,
-    actTitle: 'ACT 2 — THE COGNITIVE ENGINE: MEMORY & ATTENTION',
-    title: 'Recognition over Recall (Nielsen Heuristic #6)',
-    subtitle: 'Why Remembering Nothing is the Ultimate Usability Metric',
-    type: 'comparison_think',
-    speakerNotes: {
-      timingMin: 6,
-      keyPoints: [
-        'Recall requires active retrieval from long-term memory with minimal cues (high cognitive effort, error-prone).',
-        'Recognition provides sensory stimuli that activate existing mental schemas (instant, effortless).',
-        'Examples: Command Line Interface (CLI) requires pure recall. Graphical User Interface (GUI) and autocomplete search provide recognition cues.',
-      ],
-      spokenScriptAdvice:
-        'Think about multiple choice questions versus a blank essay exam. Multiple choice is recognition; a blank sheet is recall. Why do people love modern search boxes? Because when you type three letters, autocomplete gives you 5 recognized candidates. Never make users remember what the computer already knows.',
-      classroomFacilitationTip:
-        'Ask the room: How many flags for the Linux "tar" command can you remember without Googling? That is the failure of pure recall.',
-    },
-  },
-  {
-    id: 14,
-    act: 2,
-    actTitle: 'ACT 2 — THE COGNITIVE ENGINE: MEMORY & ATTENTION',
-    title: 'Live Experiment: The Working Memory & Chunking Test',
-    subtitle: 'Empirical Classroom Benchmark: Unchunked vs Chunked Recall',
-    type: 'experiment',
-    experimentId: 'exp2',
-    speakerNotes: {
-      timingMin: 10,
-      keyPoints: [
-        'Run the live memory test on screen.',
-        'Condition 1: Flash a 14-digit unchunked identifier for 2.5 seconds. Ask students to recall it.',
-        'Condition 2: Flash a 14-digit chunked identifier (4-4-4-2 format) for 2.5 seconds.',
-        'Compare student accuracy rates live to demonstrate the quantifiable power of chunking.',
-      ],
-      spokenScriptAdvice:
-        'Let us test this right now. I will flash a code on screen for 2.5 seconds. Try to write it down. Then we will do the exact same length, but formatted with spatial chunks. Watch your own brains perform.',
-      classroomFacilitationTip:
-        'Execute the interactive flash widget. Have students raise hands to see the difference in accuracy.',
-    },
-  },
-  {
-    id: 15,
-    act: 2,
-    actTitle: 'ACT 2 — THE COGNITIVE ENGINE: MEMORY & ATTENTION',
-    title: 'Change Blindness & Inattention',
-    subtitle: 'Why Large Screen Changes Go Completely Unnoticed Without Motion Cues',
-    type: 'visual_story',
-    speakerNotes: {
-      timingMin: 6,
-      keyPoints: [
-        'Simons & Chabris (1999): The Invisible Gorilla experiment and selective attention.',
-        'If a visual change occurs during a saccade, page reload, or without a motion transient, the visual cortex fails to detect it.',
-        'Software consequence: Silent form errors or background data updates that do not provide subtle motion or focus management are invisible to users.',
-      ],
-      spokenScriptAdvice:
-        'If a user is focused on filling in an IBAN number, you can change the entire sidebar from blue to bright pink, and they will not see it. If your interface updates status silently without a subtle motion transient or aria-live announcement, it did not happen in the user’s universe.',
-      classroomFacilitationTip:
-        'Click the change-blindness comparison on the slide to show how easily users miss changes without motion cues.',
-    },
-  },
-  {
-    id: 16,
-    act: 2,
-    actTitle: 'ACT 2 — THE COGNITIVE ENGINE: MEMORY & ATTENTION',
-    title: 'Act 2 Takeaway: Conserve the User’s Scarce RAM',
-    subtitle: 'Every required memory token is an opportunity for catastrophic failure',
-    type: 'summary_takeaway',
-    speakerNotes: {
-      timingMin: 4,
-      keyPoints: [
-        'Working memory is strictly limited to 3–4 items under real-world cognitive load.',
-        'Recognition is orders of magnitude faster and safer than recall.',
-        'Never force users to transcribe or carry data across screens.',
-      ],
-      spokenScriptAdvice:
-        'Rule of thumb: Your user has 4 RAM slots. Use 1 for their goal, 1 for their current action, and leave 2 as buffer for their life. Next, we move from the brain to the hands: the physics of motor action.',
-      classroomFacilitationTip:
-        'Short pause before entering Act 3 (Fitts’s and Hick’s Laws).',
-    },
-  },
+interface Notes {
+  /** minutes */
+  t: number;
+  points: string[];
+  script: string;
+  tip: string;
+}
 
-  // ==========================================
-  // ACT 3: THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS (Slides 17–24)
-  // ==========================================
-  {
-    id: 17,
-    act: 3,
-    actTitle: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    title: 'Fitts’s Law: The Physics of Pointing',
-    subtitle: 'Paul Fitts (1954): Movement Time as a Function of Distance and Target Size',
-    type: 'concept_model',
+const slide = (
+  act: ActId,
+  type: SlideType,
+  content: Content,
+  n: Notes,
+  experimentId?: Slide2['experimentId'],
+): Slide2 => {
+  const h =
+    'heading' in content
+      ? content.heading
+      : content.kind === 'hero'
+        ? { title: content.title, subtitle: content.subtitle }
+        : content.kind === 'divider'
+          ? { title: content.title, subtitle: content.question }
+          : { title: '', subtitle: '' };
+  return {
+    id: 0, // assigned below from the slide order
+    act,
+    actTitle: ACT_LABEL[act],
+    title: h.title,
+    subtitle: h.subtitle,
+    type,
+    experimentId,
     speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Paul Fitts (1954) established the fundamental relationship between human motor control and target acquisition.',
-        'Movement Time (MT) depends on the ratio of Distance (D) to Target Width (W).',
-        'Applies equally to mouse pointers, fingers on capacitive glass, stylus pens, and physical cockpit controls.',
-      ],
-      spokenScriptAdvice:
-        'Do not design by aesthetic taste. Human motor movement is governed by physics. If a target is far away and tiny, hitting it is physically slow and prone to motor overshoot. Fitts’s Law gives us an exact mathematical equation to prove this.',
-      classroomFacilitationTip:
-        'Demonstrate with a finger: reaching for a large mug nearby versus threading a tiny needle far away.',
+      timingMin: n.t,
+      keyPoints: n.points,
+      spokenScriptAdvice: n.script,
+      classroomFacilitationTip: n.tip,
     },
-  },
-  {
-    id: 18,
-    act: 3,
-    actTitle: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    title: 'The Mathematics of Fitts’s Law',
-    subtitle: 'MT = a + b · log₂(2D / W) — The Shannon Formulation',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 8,
-      keyPoints: [
-        'Shannon formulation (MacKenzie, 1992): Index of Difficulty ID = log₂(2D / W) in bits.',
-        'Movement Time: MT = a + b · ID.',
-        'Empirical constants: a = start/stop baseline latency (~50–200ms); b = motor channel capacity (1/Throughput, ~100–150ms/bit).',
-        'Key insight: Doubling target size has a logarithmic effect, but doubling distance has a much smaller penalty than shrinking width.',
-      ],
-      spokenScriptAdvice:
-        'Look closely at the logarithmic term: 2D divided by W. When you cut a button size in half, the Index of Difficulty increases by a full bit. That means ~120 milliseconds of extra physical hesitation and an exponential increase in motor mis-clicks.',
-      classroomFacilitationTip:
-        'Walk through a numerical calculation on the board: compare a 48px touch target vs a 24px touch target at 300px distance.',
-    },
-  },
-  {
-    id: 19,
-    act: 3,
-    actTitle: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    title: 'The Magic of Infinite Edges & Corners',
-    subtitle: 'Why the Edges of a Screen Have an Effective Target Width (W) of Infinity',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'On desktop screens, the physical mouse cursor cannot travel past the display boundaries.',
-        'Therefore, targets docked to the edges or corners (e.g., macOS menu bar, Windows Start button) have W = ∞.',
-        'Since log₂(2D / ∞) = log₂(0) → ID drops to near zero! Edges are the fastest targets on a computer screen.',
-        'On mobile touchscreens, edges lack physical stops and become thumb-reach penalties instead.',
-      ],
-      spokenScriptAdvice:
-        'Why did Apple put the application menu bar pinned to the top of the screen instead of floating inside each window? Because when you slam the mouse upward, you cannot overshoot the screen. The top edge is infinitely deep. On desktop, corners are the most valuable real estate in the universe.',
-      classroomFacilitationTip:
-        'Move the mouse rapidly toward the top edge on the projection to show how it stops dead without needing fine motor deceleration.',
-    },
-  },
-  {
-    id: 20,
-    act: 3,
-    actTitle: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    title: 'Live Experiment: The Fitts’s Law Targeting Test',
-    subtitle: 'Live Interactive Benchmark: Measure Your Own Motor Throughput (bits/sec)',
-    type: 'experiment',
-    experimentId: 'exp3',
-    speakerNotes: {
-      timingMin: 10,
-      keyPoints: [
-        'Run the ISO 9241-9 circular target acquisition benchmark live on screen.',
-        'Students click alternating targets varying in distance (D) and width (W).',
-        'Live plotting of Movement Time vs Index of Difficulty (ID).',
-        'Observe the linear regression line and calculate the Throughput (TP = ID / MT).',
-      ],
-      spokenScriptAdvice:
-        'Let us test this live. Click the targets as quickly and accurately as possible. Watch the graph plot your actual Movement Time against the Index of Difficulty. You will see Paul Fitts’s 1954 line appear in real time before your eyes.',
-      classroomFacilitationTip:
-        'Invite a volunteer student to the lectern mouse/touchpad to run a 10-trial test, or have students open it on their laptops.',
-    },
-  },
-  {
-    id: 21,
-    act: 3,
-    actTitle: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    title: 'Hick’s Law: Decision Time & Entropy',
-    subtitle: 'William Hick (1952) & Ray Hyman (1953): Reaction Time as a Function of Choices',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 6,
-      keyPoints: [
-        'Reaction time increases logarithmically as the number of equally probable alternatives increases.',
-        'Rooted in Claude Shannon’s Information Theory: entropy of choice.',
-        'Applies to menus, navigation bars, dropdown options, and settings panels.',
-      ],
-      spokenScriptAdvice:
-        'Fitts’s Law told us how long it takes your hand to reach the button. Hick’s Law tells us how long it takes your brain to decide WHICH button to press. If you offer 32 flat options in a dropdown, you guarantee choice paralysis.',
-      classroomFacilitationTip:
-        'Contrast a restaurant menu with 120 items vs In-N-Out Burger with 3 items.',
-    },
-  },
-  {
-    id: 22,
-    act: 3,
-    actTitle: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    title: 'The Mathematics of Hick’s Law',
-    subtitle: 'RT = b · log₂(n + 1) — Binary Search in the Human Mind',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Formula: RT = a + b · log₂(n + 1), where n is the number of alternatives.',
-        'The "+ 1" accounts for the condition where no option is selected (uncertainty baseline).',
-        'Constant b ≈ 150–200ms per bit of decision entropy.',
-        'Crucial exception: Hick’s Law breaks down if options are unordered (forces linear search O(n)) or if the user is an expert with muscle memory.',
-      ],
-      spokenScriptAdvice:
-        'Why is the relationship logarithmic? Because the human brain subdivides ordered categories hierarchically—like a binary search tree. But if your list is randomly ordered, binary search fails, and the user is forced into linear O(n) scanning.',
-      classroomFacilitationTip:
-        'Show an alphabetically sorted list of 50 countries vs a randomized list of 50 countries to prove why sorting maintains log₂(n).',
-    },
-  },
-  {
-    id: 23,
-    act: 3,
-    actTitle: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    title: 'Live Experiment: The Hick’s Law Decision Arena',
-    subtitle: 'Measuring Decision Latency Across 2, 4, 8, and 16 Choices',
-    type: 'experiment',
-    experimentId: 'exp4',
-    speakerNotes: {
-      timingMin: 10,
-      keyPoints: [
-        'Run the live decision reaction time experiment.',
-        'Test conditions: 2 choices, 4 choices, 8 choices, 16 choices.',
-        'Display average reaction time curves confirming the logarithmic curve in real classroom data.',
-      ],
-      spokenScriptAdvice:
-        'Watch the reaction time counter. Notice how jumping from 2 to 4 choices adds a noticeable delay, but jumping from 8 to 16 adds a smaller incremental delay. That is the signature of logarithmic information processing.',
-      classroomFacilitationTip:
-        'Have the room call out the target numbers in real time as the experiment progresses.',
-    },
-  },
-  {
-    id: 24,
-    act: 3,
-    actTitle: 'ACT 3 — THE PHYSICS OF ACTION: FITTS’S & HICK’S LAWS',
-    title: 'Act 3 Takeaway: Calculate Physics Before Drawing Pixels',
-    subtitle: 'Do not debate button size or menu depth: calculate ID and bits of entropy',
-    type: 'summary_takeaway',
-    speakerNotes: {
-      timingMin: 4,
-      keyPoints: [
-        'Fitts’s Law governs motor movement: make frequent targets big and close; make dangerous actions distant and tiny.',
-        'Hick’s Law governs decision time: use progressive disclosure to keep n small at each decision node.',
-        'Combined, these two laws allow you to mathematically predict user task completion times before writing code.',
-      ],
-      spokenScriptAdvice:
-        'Never let a product manager tell you a button "feels too big." Pull out Fitts’s Law, show the index of difficulty in bits, and prove the motor error rate. Now, let us examine the mental models that guide these actions.',
-      classroomFacilitationTip:
-        'Transition pause before entering Act 4 (Mental Models).',
-    },
-  },
+    content,
+  };
+};
 
-  // ==========================================
-  // ACT 4: MENTAL MODELS & THE SYSTEM IMAGE (Slides 25–30)
-  // ==========================================
-  {
-    id: 25,
-    act: 4,
-    actTitle: 'ACT 4 — MENTAL MODELS & THE SYSTEM IMAGE',
-    title: 'Don Norman’s Three-Part Mental Model Triad',
-    subtitle: 'Design Model · System Image · User Mental Model',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 8,
-      keyPoints: [
-        'The Designer’s Model: The conceptual model the engineer has of the software architecture and database.',
-        'The User’s Model: The mental model the human invents to explain how the software operates.',
-        'The System Image: The physical artifact (UI, buttons, messages, manuals). This is the ONLY communication channel between designer and user.',
-        'Catastrophe occurs when the System Image fails to communicate the Design Model accurately.',
-      ],
-      spokenScriptAdvice:
-        'You cannot talk to your user. You cannot sit beside them explaining your SQL schemas. The user never sees your code. They only see the pixels, signifiers, and errors you display. That is the System Image. If the System Image is flawed, the user invents a wildly incorrect mental model.',
-      classroomFacilitationTip:
-        'Draw the triad on the whiteboard: Designer on the left, User on the right, and the System Image as the physical bridge in the middle.',
+const RAW_SLIDES: Slide2[] = [
+  // ========================================================================
+  // ACT 1 · PERCEPTION (66 min, includes the 12-minute opening)
+  // ========================================================================
+  slide(
+    1,
+    'title',
+    {
+      kind: 'hero',
+      sessionLabel: 'SESSION 02',
+      pill: 'Master Course · Human-Centered Systems',
+      title: 'The Human',
+      subtitle: 'Perception · Attention · Memory · Mental Models · Cognition',
+      cta: 'Begin Session 2',
     },
-  },
-  {
-    id: 26,
-    act: 4,
-    actTitle: 'ACT 4 — MENTAL MODELS & THE SYSTEM IMAGE',
-    title: 'The Thermostat Fallacy (Kempton, 1986)',
-    subtitle: 'Feedback Theory vs Valve Theory: When Users Misunderstand Everyday Systems',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Willett Kempton’s landmark ethnographic study of residential thermostats.',
-        'The Feedback Model (How it works): The thermostat is an on/off switch with a thermometer sensor. Setting it to 30°C heats at the exact same rate as setting it to 22°C.',
-        'The Valve Model (What users believe): Users treat the thermostat like an accelerator pedal, cranking it to 35°C believing it heats up "faster".',
-        'Result: Overheating, wasted energy, and broken user expectations because the UI (a simple dial) signposts an accelerator valve rather than a threshold sensor.',
+    {
+      t: 2,
+      points: [
+        'This is the Session 1 teaser made real: “The Human”.',
+        'Session 1 asked why interfaces fail. Session 2 explains it with how people really see, remember, move and think.',
+        'Today ends with a studio: pairs pick one of 10 broken interfaces and audit it.',
       ],
-      spokenScriptAdvice:
-        'How many of you have cranked an air conditioner down to 16°C because the room was hot, believing it would cool down faster? That is the Valve mental model. The compressor only has one speed! But because the dial looks like a gas pedal, humans naturally project a valve model onto an on/off threshold switch.',
-      classroomFacilitationTip:
-        'Ask how many in the room believe setting the heat to max makes the room warm up faster, then explain the feedback loop.',
+      script:
+        'Last week you felt bad design. Today we learn why it feels bad: how people see, remember, point and understand. At the end you pick a broken interface and put today’s ideas to work.',
+      tip: 'Start on time. Mention that the last part of the session is theirs.',
     },
-  },
-  {
-    id: 27,
-    act: 4,
-    actTitle: 'ACT 4 — MENTAL MODELS & THE SYSTEM IMAGE',
-    title: 'Skeuomorphism vs Flat Design vs Neumorphism',
-    subtitle: 'The Evolution of Digital Signifiers and Borrowed Physical Mental Models',
-    type: 'comparison_think',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Skeuomorphism (1984–2012): Borrowing real-world physical textures (leather stitching, wooden bookshelves, glossy glass) to scaffold digital signifiers for novice users.',
-        'Flat Design (2013–2019): Stripping all physical metaphors. Risk: Removed essential signifiers (buttons looked identical to inert text, causing click confusion).',
-        'Modern Intentional Design (2020+): Clean digital typography combined with subtle depth, shadows, and tactile micro-interactions that restore affordance signifiers without visual clutter.',
+  ),
+  slide(
+    1,
+    'question',
+    {
+      kind: 'quiz',
+      heading: {
+        title: 'Session 1 Recall: Part 1',
+        subtitle: 'Affordances, signifiers and the Norman door',
+        badge: { icon: 'brain', label: 'Retrieval practice', value: '4 minutes' },
+      },
+      items: [
+        {
+          q: 'What is an affordance?',
+          a: 'What an object **allows** you to do, given its physical properties. A flat plate affords pushing; a knob affords turning.',
+        },
+        {
+          q: 'What is a signifier? How does it differ?',
+          a: 'A **cue that tells you** where and how to act: the word “PUSH”, a shadow under a button. The affordance is possible; the signifier makes it **visible**.',
+        },
+        {
+          q: 'Why does a Norman door fail?',
+          a: 'Its signifier **contradicts** its affordance: a pull handle on a push door. People blame themselves, but the **design** caused the error.',
+        },
       ],
-      spokenScriptAdvice:
-        'In 2007, the iPhone needed skeuomorphism because humans had never touched glass to operate a computer. The notepad had yellow lined paper and torn margins so users instantly understood "this is for notes." Once the mental model was internalized, design swung too far into flat minimalism—and users lost their signifiers.',
-      classroomFacilitationTip:
-        'Show the iOS 6 Notes app vs iOS 7 Notes app to illustrate the dramatic swing in visual signifiers.',
     },
-  },
-  {
-    id: 28,
-    act: 4,
-    actTitle: 'ACT 4 — MENTAL MODELS & THE SYSTEM IMAGE',
-    title: 'Conceptual Metaphors: Desktop, Shopping Cart & Beyond',
-    subtitle: 'How Anchoring to Pre-Existing Real-World Schemas Accelerates Onboarding',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Lakoff & Johnson (1980): "Metaphors We Live By".',
-        'Desktop Metaphor (Xerox PARC, 1970s): Files, folders, trash cans, windows.',
-        'E-commerce Metaphor: Shopping cart, checkout counter, receipt.',
-        'Danger of Metaphor: Metaphors break down when digital superpowers exceed physical bounds (e.g., search vs filing cabinets, infinite undo).',
+    {
+      t: 4,
+      points: [
+        'Affordance (Gibson, Norman): what the object allows. Signifier (Norman, 2013): the visible cue that communicates it.',
+        'These two words, plus the gulfs and feedback on the next slide, come back in every session: make sure the whole room owns them.',
+        'The Norman door is the shortest example of design-caused error: the person is not the problem.',
       ],
-      spokenScriptAdvice:
-        'When Xerox PARC invented the GUI, they needed people who had never touched a computer to understand files in memory. They named them "folders," put them on a "desktop," and created a "trash can." But remember: a metaphor is a scaffolding, not a prison. Don’t force physical limitations onto software.',
-      classroomFacilitationTip:
-        'Ask: Why does dragging a floppy disk icon into the Trash can eject the disk? Discuss how the metaphor became dangerous.',
+      script:
+        'Thirty seconds alone, no phones. Then agree with your neighbour. These ideas are the vocabulary of the whole course: if affordance and signifier are fuzzy, everything today will be fuzzy.',
+      tip: 'Cold-call pairs. Ask for a real door they have struggled with, then reveal the answer.',
     },
-  },
-  {
-    id: 29,
-    act: 4,
-    actTitle: 'ACT 4 — MENTAL MODELS & THE SYSTEM IMAGE',
-    title: 'Live Experiment: The Mental Model Simulator',
-    subtitle: 'Diagnosing the Mismatch Between Mental Model, System Image, and Reality',
-    type: 'experiment',
-    experimentId: 'exp5',
-    speakerNotes: {
-      timingMin: 10,
-      keyPoints: [
-        'Interactive simulation of an automated industrial irrigation valve system at UM6P Benguerir campus.',
-        'Condition 1: Broken System Image (exposes raw solenoid relay IDs; user creates false valve mental model; pump overheats).',
-        'Condition 2: Aligned System Image (shows feedback loop with real-time pressure sensor and target threshold).',
+  ),
+  slide(
+    1,
+    'question',
+    {
+      kind: 'quiz',
+      heading: {
+        title: 'Session 1 Recall: Part 2',
+        subtitle: 'Gulfs, feedback, usability and the user',
+        badge: { icon: 'brain', label: 'Retrieval practice', value: '4 minutes' },
+      },
+      items: [
+        {
+          q: 'What are the two gulfs, and what closes each?',
+          a: '**Execution** (how do I do it?) is closed by signifiers. **Evaluation** (what happened?) is closed by **feedback**.',
+        },
+        {
+          q: 'ISO 9241-11: which three components define usability?',
+          a: '**Effectiveness**, **efficiency** and **satisfaction**, for a given user and context.',
+        },
+        {
+          q: 'What does “You are not the user” mean?',
+          a: 'You know the system; users bring different goals, abilities and **context**. So **observe and measure** users, never assume.',
+        },
       ],
-      spokenScriptAdvice:
-        'Watch what happens when an operator is given a valve control with delayed feedback. They over-correct, pump pressure spikes, and the system trips an emergency shutoff. When we redesign the System Image to show real-time sensor feedback, error rates drop to zero.',
-      classroomFacilitationTip:
-        'Run the simulation with the "Broken System Image" first, let it fail, then switch to "Aligned System Image".',
     },
-  },
-  {
-    id: 30,
-    act: 4,
-    actTitle: 'ACT 4 — MENTAL MODELS & THE SYSTEM IMAGE',
-    title: 'Act 4 Takeaway: Bridge the Gulf of Execution via System Images',
-    subtitle: 'The user will create a mental model whether you help them or not',
-    type: 'summary_takeaway',
-    speakerNotes: {
-      timingMin: 4,
-      keyPoints: [
-        'A user will ALWAYS invent a story to explain system behavior.',
-        'If you provide clear, immediate, unambiguous feedback, their story matches reality.',
-        'If your feedback is silent or misleading, their story becomes superstition and error.',
+    {
+      t: 4,
+      points: [
+        'Execution: can I figure out how to act? Evaluation: can I tell what happened? Feedback is the signifier of the result.',
+        'ISO 9241-11 frames usability as effectiveness, efficiency and satisfaction for specified users, goals and context.',
+        'Today gives numbers and rules to these ideas: how fast people see, remember and move.',
       ],
-      spokenScriptAdvice:
-        'If you give users no feedback, they will click the submit button five times, reload the page, and file a complaint. The System Image is your voice. Make sure it speaks clearly.',
-      classroomFacilitationTip:
-        'Transition into Act 5 (Information Architecture).',
+      script:
+        'Second round. The gulf of evaluation is the one we under-design: a button that works but shows nothing leaves the user guessing. Today we see how long that guessing takes.',
+      tip: 'Link each answer forward: gulf of execution to pointing and choosing, gulf of evaluation to feedback speed.',
     },
-  },
+  ),
+  slide(
+    1,
+    'course_roadmap',
+    {
+      kind: 'agenda',
+      heading: { title: 'What You Will Be Able to Do', subtitle: 'By the end of today' },
+      outcomes: [
+        { icon: 'eye', title: 'Explain', text: 'Say why a screen is hard to read, to remember, or to use.' },
+        { icon: 'gauge', title: 'Predict', text: 'Judge which of two designs people will find faster and easier.' },
+        { icon: 'users', title: 'Apply', text: 'Audit a real broken interface with your partner and start fixing it.' },
+      ],
+      note: 'Today builds on four Session 1 ideas: affordance, signifier, the gulfs and feedback.',
+    },
+    {
+      t: 2,
+      points: [
+        'Three verbs: explain, predict, apply.',
+        'Everything today ends in a practical rule you can use on your own project.',
+        'The last part of the session is yours: pairs choose a broken interface and audit it.',
+      ],
+      script:
+        'Three outcomes. By the end you will explain, predict and apply. Everything we do sits on the four ideas you just recalled.',
+      tip: 'Keep this slide short: the outcomes matter more than any agenda.',
+    },
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'divider',
+      actNumber: 1,
+      title: 'Perception',
+      question: 'How do people take in what is on a screen?',
+      learn: [
+        'How quickly a person reacts: about a quarter of a second',
+        'What the eye sees sharply, and what jumps out',
+        'How your layout decides where people look first',
+      ],
+    },
+    {
+      t: 1,
+      points: ['Announce the act: perception comes first because nothing else happens until a person has noticed something.'],
+      script: 'First question of the day: how do people take in a screen at all?',
+      tip: 'Pause for a breath: dividers mark the switch of topic.',
+    },
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'flow',
+      heading: {
+        title: 'The Human as a Processor',
+        subtitle: 'Everything you do on a screen passes three stages',
+        badge: { icon: 'activity', label: 'Total loop', value: '≈ 240 ms' },
+      },
+      flowTitle: 'Perceive, Decide, Act',
+      flowHint: 'Click a stage to see what it means for design',
+      nodes: [
+        {
+          tag: 'STAGE 01',
+          chip: '≈ 100 ms',
+          name: 'Perceive',
+          blurb: 'Eyes and ears capture the signal',
+          arrow: 'Signal',
+          detailTitle: 'Can the user even notice it?',
+          detailRange: 'Studied in Act 1',
+          detail: 'A cue that is too small, too faint or outside the sharp centre of vision never reaches the next stage.',
+        },
+        {
+          tag: 'STAGE 02',
+          chip: '≈ 70 ms',
+          name: 'Decide',
+          blurb: 'Memory and attention pick a response',
+          arrow: 'Choice',
+          detailTitle: 'How hard is the choice?',
+          detailRange: 'Acts 2 and 3',
+          detail: 'Many options, unfamiliar patterns or a full memory slow this stage down.',
+        },
+        {
+          tag: 'STAGE 03',
+          chip: '≈ 70 ms',
+          name: 'Act',
+          blurb: 'The hand carries out the move',
+          detailTitle: 'How far and how big is the target?',
+          detailRange: 'Act 3',
+          detail: 'Movement time depends on how far the target is and how big it is.',
+        },
+      ],
+      source: 'SOURCE: Card, Moran & Newell (1983) · middle estimates',
+      sourceNote: 'A button turns red: perceive, decide, click',
+    },
+    {
+      t: 4,
+      points: [
+        'Treat the person as a system with three stages: perceive, decide, act.',
+        'Middle estimates: about 100 + 70 + 70 = 240 ms for one loop. These are ranges: stress, fatigue and practice move them.',
+        'This slide is also the map of the session: Act 1 perceiving, Acts 2 and 3 deciding and acting, Act 4 the picture the decision runs on.',
+      ],
+      script:
+        'Every click you will ever design starts with a person who perceives something, decides what it means, then moves. Each stage has a cost and can fail. That is our map for today. Next, we measure the loop on a real person.',
+      tip: 'Click each stage and ask: what would break this stage in a hospital ward or on a sunny farm?',
+    },
+  ),
+  slide(
+    1,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: Your Reaction Time',
+        subtitle: 'Measure the loop on a volunteer',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Volunteer-run' },
+      },
+      component: 'ReactionDemo',
+    },
+    {
+      t: 4,
+      points: [
+        'Simple mode: click the moment the circle turns green. Expect a time near the loop total plus some device lag.',
+        'Choice mode: the volunteer must decide which colour it is. Expect a slower time.',
+        'Aha: the extra time is the decide stage doing real work. Nothing else changed.',
+      ],
+      script:
+        'Before we start: how long do you think it takes you to react to a green light? Now let us measure. Then we add one thing: a choice. Watch what happens to the number.',
+      tip: 'Ask 2 or 3 volunteers per mode; the class predicts first. Compare modes, not absolute values: the browser adds lag.',
+    },
+    'exp6',
+  ),
+  slide(
+    1,
+    'visual_story',
+    {
+      kind: 'stats',
+      heading: {
+        title: 'How Long Is Too Long?',
+        subtitle: 'Three time limits for any screen',
+        badge: { icon: 'clock', label: 'Rule of thumb', value: '0.1 · 1 · 10 s' },
+      },
+      stats: [
+        { value: '0.1', unit: 's', label: 'Feels instant', text: 'The user sees cause and effect as **one event**.', tone: 'good' },
+        { value: '1', unit: 's', label: 'Still feels smooth', text: 'The delay is noticed, but the user keeps their **train of thought**.', tone: 'warn' },
+        { value: '10', unit: 's', label: 'People give up', text: 'The user **switches away**. Show progress, or let them do something else meanwhile.', tone: 'accent' },
+      ],
+      note: 'Give feedback within 0.1 second so the screen feels instant.',
+    },
+    {
+      t: 3,
+      points: [
+        'The three limits go back to Miller (1968) and were popularised by Nielsen.',
+        'Aha from the demo: the reaction time you just measured is the floor under every one of these limits.',
+        'Ask: where in your daily apps do you hit the 10-second limit?',
+      ],
+      script:
+        'Three numbers to remember: a tenth of a second feels instant, a second keeps your thinking intact, ten seconds is where you give up and open another tab.',
+      tip: 'Quick poll by show of hands: who has abandoned a page that took too long?',
+    },
+  ),
+  slide(
+    1,
+    'visual_story',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'The Sharp Centre of Your Vision',
+        subtitle: 'Only a thumbnail-sized spot is sharp',
+        badge: { icon: 'eye', label: 'Sharp vision', value: 'Thumbnail-sized' },
+      },
+      component: 'FovealVision',
+    },
+    {
+      t: 4,
+      points: [
+        'Only about 2° of the visual field is sharp, roughly a thumbnail at arm’s length (the fovea).',
+        'The eye jumps about three times a second and sees almost nothing during each jump.',
+        'The edges of vision detect motion and colour but cannot read.',
+      ],
+      script:
+        'You feel like you see the whole screen. You do not. Hold your thumb at arm’s length: that is your sharp window. Everything else is a rough sketch your brain fills in.',
+      tip: 'Have the whole room do the thumbnail test, then move the buttons so they see what the edges of vision lose.',
+    },
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'compare',
+      heading: {
+        title: 'What Jumps Out',
+        subtitle: 'Some things are seen instantly, others must be searched',
+        badge: { icon: 'zap', label: 'Speed', value: '≈ 0.2 s' },
+      },
+      left: {
+        tone: 'neutral',
+        title: 'Searching',
+        visual: 'serialScan',
+        tag: 'One item at a time',
+        body: 'You look at items **one by one** until you find the target. More items take more time.',
+        example: '**Example:** finding one word in a paragraph.',
+        footer: 'Slow and tiring',
+      },
+      right: {
+        tone: 'accent',
+        title: 'Jumping out',
+        visual: 'popOut',
+        tag: 'Seen instantly',
+        body: 'Some differences are noticed **across the whole screen at once**: this is called pre-attentive.',
+        example: '**What jumps out:** colour, size, direction, motion.',
+        footer: 'Fast and automatic',
+      },
+      takeaway: 'Use one strong difference for what matters most: a red error, an unread badge.',
+    },
+    {
+      t: 3,
+      points: [
+        'Pre-attentive features are detected across the whole visual field in about 200 ms, before attention is directed (Treisman).',
+        'Everything else needs searching: one item after another.',
+        'Design consequence: one strong feature can route attention without the user choosing to look. Next, see it for yourselves.',
+      ],
+      script:
+        'There are two ways the eye finds things. One is like reading: item by item. The other is like a red dot on a grey wall: it just appears. Some differences get the second treatment for free. Let us test which is which.',
+      tip: 'Ask: which of your phone’s notifications grabs you without you choosing to look, and why?',
+    },
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: Find the Red Circle',
+        subtitle: 'One difference against two differences',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Class experiment' },
+      },
+      component: 'PreAttentiveSearch',
+    },
+    {
+      t: 4,
+      points: [
+        'Before clicking, ask the class to predict: will 120 items be slower than 20 on the left? On the right?',
+        'Raise a hand the moment you see the red circle; compare left and right at 20, then at 120.',
+        'Leave the interpretation for the next slide: first let them feel the difference.',
+      ],
+      script:
+        'Find the red circle as fast as you can. Raise your hand as soon as you see it. Left first, then right. Now more circles. Notice which side slows down.',
+      tip: 'Use the New round button to repeat with a different position so nobody can anticipate.',
+    },
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'rules',
+      heading: { title: 'What the Demo Showed', subtitle: 'Jumping out is free; searching is not' },
+      rules: [
+        {
+          title: 'One difference jumps out',
+          text: 'A red circle among grey ones is found at once, **however many** circles there are.',
+          evidence: 'Time stays the same',
+        },
+        {
+          title: 'Two differences do not',
+          text: 'Red **and** round among red squares and grey circles: you search **one by one**.',
+          evidence: 'Time grows with items',
+        },
+        {
+          title: 'Jumping out is limited',
+          text: 'If **everything** is highlighted, nothing jumps out. Use it for one thing per screen.',
+          evidence: 'One highlight per screen',
+        },
+      ],
+      takeaway: 'Colour, size or motion can steer attention: decide which one element deserves it.',
+    },
+    {
+      t: 2,
+      points: [
+        'Result: one-difference search is flat across the number of items; two-difference search grows with it.',
+        'The practical rule is scarcity: one highlight per screen. Red everywhere means red nowhere.',
+        'Ask students for a screen they use where everything is highlighted.',
+      ],
+      script:
+        'Left: no matter how many grey circles, the red one jumped out. Right: you were searching. That difference is a budget. Spend it on one thing.',
+      tip: 'Show the demo slide again for 10 seconds if someone disputes the result: it is faster than arguing.',
+    },
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Gestalt: How We Group Things',
+        subtitle: 'Close, alike or boxed together looks like one group',
+      },
+      component: 'GestaltCards1',
+    },
+    {
+      t: 3,
+      points: [
+        'Gestalt is German for “shape” or “whole”: the brain groups elements automatically, before conscious thought.',
+        'Closeness: near things belong together. Likeness: alike things belong together. Same region: things in a box belong together.',
+        'Grouping is cheaper than labels: space and regions cost no reading.',
+      ],
+      script:
+        'Nobody taught you to see three clusters here. Your visual system does it for free. Our job as designers is to use that free grouping on purpose, not by accident.',
+      tip: 'Ask where they have seen each in the apps open on their laptops right now.',
+    },
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Gestalt: How We Complete Things',
+        subtitle: 'We follow lines, fill gaps and split object from background',
+      },
+      component: 'GestaltCards2',
+    },
+    {
+      t: 2,
+      points: [
+        'Continuity: the eye follows smooth paths. Closure: we complete incomplete shapes. Figure-ground: we split a scene into object and background.',
+        'UI uses: progress lines, loading placeholders, modals over dimmed backdrops.',
+      ],
+      script:
+        'Three more habits of the brain, all about filling in what is missing. A dimmed backdrop works because we instantly separate the object from the ground.',
+      tip: 'Keep this brisk: the demo that follows is where the ideas become concrete.',
+    },
+  ),
+  slide(
+    1,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: From Noise to Structure',
+        subtitle: 'One form, four grouping moves',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Presenter-run' },
+      },
+      component: 'GestaltWorkbenchDemo',
+    },
+    {
+      t: 4,
+      points: [
+        'Step through the form: raw, closeness, same region, likeness, ranking.',
+        'Before each step ask: what will the eye see now? Then click.',
+        'Point out the groups the eye sees going from 1 to 3 without adding a single word.',
+      ],
+      script:
+        'Same nine fields. Same words. Watch what happens when we change only spacing, then boxes, then colour. No new information, yet the form becomes readable.',
+      tip: 'Pause after each click and ask a student which grouping habit just changed the form.',
+    },
+    'exp1',
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'rules',
+      heading: { title: 'Gestalt in Practice', subtitle: 'Three habits for every screen' },
+      rules: [
+        {
+          title: 'Group with space first',
+          text: 'Put related things close together and leave a clear gap between groups.',
+          evidence: 'Closer = same group',
+        },
+        {
+          title: 'Same job, same look',
+          text: 'Buttons, links and labels that do the same thing should look the same everywhere.',
+          evidence: 'Alike = same job',
+        },
+        {
+          title: 'Box only if needed',
+          text: 'Add a border or card only when space alone does not make the groups clear.',
+          evidence: 'Boxes are a last resort',
+        },
+      ],
+      takeaway: 'Show the structure with space and style, so people do not have to read to see it.',
+    },
+    {
+      t: 2,
+      points: [
+        'This is the practical result of the demo: the form was fixed with spacing, regions and consistent styles, not with extra text.',
+        'Reusable checklist for the studio: are related things close? Do alike things look alike?',
+      ],
+      script:
+        'Three habits you can apply to any screen starting tonight. Notice that none of them needs a single extra word.',
+      tip: 'Ask one student to name a screen where a group looks ungrouped.',
+    },
+  ),
+  slide(
+    1,
+    'comparison_think',
+    {
+      kind: 'compare',
+      heading: {
+        title: 'Layout Steers Attention',
+        subtitle: 'Where the eye lands first is a design choice',
+        badge: { icon: 'route', label: 'Scan path', value: 'Rank to steer' },
+      },
+      left: {
+        tone: 'warn',
+        title: 'No ranking',
+        visual: 'wireFlat',
+        tag: 'Everything equal',
+        body: 'Every element looks equally important. The eye has **no starting point** and wanders.',
+        example: '**Result:** first looks land anywhere; the main action can be missed.',
+        footer: 'Attention is spread',
+      },
+      right: {
+        tone: 'good',
+        title: 'Clear ranking',
+        visual: 'wireRanked',
+        tag: 'One starting point',
+        body: 'Size, contrast and position rank the elements. The eye **starts at the most important** one.',
+        example: '**Result:** a clear path; the main action is seen first.',
+        footer: 'Attention is steered',
+      },
+      takeaway: 'The sharp spot, what jumps out and grouping work together: your layout decides what is seen first.',
+    },
+    {
+      t: 4,
+      points: [
+        'The whole Perception act converges here: the sharp spot is tiny, some things pull it, grouping tells it what belongs together. Layout orchestrates all three.',
+        'A ranking gives the eye an entry point and a path.',
+        'Ask the class what they would look at first on a page with no ranking. Then test it on them.',
+      ],
+      script:
+        'Put the three ideas together. The sharp window is tiny. Some things pull it. Groups tell it what belongs together. The layout is the director: it decides where that window goes first, second and third. Let us test it on you.',
+      tip: 'Do not reveal the outcome. Ask for a hand-raise prediction: which layout will concentrate first looks more?',
+    },
+  ),
+  slide(
+    1,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: Where Do You Look First?',
+        subtitle: 'Same content, two layouts, five seconds each',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Class experiment' },
+      },
+      component: 'LayoutRoutingDemo',
+    },
+    {
+      t: 5,
+      points: [
+        'Show Layout A for 5 seconds. Students silently note the first element they looked at.',
+        'Tap the votes per region, then repeat with Layout B.',
+        'Compare the most-chosen share: a higher share means a stronger starting point.',
+      ],
+      script:
+        'Five seconds. Do not decide in advance. Just look at the page and remember the first thing your eyes went to. Now vote: who looked at the logo first? The menu? The headline?',
+      tip: 'Ask students to commit mentally before voting. If the room splits evenly on A and concentrates on B, point at the layout, not the students.',
+    },
+  ),
+  slide(
+    1,
+    'concept_model',
+    {
+      kind: 'table',
+      heading: { title: 'Five Ways to Rank What People See', subtitle: 'Visual hierarchy: what is seen first, second, third' },
+      heads: ['TOOL', 'EFFECT', 'HOW IT STEERS THE EYE'],
+      rows: [
+        { a: 'Size', b: 'Big first', c: 'The largest element is seen first: headline before body text.' },
+        { a: 'Contrast & colour', b: 'Jumps out', c: 'A distinct colour or strong contrast attracts the eye (one per screen).' },
+        { a: 'Position', b: 'Start point', c: 'Scanning starts top-left in left-to-right scripts and top-right in Arabic.' },
+        { a: 'Space', b: 'Groups', c: 'Whitespace separates groups and isolates what deserves attention.' },
+        { a: 'Weight', b: 'Emphasis', c: 'Bold or heavy type signals importance within a group.' },
+      ],
+      footer: 'Rank every element on the screen: the top rank gets the first look.',
+    },
+    {
+      t: 3,
+      points: [
+        'Five tools explain the demo result: the ranked layout used size, contrast, space and weight to concentrate first looks.',
+        'Reading direction matters: in Arabic (right-to-left) interfaces the natural start point mirrors.',
+        'The studio audit asks: where does the eye go first on your project, and is it the right place?',
+      ],
+      script:
+        'Layout B was not prettier. It ranked its elements with five tools. Whenever you design a screen, rank it: what is first, second, third? Then check your tools say the same thing.',
+      tip: 'Ask students to rank the main elements of their favourite app’s home screen in 30 seconds.',
+    },
+  ),
+  slide(
+    1,
+    'summary_takeaway',
+    {
+      kind: 'takeaway',
+      heading: { title: 'Perception in One Sentence', subtitle: 'What the eye and mind do with your screen' },
+      statement:
+        'People see a screen in **about a quarter of a second**, sharply only in a **thumbnail-sized spot**, and they follow whatever your layout **shows them first**.',
+      points: [
+        { lead: 'Rank', text: 'Give **one** element the strongest signal: it gets the first look.' },
+        { lead: 'Group', text: 'Use **space and regions** so related things read as one.' },
+        { lead: 'Be quick', text: 'Respond within **0.1 s** and keep cues inside the sharp centre.' },
+      ],
+      next: 'Memory: how much can a person hold in mind?',
+    },
+    {
+      t: 1,
+      points: [
+        'Perception limits what users can take in; layout decides what they take in first.',
+        'Three rules: rank, group, be quick.',
+      ],
+      script:
+        'Layout is not decoration. It steers a thumbnail-sized spotlight across the screen. Next: what that spotlight can hold on to once it has found something.',
+      tip: 'Invite one student to restate the takeaway in their own words.',
+    },
+  ),
 
-  // ==========================================
-  // ACT 5: INFORMATION ARCHITECTURE & WAYFINDING (Slides 31–35)
-  // ==========================================
-  {
-    id: 31,
-    act: 5,
-    actTitle: 'ACT 5 — INFORMATION ARCHITECTURE & WAYFINDING',
-    title: 'Information Architecture & Mental Categorization',
-    subtitle: 'Richard Saul Wurman (1976): Organizing Information So Humans Can Navigate',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 6,
-      keyPoints: [
-        'Information Architecture (IA) is the structural design of shared information environments.',
-        'The LATCH framework (Wurman): Location, Alphabet, Time, Category, Hierarchy.',
-        'Taxonomies vs Folksonomies: Controlled vocabularies vs user-generated tagging.',
+  // ========================================================================
+  // ACT 2 · MEMORY & ATTENTION (37 min)
+  // ========================================================================
+  slide(
+    2,
+    'concept_model',
+    {
+      kind: 'divider',
+      actNumber: 2,
+      title: 'Memory and Attention',
+      question: 'How much can a person hold in mind at once?',
+      learn: [
+        'Working memory is small: about 4 things at a time',
+        'Grouping (chunking) makes information easier to hold',
+        'People miss changes they are not looking at',
       ],
-      spokenScriptAdvice:
-        'Wurman said: Information is not knowledge, and data is not information. You can have millions of rows in PostgreSQL, but if your categorization doesn’t match how humans think about their problems, the system is functionally useless.',
-      classroomFacilitationTip:
-        'Ask how they would organize a library: by book color? By publication date? By author? Highlight how organization depends on task.',
     },
-  },
-  {
-    id: 32,
-    act: 5,
-    actTitle: 'ACT 5 — INFORMATION ARCHITECTURE & WAYFINDING',
-    title: 'Card Sorting: Open vs Closed Methodologies',
-    subtitle: 'The Gold Standard Empirical Method to Uncover User Mental Taxonomies',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Open Card Sorting: Participants group content cards into piles and label the categories themselves (generative; discovers user mental models).',
-        'Closed Card Sorting: Participants sort cards into predetermined categories (evaluative; tests if existing navigation works).',
-        'Quantitative analysis: Similarity matrix, dendrogram cluster analysis.',
+    {
+      t: 1,
+      points: ['Announce the act: perception got information in; now, how much can the person keep?'],
+      script: 'Next question: once something is noticed, how much can a person keep in mind?',
+      tip: 'Pause: this is a topic switch.',
+    },
+  ),
+  slide(
+    2,
+    'concept_model',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Your Working Memory',
+        subtitle: 'A small workspace in your head',
+        badge: { icon: 'brain', label: 'Holds about', value: '4 chunks' },
+      },
+      component: 'BaddeleyModel',
+    },
+    {
+      t: 4,
+      points: [
+        'Working memory is the small workspace where you hold information for a few seconds (Baddeley and Hitch).',
+        'It has parts: an attention manager, an inner voice (words and sounds, about 2 seconds unless repeated), an inner eye (pictures and layout) and a memory link to what you already know.',
+        'Design consequence: reading text while someone talks overloads the inner voice; icons and layout use the inner eye.',
       ],
-      spokenScriptAdvice:
-        'Never sit in a conference room with five engineers arguing what to name navigation tabs. Conduct a card sort. Give 30 users 50 index cards with features written on them. Let THEM cluster them. The clusters reveal their true mental models.',
-      classroomFacilitationTip:
-        'Show an example similarity matrix dendrogram to demonstrate how data science is applied to UI navigation.',
+      script:
+        'Think of a tiny desk with three trays. If you talk over a slide full of text, both land in the same tray. Spread information across channels, not into one.',
+      tip: 'Click each box and ask which of their own slides or apps overload that channel.',
     },
-  },
-  {
-    id: 33,
-    act: 5,
-    actTitle: 'ACT 5 — INFORMATION ARCHITECTURE & WAYFINDING',
-    title: 'Progressive Disclosure: Managing Cognitive Density',
-    subtitle: 'Show Only What is Necessary Now; Defer What is Needed Later',
-    type: 'comparison_think',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Progressive Disclosure (Jakob Nielsen): Deferring advanced features to secondary screens to avoid overwhelming novice users.',
-        'Level 1: Essential frequent actions (clean, minimal, low cognitive load).',
-        'Level 2: Advanced configurations revealed on demand (accordions, "Advanced Settings" modals).',
-        'Applies Hick’s Law: Keeps initial decision entropy (n) small.',
+  ),
+  slide(
+    2,
+    'comparison_think',
+    {
+      kind: 'compare',
+      heading: { title: 'Chunks: Group to Remember', subtitle: 'A chunk is one meaningful unit' },
+      left: {
+        tone: 'warn',
+        title: '8 loose digits',
+        tag: 'No groups',
+        body: 'Eight separate digits: **48291357**. Each digit is one thing to hold.',
+        example: '**Result:** most people lose some digits.',
+        footer: 'Too many things at once',
+      },
+      right: {
+        tone: 'good',
+        title: '3 chunks',
+        tag: 'Grouped',
+        body: 'The same digits in groups: **482 · 913 · 57**. Each group is one unit.',
+        example: '**Result:** much easier to hold.',
+        footer: 'Same digits, less to hold',
+      },
+      takeaway: 'Working memory holds about 4 chunks, so group long numbers and codes.',
+    },
+    {
+      t: 4,
+      points: [
+        'Miller (1956) is remembered for 7±2; Cowan (2001) showed that when rehearsal and grouping are controlled, the figure is about 4.',
+        'What counts is the chunk: a unit the person already knows.',
+        'Do not reveal that a test is coming: the next slide works best as a surprise.',
       ],
-      spokenScriptAdvice:
-        'When an engineer designs a screen, their instinct is to put every database column on the front page. Progressive disclosure saves the user: show the 20% of functions that handle 80% of daily use. Let the remaining 80% hide behind clear signifiers.',
-      classroomFacilitationTip:
-        'Demonstrate with Google Search: a clean input box on the front page, while complex boolean search operators exist under Advanced Settings.',
+      script:
+        'Same digits, different grouping. It is not about cleverness: it is about how many units you hold. Next, you will prove it on yourselves.',
+      tip: 'Do not mention the digit test yet.',
     },
-  },
-  {
-    id: 34,
-    act: 5,
-    actTitle: 'ACT 5 — INFORMATION ARCHITECTURE & WAYFINDING',
-    title: 'Digital Wayfinding & Scent of Information',
-    subtitle: 'Kevin Lynch & Peter Pirolli: How Humans Forage for Information Like Animals',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Information Foraging Theory (Pirolli & Card, 1999): Users follow "information scent" (cues that hint at target value).',
-        'Wayfinding essentials (Kevin Lynch): Landmarks, Paths, Nodes, Edges, Districts.',
-        'Breadcrumbs, persistent header hierarchies, and active state indicators preserve spatial orientation.',
+  ),
+  slide(
+    2,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: The Digit Test',
+        subtitle: 'Same 8 digits, two formats',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Class experiment' },
+      },
+      component: 'ChunkingDemo',
+    },
+    {
+      t: 5,
+      points: [
+        'Round A: 8 digits unbroken, 5 seconds. Students write what they remember.',
+        'Round B: 8 new digits in groups of 3-3-2, 5 seconds.',
+        'Tap the tally for students who recalled the string perfectly; compare the bars.',
       ],
-      spokenScriptAdvice:
-        'When an animal searches for food in a forest, it sniffs for cues. When a human navigates software, they sniff for information scent. If a link label is vague, the scent is lost. Breadcrumbs and strong landmarks tell the user: Where am I? Where can I go? How do I get back?',
-      classroomFacilitationTip:
-        'Point out breadcrumbs on large e-commerce platforms to show how they prevent lost-in-hyperspace disorientation.',
+      script:
+        'Pens ready. Five seconds. Do not speak, do not move your lips. Write down what you can. Now again, new digits, different layout.',
+      tip: 'Ask students not to repeat the digits aloud. Run Round A first, collect the tally, then Round B.',
     },
-  },
-  {
-    id: 35,
-    act: 5,
-    actTitle: 'ACT 5 — INFORMATION ARCHITECTURE & WAYFINDING',
-    title: 'Act 5 Takeaway: Navigation Reflects User Thought',
-    subtitle: 'Architecture is not a sitemap; it is the mental map of human intention',
-    type: 'summary_takeaway',
-    speakerNotes: {
-      timingMin: 4,
-      keyPoints: [
-        'Organize content by user tasks, never by internal corporate department org charts.',
-        'Keep Hick’s Law choice branches shallow and meaningful.',
-        'Support strong information scent at every branching node.',
+    'exp2',
+  ),
+  slide(
+    2,
+    'concept_model',
+    {
+      kind: 'rules',
+      heading: { title: 'Chunking in Practice', subtitle: 'Three ways to lighten memory' },
+      rules: [
+        {
+          title: 'Group long numbers',
+          text: 'Phone, card and ID numbers: groups of 3 or 4 digits. Hard: **0661234567**. Easy: **0661 · 234 · 567**.',
+          evidence: 'Groups of 3 to 4',
+        },
+        {
+          title: 'One step at a time',
+          text: 'Split a long form into short steps instead of asking for twenty things on one page.',
+          evidence: 'Few items per screen',
+        },
+        {
+          title: 'Pick, scan or paste',
+          text: 'Offer lists, a card scanner or autofill so nobody types long codes from memory.',
+          evidence: 'Do not make them remember',
+        },
       ],
-      spokenScriptAdvice:
-        'You now have the full picture of the human machine: eyes, memory, motor physics, mental models, and spatial navigation. Now, let us apply this directly to your semester Capstone projects.',
-      classroomFacilitationTip:
-        'High-energy transition into Act 6: the 45-minute practical lab and Capstone project selection.',
+      takeaway: 'Anything people must hold in mind should fit in about four chunks.',
     },
-  },
+    {
+      t: 3,
+      points: [
+        'Practical result of the digit test: group, split and offer alternatives to typing from memory.',
+        'Use in the studio: find the longest code or number your project asks people to type.',
+      ],
+      script:
+        'You just proved it on yourselves. Three things a designer does about it: group, split, and avoid typing from memory.',
+      tip: 'Ask for the longest number they type in everyday life.',
+    },
+  ),
+  slide(
+    2,
+    'concept_model',
+    {
+      kind: 'rules',
+      heading: { title: 'Three Kinds of Mental Effort', subtitle: 'Why some screens feel exhausting' },
+      rules: [
+        {
+          title: 'Built-in difficulty',
+          text: 'The task is hard by itself, like reading a medical result. Organise it step by step.',
+          evidence: 'Organise it',
+        },
+        {
+          title: 'Wasted effort',
+          text: 'Effort caused by bad design: hunting for a button or decoding clutter. Designers can remove it.',
+          evidence: 'Remove it first',
+        },
+        {
+          title: 'Learning effort',
+          text: 'Effort that helps people understand how the system works. Leave room for it.',
+          evidence: 'Protect it',
+        },
+      ],
+      takeaway: 'Remove wasted effort first: it is the part you control.',
+    },
+    {
+      t: 3,
+      points: [
+        'Cognitive load theory (Sweller): the three efforts share one small budget (the technical terms are intrinsic, extraneous and germane load; the slides avoid them on purpose).',
+        'Designers cannot remove built-in difficulty but can organise it; they can remove wasted effort.',
+        'Link to the digit test: the unbroken string was wasted effort.',
+      ],
+      script:
+        'The task has its own difficulty. Your design must not add to it. Every unnecessary decision, label or animation is a tax on a very small budget.',
+      tip: 'Ask for one example of wasted effort in the app they used this morning.',
+    },
+  ),
+  slide(
+    2,
+    'comparison_think',
+    {
+      kind: 'compare',
+      heading: { title: 'Recognise, Do Not Recall', subtitle: 'Showing is easier than remembering' },
+      left: {
+        tone: 'warn',
+        title: 'Recall',
+        tag: 'Remember it yourself',
+        body: 'Type a **three-letter station code** from memory. Nothing on screen helps.',
+        example: '**Cost:** a hard search in memory with no clue.',
+        footer: 'Lots of wasted effort',
+      },
+      right: {
+        tone: 'good',
+        title: 'Recognition',
+        tag: 'See it and know it',
+        body: 'Pick from a searchable list of station **names**. The right one is clear on sight.',
+        example: '**Cost:** a quick glance.',
+        footer: 'Almost no effort',
+      },
+      takeaway: 'Never make people remember what the screen can show.',
+    },
+    {
+      t: 3,
+      points: [
+        'Recognition is far easier than recall because the item itself is the retrieval cue (Nielsen heuristic number 6).',
+        'Examples: autocomplete, recent items, visible menus versus command lines.',
+        'Studio audit question: what does your project make people remember or type from memory?',
+      ],
+      script:
+        'You can recognise a face in a crowd without being able to draw it. Interfaces should use that difference.',
+      tip: 'Ask which interface they have used that makes them remember things.',
+    },
+  ),
+  slide(
+    2,
+    'concept_model',
+    {
+      kind: 'compare',
+      heading: {
+        title: 'People Miss Changes',
+        subtitle: 'You only see what you pay attention to',
+        badge: { icon: 'eye', label: 'Also called', value: 'Change blindness' },
+      },
+      left: {
+        tone: 'warn',
+        title: 'What we believe',
+        tag: 'Feels true',
+        body: 'I would **notice** if something on the screen changed.',
+        example: '**Most people** feel sure about this.',
+        footer: 'Overconfident',
+      },
+      right: {
+        tone: 'accent',
+        title: 'What really happens',
+        tag: 'Tested again and again',
+        body: 'A blink, a scroll or a page reload hides the change. People see **only what they are looking at**.',
+        example: '**Even big changes** go unseen.',
+        footer: 'Changes are missed',
+      },
+      takeaway: 'If something changes on screen, tell the user clearly.',
+    },
+    {
+      t: 3,
+      points: [
+        'Change blindness (Rensink and colleagues, 1997): even large changes go unnoticed when attention is elsewhere or something interrupts the view.',
+        'Not a flaw of the user: a limit of attention, as universal as the sharp centre of vision.',
+        'The next demo will test the class on a hard change, then repeat it with a signal.',
+      ],
+      script:
+        'Most people say: I would notice. Experiments say: you would not. Let us see how good you are.',
+      tip: 'Take a quick poll: who thinks they will find it in under 5 seconds?',
+    },
+  ),
+  slide(
+    2,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: Spot the Change',
+        subtitle: 'Can you find it? Then add a signal',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Class experiment' },
+      },
+      component: 'FlickerDemo',
+    },
+    {
+      t: 4,
+      points: [
+        'Step 1: start the flicker with the signal OFF. Students raise a hand when they find the change; press “Students found it” to freeze the time.',
+        'Step 2: switch the signal ON and run the same scene again: it is found almost at once.',
+        'Aha: a change nobody can find is a change users will miss. A signal fixes it.',
+      ],
+      script:
+        'One thing changes between these two screens. Find it. Notice how long it takes, even though it is not hidden. Now we add a signal. Watch what happens.',
+      tip: 'Let the room struggle for 20 seconds before revealing. Then switch the signal on and compare.',
+    },
+    'exp6',
+  ),
+  slide(
+    2,
+    'concept_model',
+    {
+      kind: 'rules',
+      heading: { title: 'Make Changes Noticeable', subtitle: 'Three ways to help people see what changed' },
+      rules: [
+        {
+          title: 'Highlight what changed',
+          text: 'Flash or colour the updated item for a moment so the eye is pulled to it.',
+          evidence: 'A signal beats no signal',
+        },
+        {
+          title: 'Show it where they look',
+          text: 'Put the confirmation next to the button they just pressed, not in a far corner.',
+          evidence: 'Close to the action',
+        },
+        {
+          title: 'Say it in words',
+          text: 'Write what happened: “Saved”, “3 items in your cart”, “Message sent”.',
+          evidence: 'Words remove doubt',
+        },
+      ],
+      takeaway: 'This is the feedback that closes the gulf of evaluation from Session 1.',
+    },
+    {
+      t: 3,
+      points: [
+        'The demo result in three habits: highlight, place near, say it.',
+        'Studio audit question: when something changes on your project, would a user notice?',
+        'Tie back to the gulf of evaluation: feedback must be perceivable.',
+      ],
+      script:
+        'You just saw a change disappear and then jump out with one signal. These three habits are how you make that happen on purpose.',
+      tip: 'Ask for an app that confirms actions well and one that does not.',
+    },
+  ),
+  slide(
+    2,
+    'summary_takeaway',
+    {
+      kind: 'takeaway',
+      heading: { title: 'Protect Attention and Memory', subtitle: 'What this means for your screens' },
+      statement:
+        'People hold about **4 things** at once and miss changes they are not watching. Design so nobody has to **remember or guess**.',
+      points: [
+        { lead: 'Group', text: 'Break data into **meaningful units** such as 3-3-2.' },
+        { lead: 'Show', text: 'Show the options; do **not** ask people to recall them.' },
+        { lead: 'Signal', text: 'Make every change **visible** and say what happened.' },
+      ],
+      next: 'Action: how long does it take to hit a target and to choose?',
+    },
+    {
+      t: 2,
+      points: [
+        'Three practical moves: group, show, signal.',
+        'Bridge to Act 3: memory tells us how much people can hold; next we look at how fast they can act.',
+      ],
+      script:
+        'Memory is the scarcest resource on the screen. Next we look at the speed of the hand and the speed of a decision.',
+      tip: 'Ask someone for a number in their own life that is grouped (phone, IBAN, plate).',
+    },
+  ),
 
-  // ==========================================
-  // ACT 6: 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH (Slides 36–42)
-  // ==========================================
-  {
-    id: 36,
-    act: 6,
-    actTitle: 'ACT 6 — 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH',
-    title: 'Capstone Studio: Project Selection & Team Setup',
-    subtitle: 'Transitioning from Theory to Practice: 45 Minutes Dedicated In-Class Studio',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 5,
-      keyPoints: [
-        'Launch the 45-minute hands-on Capstone studio.',
-        'Teams of 3 to 4 students must choose their project domain today.',
-        'Today’s goal: Claim a real-world complex system and conduct an initial 3-point forensic cognitive audit.',
+  // ========================================================================
+  // ACT 3 · POINTING & CHOOSING (45 min)
+  // ========================================================================
+  slide(
+    3,
+    'concept_model',
+    {
+      kind: 'divider',
+      actNumber: 3,
+      title: 'Pointing and Choosing',
+      question: 'How long does it take to hit a target, or to choose?',
+      learn: [
+        'Fitts’s Law: big and close is fast',
+        'Hick’s Law: fewer, well-ordered choices are faster',
+        'What to do about it in a real design',
       ],
-      spokenScriptAdvice:
-        'We now enter the practical work of Session 2. For the next 45 minutes, you will form your project teams, choose your semester Capstone challenge, and conduct an empirical cognitive and motor audit of an existing baseline tool.',
-      classroomFacilitationTip:
-        'Set the classroom countdown timer for 45 minutes on the presentation display.',
     },
-  },
-  {
-    id: 37,
-    act: 6,
-    actTitle: 'ACT 6 — 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH',
-    title: 'The 4 Capstone Challenge Domains',
-    subtitle: 'Select One Mission-Critical Complex Domain for Your Semester Engineering Project',
-    type: 'comparison_think',
-    speakerNotes: {
-      timingMin: 7,
-      keyPoints: [
-        'Track A: Precision Agriculture & Drone Telemetry (Moroccan phosphate soil sensors, irrigation pumps, harsh sunlight conditions).',
-        'Track B: Healthcare & Emergency ICU Infusion Management (High stress, audible alarms, medical dosage error prevention).',
-        'Track C: Moroccan Public Services & Civic Tech (RAMED/CNSS health reimbursement, ONCF multimodal transit, low digital literacy).',
-        'Track D: Developer Infrastructure & Cloud Observability (Distributed microservices, CI/CD visualizers, high data density).',
+    {
+      t: 1,
+      points: ['Announce the act: two laws, each taught as idea, demo, then what designers do with it.'],
+      script: 'Now the other end of the loop: the hand and the decision.',
+      tip: 'Pause: topic switch.',
+    },
+  ),
+  slide(
+    3,
+    'concept_model',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Fitts’s Law: The Idea',
+        subtitle: 'Big and close is fast. Small and far is slow.',
+        badge: { icon: 'target', label: 'Named after', value: 'Paul Fitts' },
+      },
+      component: 'FittsConcept',
+    },
+    {
+      t: 5,
+      points: [
+        'Goal: see why some targets are slow to hit before any formula.',
+        'Three real-size conditions: a large near button, a form field, a tiny far icon. Expected times (illustrative): 275, 619 and 1018 ms.',
+        'Replay the cursor to feel the difference. The law: time grows as the target gets farther or smaller.',
       ],
-      spokenScriptAdvice:
-        'Look at these four tracks. None of these are toy apps or generic todo lists. These are real, mission-critical systems where bad HCI causes financial loss, crop failure, medical accidents, or citizen frustration. Choose the track that excites your team.',
-      classroomFacilitationTip:
-        'Give teams 3 minutes to discuss which track aligns best with their engineering passions.',
+      script:
+        'Before any maths: which of these would you rather click? Of course the big, close one. Fitts gave that intuition a number, but the rule is simple: big and close beats small and far.',
+      tip: 'Ask the class to predict the ratio between A and C before you reveal it.',
     },
-  },
-  {
-    id: 38,
-    act: 6,
-    actTitle: 'ACT 6 — 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH',
-    title: 'Interactive Lab Workspace: The 3-Point Audit',
-    subtitle: 'Hands-on Team Diagnosis: Fitts’s Law · Gestalt Hierarchy · Cognitive Load',
-    type: 'experiment',
-    experimentId: 'exp6',
-    speakerNotes: {
-      timingMin: 12,
-      keyPoints: [
-        'Point 1: Fitts’s Law Bottleneck — identify the primary action, measure D and W, compute the Index of Difficulty (ID).',
-        'Point 2: Gestalt Organization Failure — find where Proximity or Similarity groups unrelated fields.',
-        'Point 3: Extraneous Cognitive Load — identify where the interface forces recall over recognition or fails to chunk data.',
+  ),
+  slide(
+    3,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: Click the Targets',
+        subtitle: 'A volunteer clicks, the class predicts first',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Volunteer-run' },
+      },
+      component: 'FittsTrialsDemo',
+    },
+    {
+      t: 6,
+      points: [
+        'Before each condition ask the class to predict whether it will be faster or slower than the last.',
+        'The volunteer clicks the two bars alternately: 8 timed movements per condition.',
+        'Compare measured times with the expected ones; harder targets take longer.',
       ],
-      spokenScriptAdvice:
-        'Open the audit tool on your screen. Pick the baseline competitor or existing tool your team wants to revolutionize. Fill in the three diagnostic cards. Be rigorous: cite exact formulas and perceptual laws.',
-      classroomFacilitationTip:
-        'Walk through the aisles to look at student laptop screens and assist teams with their Fitts’s Law calculations.',
+      script:
+        'A volunteer: click the two bars back and forth as fast and as accurately as you can. Class: before they start, is C going to be faster or slower than A, and by how much?',
+      tip: 'Ask for one volunteer per condition so everyone sees the difficulty change; note the misses as well as the time.',
     },
-  },
-  {
-    id: 39,
-    act: 6,
-    actTitle: 'ACT 6 — 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH',
-    title: 'Homework Milestone 1 Specification',
-    subtitle: 'Capstone Milestone 1: Cognitive, Motor & Mental Model Architecture Audit',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 6,
-      keyPoints: [
-        'Deliverable: 4-page PDF or interactive Figma/deck report.',
-        'Section 1: The Three-Part Model Mapping (User’s Mental Model vs System Reality vs Broken System Image).',
-        'Section 2: Predictive Motor Analysis (Fitts’s Law ID calculation & Hick’s Law progressive disclosure plan).',
-        'Section 3: Gestalt Hierarchy & Visual Deconstruction (Annotated screenshots & wireframe fix).',
-        'Section 4: Working Memory & Cognitive Load Assessment (Chunking masks & recognition audit).',
-        'Due date: In 1 week, prior to Session 3.',
+    'exp3',
+  ),
+  slide(
+    3,
+    'concept_model',
+    {
+      kind: 'rules',
+      heading: { title: 'Fitts’s Law in Practice', subtitle: 'Three rules for every button' },
+      rules: [
+        {
+          title: 'Make the main button big',
+          text: 'The bigger the target, the easier to hit. The main action should be the biggest button.',
+          evidence: 'On touch: at least 44 px',
+        },
+        {
+          title: 'Keep it close to the action',
+          text: 'Put the button next to what the user is doing: confirm beside the last field, not at the far end of the page.',
+          evidence: 'Short distance = fast',
+        },
+        {
+          title: 'Use edges and corners',
+          text: 'The screen border stops the mouse, so edge targets are easy to hit. Think of menu bars.',
+          evidence: 'You cannot overshoot an edge',
+        },
       ],
-      spokenScriptAdvice:
-        'Your homework assignment for Milestone 1 is directly based on what we covered today. You will take the project you claimed in today’s lab and conduct a rigorous, professional cognitive audit of the existing baseline system.',
-      classroomFacilitationTip:
-        'Display the assignment checklist clearly. Confirm all students have downloaded or bookmarked the rubric.',
+      takeaway: 'You rarely need to calculate: a bigger, closer button is almost always faster.',
     },
-  },
-  {
-    id: 40,
-    act: 6,
-    actTitle: 'ACT 6 — 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH',
-    title: 'Milestone 1 Grading Rubric (20 Points Total)',
-    subtitle: 'Objective Evaluation Criteria for Milestone 1 Submission',
-    type: 'concept_model',
-    speakerNotes: {
-      timingMin: 5,
-      keyPoints: [
-        '5 Points: Mental Model vs System Model Mapping (Distinguishes user intent from backend architecture).',
-        '5 Points: Fitts’s & Hick’s Law Calculations (Real coordinate measurements, ID bits, and choice branching rationale).',
-        '5 Points: Gestalt Deconstruction & Wireframe Fix (Names specific laws, wireframe actually resolves perceptual clustering).',
-        '5 Points: Cognitive Load & Chunking Inventory (Concrete input masks and recognition-over-recall solutions).',
+    {
+      t: 5,
+      points: [
+        'Practice, not computation: three rules a designer applies without a calculator.',
+        'Edges: Walker and Smelcer (1990) found edge menus faster; on touchscreens the edge has no such stop, so size matters more.',
+        'Touch targets of about 44 px (Apple) to 48 dp (Material) are the usual minimum.',
       ],
-      spokenScriptAdvice:
-        'Notice how this rubric is structured: it is 100% objective. We are not grading whether we like your colors. We are grading whether your Fitts’s Law math is correct, whether your Gestalt wireframes fix proximity flaws, and whether your mental model analysis exposes architectural mismatches.',
-      classroomFacilitationTip:
-        'Walk through the 4 grading categories. Reiterate that submissions are due before Session 3 starts.',
+      script:
+        'In real design nobody computes milliseconds for every button. You apply three rules: big, close, edges. The formula is for when you need to settle an argument; the next slide shows it.',
+      tip: 'Ask students to find the tiniest button on their own phone.',
     },
-  },
-  {
-    id: 41,
-    act: 6,
-    actTitle: 'ACT 6 — 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH',
-    title: 'The Three Golden Axioms of Session 2',
-    subtitle: 'Carry these principles into every UI wireframe and user testing protocol',
-    type: 'summary_takeaway',
-    speakerNotes: {
-      timingMin: 5,
-      keyPoints: [
-        'Axiom 1: You Cannot Overclock the Biology (τp ≈ 100ms, τc ≈ 70ms, τm ≈ 70ms, 4 chunks max).',
-        'Axiom 2: Physics Dictates Pixels (Fitts & Hick mathematically predict motor and cognitive latency).',
-        'Axiom 3: The System Image is the Only Truth (Users never see your code; their mental model is built solely on the cues you project).',
+  ),
+  slide(
+    3,
+    'concept_model',
+    {
+      kind: 'formula',
+      heading: { title: 'Putting a Number on It', subtitle: 'Optional: compare two designs with a formula' },
+      formula: 'MT = a + b · log₂(D/W + 1)',
+      formulaNote: 'Difficulty score = log₂(D/W + 1)',
+      variables: [
+        { sym: 'MT', meaning: 'Time to reach the target' },
+        { sym: 'D', meaning: 'Distance to the target' },
+        { sym: 'W', meaning: 'Width of the target' },
+        { sym: 'a, b', meaning: 'Numbers measured for a device and a user (here 100 ms and 150 ms, as an illustration)' },
       ],
-      spokenScriptAdvice:
-        'As we conclude Session 2, remember these three axioms. Never blame a user for a biological limit. Compute the physics before drawing pixels. And remember that the System Image is the only window into your engineering architecture.',
-      classroomFacilitationTip:
-        'Recite each axiom clearly and have students note them down.',
-    },
-  },
-  {
-    id: 42,
-    act: 6,
-    actTitle: 'ACT 6 — 45-MIN CAPSTONE LAB & HOMEWORK LAUNCH',
-    title: 'Looking Ahead to Session 3',
-    subtitle: 'From Cognitive Theory to the Field: User Research & Contextual Inquiry',
-    type: 'preview_next',
-    speakerNotes: {
-      timingMin: 4,
-      keyPoints: [
-        'Preview Session 3: User Research, Ethnography, and Contextual Inquiry.',
-        'We will learn how to step out of the building, observe real humans in their native environments, and conduct think-aloud protocols.',
-        'Teams will use their Milestone 1 cognitive audit as the foundation for their field interviews.',
+      exampleTitle: 'Same button, two widths',
+      example: [
+        { k: 'Width 40 px, distance 620 px', v: '≈ 707 ms' },
+        { k: 'Width 120 px, distance 620 px', v: '≈ 494 ms' },
+        { k: 'Wider button', v: '30% faster', strong: true },
       ],
-      spokenScriptAdvice:
-        'Congratulations on completing Session 2. Today, we mapped the biology, memory, motor physics, and mental models of the human user. Next week in Session 3, we leave the lab and enter the real world: how to conduct ethnographic contextual inquiry, master-apprentice interviews, and thematic synthesis. Have a productive week with Milestone 1!',
-      classroomFacilitationTip:
-        'Stay at the lectern for 10 minutes after class to answer questions about Capstone team formations and project topics.',
+      caption: 'Use it to settle an argument between two designs, not for everyday decisions.',
     },
-  },
+    {
+      t: 2,
+      points: [
+        'Shannon form (MacKenzie, 1992): ID = log2(D/W + 1) in bits; Welford’s variant uses log2(2D/W).',
+        'Arithmetic: 620/40 + 1 = 16.5, log2 = 4.04, MT = 100 + 150 · 4.04 ≈ 707 ms. 620/120 + 1 = 6.17, log2 = 2.63, MT ≈ 494 ms.',
+        'The message is the comparison: you can argue for a bigger button with a number when a stakeholder disagrees.',
+      ],
+      script:
+        'This is the formula behind the rule. You do not need it every day. You use it when someone says “make it smaller, it looks nicer”: you can answer in milliseconds.',
+      tip: 'Do not dwell on the maths: the practice slide before this one is what matters.',
+    },
+  ),
+  slide(
+    3,
+    'comparison_think',
+    {
+      kind: 'compare',
+      heading: { title: 'Hick’s Law: The Idea', subtitle: 'More choices take longer to decide' },
+      left: {
+        tone: 'good',
+        title: 'Few choices',
+        tag: '2 to 4 options',
+        body: 'With two or four options a person decides **almost at once**.',
+        example: '**Example:** a Yes / No dialog.',
+        footer: 'Quick decision',
+      },
+      right: {
+        tone: 'warn',
+        title: 'Many choices',
+        tag: '16 or more',
+        body: 'With sixteen options a person must **scan and compare** before choosing.',
+        example: '**Example:** a long unsorted menu.',
+        footer: 'Slow decision',
+      },
+      takeaway: 'Doubling the options does not double the time, but a messy list is much slower than an ordered one.',
+    },
+    {
+      t: 5,
+      points: [
+        'Hick-Hyman law: reaction time grows with the logarithm of the number of equally likely choices; each doubling adds about one step of thinking.',
+        'It assumes people can narrow the set like a tree. Unordered lists are scanned one item at a time.',
+        'The practical message is about structure, which the next demo shows.',
+      ],
+      script:
+        'More choices, slower decisions. But not in a straight line: and it depends hugely on whether the choices are organised. Let us test that.',
+      tip: 'Ask: should alphabetical order matter? Take hands before the demo.',
+    },
+  ),
+  slide(
+    3,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: The Decision Arena',
+        subtitle: 'Does order change decision time?',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Volunteer-run' },
+      },
+      component: 'HickArenaDemo',
+    },
+    {
+      t: 6,
+      points: [
+        'Run 2, 4, 8 and 16 choices first with an ordered layout, then shuffled.',
+        'Present only measured data: do not tell students the outcome in advance.',
+        'Let the chart make the point: order changes the curve.',
+      ],
+      script:
+        'Find the number as fast as you can. Same buttons, same task. Watch what happens to the time as the screen grows, and what changes when the numbers are in order.',
+      tip: 'Use two volunteers (one per layout) if the room needs momentum; keep trials short.',
+    },
+    'exp4',
+  ),
+  slide(
+    3,
+    'concept_model',
+    {
+      kind: 'rules',
+      heading: { title: 'Hick’s Law in Practice', subtitle: 'Three rules for every menu and list' },
+      rules: [
+        {
+          title: 'Show fewer choices',
+          text: 'Offer the 4 to 7 most useful options first and put the rest behind “More”.',
+          evidence: 'Few at a time',
+        },
+        {
+          title: 'Order and group them',
+          text: 'Sort alphabetically, by popularity or by category so people can skip whole groups.',
+          evidence: 'Order lets people skip',
+        },
+        {
+          title: 'Offer a good default',
+          text: 'Pre-select the most common answer so most people do not have to choose at all.',
+          evidence: 'No choice is the fastest',
+        },
+      ],
+      takeaway: 'Cut the number of choices, then put the remaining ones in order.',
+    },
+    {
+      t: 4,
+      points: [
+        'Practice for Hick’s Law: fewer, ordered, with defaults.',
+        'The demo showed that ordered lists can be searched like a tree while shuffled ones must be scanned.',
+        'Studio audit question: how many choices does your project show at once, and are they in order?',
+      ],
+      script:
+        'Same logic as Fitts: three rules, no calculator. Fewer choices, in order, with a sensible default. Next, one classic way to show fewer choices.',
+      tip: 'Ask for a form that pre-selects the right answer for them.',
+    },
+  ),
+  slide(
+    3,
+    'comparison_think',
+    {
+      kind: 'compare',
+      heading: { title: 'Progressive Disclosure', subtitle: 'Show what is needed now, keep the rest one step away' },
+      left: {
+        tone: 'warn',
+        title: 'All at once',
+        tag: '16 choices',
+        body: 'Every option is visible: **16 buttons** compete for attention.',
+        example: '**Result:** a wall of options and an intimidating first look.',
+        footer: 'Maximum load up front',
+      },
+      right: {
+        tone: 'good',
+        title: 'In layers',
+        tag: '4 groups first',
+        body: 'Four clear groups first, then the options of one group. Only **4 items** compete at a time.',
+        example: '**Trade-off:** one extra step, so keep groups meaningful.',
+        footer: 'Less clutter per screen',
+      },
+      takeaway: 'Show frequent options first and keep rare ones one step away.',
+    },
+    {
+      t: 3,
+      points: [
+        'Progressive disclosure does not reduce the information needed to decide; it reduces what must be seen and held at once.',
+        'It works only if groups match how users think; arbitrary groups add a step and a guess.',
+        'Counter-example: hiding frequent commands behind menus breaks the Fitts rules just taught.',
+      ],
+      script:
+        'The trick is not to hide things. It is to show the right four things now and make the rest reachable in one predictable step.',
+      tip: 'Ask for an example of hiding done badly (a menu icon hiding the main action).',
+    },
+  ),
+  slide(
+    3,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: Wall or Layers?',
+        subtitle: 'Find the same commands in two layouts',
+        badge: { icon: 'flask', label: 'Live demo', value: 'Volunteer-run' },
+      },
+      component: 'ProgressiveDisclosureDemo',
+    },
+    {
+      t: 6,
+      points: [
+        'The same 16 commands, the same six tasks, two layouts: everything visible, or four groups opened on demand.',
+        'Tasks are goals (“Add a picture”), not button labels, so the volunteer has to guess where the command lives, like a real user.',
+        'Present only measured data: fewer things on screen versus one extra click. Let the class discuss which wins and why.',
+      ],
+      script:
+        'Same editor, same tasks. First everything is on the screen at once. Then the commands are grouped and you open a group. Watch the time and the number of clicks.',
+      tip: 'Use two volunteers (one per layout) if the room needs momentum. If layers do not win, ask: were the group names clear? That is the lesson.',
+    },
+    'exp4',
+  ),
+  slide(
+    3,
+    'summary_takeaway',
+    {
+      kind: 'takeaway',
+      heading: { title: 'Make Targets Easy, Choices Few', subtitle: 'What this means for your screens' },
+      statement:
+        'People hit **big, close** targets quickly and decide quickly among **few, ordered** choices.',
+      points: [
+        { lead: 'Big and close', text: 'Make the main button large and next to the action.' },
+        { lead: 'Few and ordered', text: 'Show a handful of choices in a clear order.' },
+        { lead: 'Edges and defaults', text: 'Use screen edges, and pre-select the common answer.' },
+      ],
+      next: 'Mental models: what does the user think the system does?',
+    },
+    {
+      t: 2,
+      points: [
+        'Three practical moves: big and close, few and ordered, edges and defaults.',
+        'Bridge: people can now notice, remember and click; do they understand what will happen?',
+      ],
+      script:
+        'You can now judge a button and a menu without a formula. One more thing decides if people succeed: what they believe the system does.',
+      tip: 'Take a stretch break if the room is tired: this is a natural point.',
+    },
+  ),
+
+  // ========================================================================
+  // ACT 4 · MENTAL MODELS (30 min)
+  // ========================================================================
+  slide(
+    4,
+    'concept_model',
+    {
+      kind: 'divider',
+      actNumber: 4,
+      title: 'Mental Models',
+      question: 'What does the user think the system does?',
+      learn: [
+        'People build a picture of how things work',
+        'The screen is the only teacher they have',
+        'How to find and fix a mismatch',
+      ],
+    },
+    {
+      t: 1,
+      points: ['Announce the act: so far people can see, remember, point and choose; now, do they understand?'],
+      script: 'Last act of the lecture: understanding.',
+      tip: 'Pause: topic switch.',
+    },
+  ),
+  slide(
+    4,
+    'concept_model',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Three Pictures of One System',
+        subtitle: 'Where misunderstanding starts',
+        badge: { icon: 'layers', label: 'Idea from', value: 'Don Norman' },
+      },
+      component: 'MentalTriad',
+    },
+    {
+      t: 6,
+      points: [
+        'Designer’s picture: how the system really works. The user’s picture (mental model): what the user believes.',
+        'The designer never talks to the user directly: the only channel is the screen (the system image: labels, behaviour, feedback).',
+        'Most usability failures are mismatches between what the screen shows and what the user believes.',
+      ],
+      script:
+        'You will never be in the room when someone uses your product. All you have is what the screen shows. That is your entire teaching budget.',
+      tip: 'Use the thermostat example already on the slide to set up the next slide.',
+    },
+  ),
+  slide(
+    4,
+    'comparison_think',
+    {
+      kind: 'compare',
+      heading: { title: 'The Thermostat Paradox', subtitle: 'Two ideas about the same dial (Kempton, 1986)' },
+      left: {
+        tone: 'warn',
+        title: 'Gas-pedal idea',
+        tag: 'Wrong, but common',
+        body: 'Many people think the dial is **like a gas pedal**: set it higher and the room heats **faster**.',
+        example: '**Behaviour:** turn it to maximum, then back down when it is hot.',
+        footer: 'Wastes energy, overshoots',
+      },
+      right: {
+        tone: 'good',
+        title: 'Target idea',
+        tag: 'How it really works',
+        body: 'The dial sets a **target temperature**. The heater works at one speed until the target is reached.',
+        example: '**Behaviour:** set the temperature you want and leave it.',
+        footer: 'Correct picture, less energy',
+      },
+      takeaway: 'People build their picture from what the dial _says_, not from how it works.',
+    },
+    {
+      t: 5,
+      points: [
+        'Kempton (1986) interviewed households and found two coexisting ideas of home heat control (valve theory and feedback theory).',
+        'The gas-pedal idea is wrong but reasonable: a dial that goes up looks like an accelerator.',
+        'Preview the irrigation demo: the same trap on a farm.',
+      ],
+      script:
+        'The gas-pedal idea is not stupid. It is exactly what a dial that goes up would make you believe. The fault is in the screen, not in the user.',
+      tip: 'Ask who heats a room by turning the dial to maximum. Expect honest hands.',
+    },
+  ),
+  slide(
+    4,
+    'comparison_think',
+    {
+      kind: 'compare',
+      heading: { title: 'Familiar Pictures', subtitle: 'Borrow something known, then check where it breaks' },
+      left: {
+        tone: 'good',
+        title: 'A picture that helps',
+        tag: 'Cart · Trash can',
+        body: 'A **shopping cart** or a **trash can** lets people reuse what they know from real objects.',
+        example: '**Gain:** little to learn on day one.',
+        footer: 'Familiar, quick to learn',
+      },
+      right: {
+        tone: 'warn',
+        title: 'A picture that misleads',
+        tag: 'Where it breaks',
+        body: 'Dragging a disk to the **trash to eject** it makes people fear they are deleting it.',
+        example: '**Cost:** the familiar picture predicts the wrong result.',
+        footer: 'People trust the picture',
+      },
+      takeaway: 'A familiar picture is a loan: check where the real system is different.',
+    },
+    {
+      t: 3,
+      points: [
+        'Metaphors give users a ready-made model (desktop, folder, cart, trash).',
+        'They leak where the real system behaves differently from the object it borrows from.',
+        'Studio audit question: which familiar picture does your project use, and where does it mislead?',
+      ],
+      script:
+        'Borrowed pictures speed up learning on day one and cause errors on day thirty. Always ask where the borrowed picture stops being true.',
+      tip: 'Ask for a metaphor from a public service website and where it misleads.',
+    },
+  ),
+  slide(
+    4,
+    'experiment',
+    {
+      kind: 'custom',
+      heading: {
+        title: 'Demo: The Accelerator Dial',
+        subtitle: 'A mental-model trap in agriculture',
+        badge: { icon: 'sprout', label: 'Live demo', value: 'Presenter-run' },
+      },
+      component: 'IrrigationDemo',
+    },
+    {
+      t: 8,
+      points: [
+        'Start with the misleading screen: a dial labelled “Irrigation power”. Ask the class where they would set it to water quickly.',
+        'Run 24 hours at 100: the system holds a very high target and the soil is flooded.',
+        'Switch to the honest screen: “Target soil moisture” with the good band shown, and run again.',
+      ],
+      script:
+        'You are a farmer. Water is short and the crop is thirsty. Where do you put the dial? Most of you chose full power. Let us see what the system does with that.',
+      tip: 'Collect a show of hands for 100 before running: it makes the mismatch personal.',
+    },
+    'exp5',
+  ),
+  slide(
+    4,
+    'concept_model',
+    {
+      kind: 'rules',
+      heading: { title: 'Find a Mismatch in Practice', subtitle: 'Three questions for any confusing moment' },
+      rules: [
+        {
+          title: 'What does the user expect?',
+          text: 'Ask or watch: what result did they predict **before** they acted?',
+          evidence: 'The user’s picture',
+        },
+        {
+          title: 'What does the system do?',
+          text: 'Find the real rule behind the screen: what **actually** happens?',
+          evidence: 'The real system',
+        },
+        {
+          title: 'What does the screen say?',
+          text: 'Read the labels, icons and feedback like a **first-time user**. What do they promise?',
+          evidence: 'The screen',
+        },
+      ],
+      takeaway: 'The mismatch lives between what the screen says and what the user expects.',
+    },
+    {
+      t: 5,
+      points: [
+        'This is the template for the “Understand” question of the studio checklist.',
+        'Apply it to the irrigation dial in 60 seconds with the class: expects “accelerator”, does “target”, screen says “power”.',
+        'Emphasise: write all three, in plain language, for one confusing moment.',
+      ],
+      script:
+        'Three questions, three short answers. Where the second and third disagree with the first, you have found a finding.',
+      tip: 'Do the irrigation dial together on the board.',
+    },
+  ),
+  slide(
+    4,
+    'summary_takeaway',
+    {
+      kind: 'takeaway',
+      heading: { title: 'The Screen Is the Teacher', subtitle: 'What mental models mean for your screens' },
+      statement:
+        'People **will** build a picture of how your system works, with or without your help. Make the screen teach the **right** one.',
+      points: [
+        { lead: 'Say what it does', text: 'Labels must match the **real behaviour**.' },
+        { lead: 'Show what happens', text: 'Feedback tells people what the system is **doing now**.' },
+        { lead: 'Test the picture', text: 'Ask users to **predict** before they act.' },
+      ],
+      next: 'Your turn: the course project',
+    },
+    {
+      t: 2,
+      points: [
+        'Three practical moves: say what it does, show what happens, test the picture.',
+        'Transition: the lecture is done; now they apply it to a real interface.',
+      ],
+      script:
+        'You now have four lenses: perception, memory, pointing and choosing, and mental models. For the rest of the session you point them at something real.',
+      tip: 'Tell students to get their laptops out and sit with their partner before the next slide.',
+    },
+  ),
+
+  // ========================================================================
+  // ACT 5 · YOUR COURSE PROJECT (50 min)
+  // ========================================================================
+  slide(
+    5,
+    'project_intro',
+    {
+      kind: 'divider',
+      actNumber: 5,
+      title: 'Your Course Project',
+      question: 'Which broken interface will you fix?',
+      learn: [
+        'How the project works for the whole semester',
+        'Choose one of 10 broken interfaces',
+        'Audit it with the four lenses of today',
+      ],
+    },
+    {
+      t: 1,
+      points: ['Announce the act: from here on the students work, teams of two.'],
+      script: 'The lecture is over. From now on, you work.',
+      tip: 'Make sure every student has a partner before the next slide; pair up singles immediately.',
+    },
+  ),
+  slide(
+    5,
+    'project_intro',
+    {
+      kind: 'rules',
+      heading: { title: 'How the Project Works', subtitle: 'Fix a broken interface, one session at a time' },
+      rules: [
+        {
+          title: 'You get a broken interface',
+          text: 'Each project is a real-looking website or app with real design problems.',
+          evidence: '10 projects to choose from',
+        },
+        {
+          title: 'You improve it every session',
+          text: 'After each session you fix what that session taught. Today: perception, memory, pointing and understanding.',
+          evidence: 'Small steps, every session',
+        },
+        {
+          title: 'You show the perfect version',
+          text: 'In the last session you present the before and after and show it is better.',
+          evidence: 'Before and after, with evidence',
+        },
+      ],
+      takeaway: 'One interface, improved a little more after every session.',
+    },
+    {
+      t: 2,
+      points: [
+        'Each team of two owns one project for the whole semester; the interface improves session after session.',
+        'Today’s step: choose the project and audit it with the four lenses of the lecture.',
+        'The final session is a before/after defence with evidence.',
+      ],
+      script:
+        'This is your project for the whole course. You get a broken interface. After every session you fix what that session taught. At the end you show us the perfect version.',
+      tip: 'Do not give a number of teams per project on screen; aim for about two teams per project.',
+    },
+  ),
+  slide(
+    5,
+    'project_intro',
+    {
+      kind: 'projects',
+      heading: { title: 'Meet the 10 Projects', subtitle: 'Pick one to improve all semester' },
+      note: 'See any interface: click Projects (J) at the bottom of this app. You can open it at any time.',
+    },
+    {
+      t: 3,
+      points: [
+        'Ten interfaces from four areas: agriculture, healthcare, public services and developer tools, plus home energy and finance.',
+        'Each opens in the Projects viewer with the user, the situation and the task.',
+        'Aim for every project to be chosen; about two teams per project.',
+      ],
+      script:
+        'Here are the ten projects. In a moment you will open at least three and try them. Look for one you would like to fix, and one where you can imagine the real user.',
+      tip: 'Click Projects (J) at the bottom of the app to demo the viewer, then return to the slides.',
+    },
+  ),
+  slide(
+    5,
+    'activity_timer',
+    {
+      kind: 'activity',
+      heading: {
+        title: 'Studio Step 1: Choose',
+        subtitle: 'Find your partner and pick a project',
+        badge: { icon: 'clock', label: 'Studio', value: 'Step 1 · 7 min' },
+      },
+      label: 'Studio · Step 1 of 3',
+      chip: 'PAIRS · 7 MINUTES',
+      title: 'Choose your project',
+      steps: [
+        { text: 'Sit with your **partner**. You are a team of two for the semester.' },
+        { text: 'Click **Projects** at the bottom of the app (or press **J**). Open at least **three** projects and try each for about a minute.' },
+        { text: 'Choose **one** project and tell the teacher its **number**.' },
+      ],
+      timerSeconds: 420,
+      timerLabel: 'Step 1 Clock',
+      goal: 'Choose the interface you will improve for the whole course.',
+      output: 'A team of two with one project number.',
+    },
+    {
+      t: 7,
+      points: [
+        'Goal: every team has a partner and one project within 7 minutes.',
+        'Write the choices on the board; aim for at most two teams per project and rebalance if one project is oversubscribed.',
+        'Walk the room: help singles pair up and help undecided teams choose by asking what they use in daily life.',
+      ],
+      script:
+        'Seven minutes. Partner, three projects tried, one project chosen. Tell me the number when you have it.',
+      tip: 'If a project is chosen by three teams, ask the third to take their second choice.',
+    },
+  ),
+  slide(
+    5,
+    'concept_model',
+    {
+      kind: 'table',
+      heading: {
+        title: 'The Audit Checklist',
+        subtitle: 'Four questions, one for each part of today',
+        badge: { icon: 'list', label: 'Use it on', value: 'Your project' },
+      },
+      heads: ['LOOK AT', 'PART OF TODAY', 'ASK YOURSELF'],
+      rows: [
+        { a: '1. Look', b: 'Perception', c: 'Where does the eye go first? Is that the right place? Are related things grouped?' },
+        { a: '2. Remember', b: 'Memory', c: 'What must the user remember or type from memory? Could the screen show it instead?' },
+        { a: '3. Point and choose', b: 'Action', c: 'Is the main button big and close? How many choices are on one screen?' },
+        { a: '4. Understand', b: 'Mental model', c: 'What will the user expect to happen? Does the screen say what really happens?' },
+      ],
+      footer: 'Find at least one problem for each question.',
+    },
+    {
+      t: 4,
+      points: [
+        'The four questions map one-to-one to the four acts of the lecture.',
+        'Each question must produce a concrete problem found on the student’s own interface.',
+        'Refer students back to the practice slides of each act if they get stuck.',
+      ],
+      script:
+        'This is your tool for the rest of the session. Four questions. For each one, find at least one real problem on your interface.',
+      tip: 'Read each question aloud and ask one student what they would look at on their phone.',
+    },
+  ),
+  slide(
+    5,
+    'concept_model',
+    {
+      kind: 'table',
+      heading: {
+        title: 'Example: One Finding per Question',
+        subtitle: 'A hospital check-in kiosk (made up)',
+        badge: { icon: 'check', label: 'Model', value: 'A good audit' },
+      },
+      heads: ['WHAT WE SAW', 'QUESTION', 'WHY IT HURTS, AND THE FIX'],
+      rows: [
+        { a: 'All 12 fields look the same', b: '1. Look', c: 'The eye has no starting point. **Fix:** group the fields in 3 boxes and make one main button stand out.' },
+        { a: 'A 12-digit number to type', b: '2. Remember', c: 'Too much to hold in mind. **Fix:** split it 4-4-4, or let the patient scan the card.' },
+        { a: 'A tiny Confirm button, far away', b: '3. Point', c: 'Slow to hit, easy to miss. **Fix:** make it wide and put it next to the last field.' },
+        { a: '“Reset” wipes the whole form', b: '4. Understand', c: 'People expect it to undo one step. **Fix:** rename it “Clear all” and ask first.' },
+      ],
+      footer: 'Each finding says what you saw, why it hurts, and how to fix it.',
+    },
+    {
+      t: 5,
+      points: [
+        'Model audit: one finding per checklist question, each with what was seen, why it hurts and a fix idea.',
+        'The same structure is what the students will hand in as their audit sheet.',
+        'Point out that none of the findings needed a calculator: it is observation plus the ideas of today.',
+      ],
+      script:
+        'This is what a good audit looks like. Four findings. Each one says what we saw, why it hurts the user, and how we would fix it. Your sheet should look like this, for your own interface.',
+      tip: 'Do not spend long: students learn more from doing than from watching.',
+    },
+  ),
+  slide(
+    5,
+    'activity_timer',
+    {
+      kind: 'activity',
+      heading: {
+        title: 'Studio Step 2: Try the Task',
+        subtitle: 'Use your interface like a real user',
+        badge: { icon: 'clock', label: 'Studio', value: 'Step 2 · 8 min' },
+      },
+      label: 'Studio · Step 2 of 3',
+      chip: 'PAIRS · 8 MINUTES',
+      title: 'Try the task, slowly',
+      steps: [
+        { text: 'Open your project. Read **the user** and **the task** on the left of the viewer.' },
+        { text: 'One of you does the **task** on the interface. The other **takes notes**.' },
+        { text: 'Write down **every moment** you hesitate, click the wrong thing, or are not sure what happened.' },
+      ],
+      timerSeconds: 480,
+      timerLabel: 'Step 2 Clock',
+      goal: 'Feel the problems before you name them.',
+      output: 'A list of at least 6 moments where the user struggled.',
+    },
+    {
+      t: 8,
+      points: [
+        'Students must complete the task end to end; every hesitation is a clue.',
+        'Common mistake: skipping the task and looking only at the visuals. Insist on doing the task.',
+        'Walk the room and ask: where did you hesitate?',
+      ],
+      script:
+        'One of you is the user and does the task. The other is the observer and writes down everything. Do not fix anything yet: just notice.',
+      tip: 'Remind them to swap roles halfway if time allows.',
+    },
+  ),
+  slide(
+    5,
+    'activity_timer',
+    {
+      kind: 'activity',
+      heading: {
+        title: 'Studio Step 3: Audit',
+        subtitle: 'Turn your notes into four clear findings',
+        badge: { icon: 'clock', label: 'Studio', value: 'Step 3 · 20 min' },
+      },
+      label: 'Studio · Step 3 of 3',
+      chip: 'PAIRS · 20 MINUTES',
+      title: 'Audit with the checklist',
+      steps: [
+        { text: 'Go through the **four questions** of the checklist, one at a time.' },
+        { text: 'For each question, find **one problem** on your interface and take a **screenshot**.' },
+        { text: 'Write down **what you saw**, **why it hurts** the user, and **your idea to fix it**.' },
+      ],
+      timerSeconds: 1200,
+      timerLabel: 'Step 3 Clock',
+      goal: 'Turn your notes into four findings you can explain to anyone.',
+      output: 'An audit sheet: 4 findings, each with a screenshot and a fix idea.',
+    },
+    {
+      t: 20,
+      points: [
+        'The core of the studio: let teams work, intervene with questions rather than answers.',
+        'Checkpoints: at about 5 minutes every team has a “Look” finding; at 10, “Remember”; at 15, “Point and choose”; at 20, “Understand”.',
+        'Common errors: describing without saying why it hurts, vague fixes (“make it better”), findings that cannot be seen on a screenshot.',
+      ],
+      script:
+        'Twenty minutes. Four findings, one per question. Each finding has three parts: what you saw, why it hurts, how to fix it. Ask me for help with the method, not for the answers.',
+      tip: 'Circulate in a fixed pattern. Ask: “Show me your screenshot. Why does it hurt the user?”',
+    },
+  ),
+
+  // ========================================================================
+  // ACT 6 · HOMEWORK & CLOSE (12 min)
+  // ========================================================================
+  slide(
+    6,
+    'concept_model',
+    {
+      kind: 'divider',
+      actNumber: 6,
+      title: 'Class Example and Close',
+      question: 'What does a good audit look like?',
+      learn: ['One interface audited step by step with the four questions', 'What to hand in', 'The three ideas to keep'],
+    },
+    {
+      t: 1,
+      points: ['Announce the last part: the lecturer audits one interface live, then homework and a wrap-up.'],
+      script: 'Last part: now you watch me do what you just did, then I tell you what to hand in.',
+      tip: 'Ask for laptops to be closed for this part.',
+    },
+  ),
+  slide(
+    6,
+    'case_study',
+    {
+      kind: 'audit',
+      heading: {
+        title: 'Class Example: Study Room Booking',
+        subtitle: 'Watch me audit an interface with the four questions',
+        badge: { icon: 'book', label: 'Project 11', value: 'Class example' },
+      },
+    },
+    {
+      t: 2,
+      points: [
+        'This is the lecturer’s own project, not one of the ten: it is audited live so students see the method once more.',
+        'Open the interface from the Projects viewer (link #/projects/11) and do the task once, aloud: book a room for 4 people tomorrow 14:00 to 16:00.',
+        'Narrate every hesitation: these are the clues the four questions will name.',
+      ],
+      script:
+        'This is my own example. The user is Imane, a student. Her task is to book a study room for four people tomorrow afternoon. Watch what happens when I try it.',
+      tip: 'Do the task live first, in the interface itself. Then come back to the slides: the numbered boxes mark the problems.',
+    },
+  ),
+  slide(
+    6,
+    'case_study',
+    {
+      kind: 'audit',
+      heading: {
+        title: 'Audit 1: Look',
+        subtitle: 'Where does the eye go first, and are things grouped?',
+        badge: { icon: 'eye', label: 'Question 1', value: 'Perception' },
+      },
+      lens: 'look',
+    },
+    {
+      t: 2,
+      points: [
+        'Two findings: no grouping or ranking among the fields and the room list; the Reserve action is lost while a promo banner is the loudest element.',
+        'Tools from today: ranking, grouping with space, one highlight per screen.',
+      ],
+      script:
+        'First question: where does the eye go? Nowhere in particular, because everything looks the same. And the one thing that shouts is an advert, not the booking button.',
+      tip: 'Ask students to predict the finding before revealing the text on the right.',
+    },
+  ),
+  slide(
+    6,
+    'case_study',
+    {
+      kind: 'audit',
+      heading: {
+        title: 'Audit 2: Remember',
+        subtitle: 'What must the user remember or type from memory?',
+        badge: { icon: 'brain', label: 'Question 2', value: 'Memory' },
+      },
+      lens: 'remember',
+    },
+    {
+      t: 2,
+      points: [
+        'Two findings: the room must be typed as a code from memory; date and time need a strict typed format with no hint.',
+        'Tools from today: recognise do not recall, pick instead of type, chunking.',
+      ],
+      script:
+        'Second question: what must Imane remember? A room code that is only listed on another page, and a date format she has to guess.',
+      tip: 'Ask: how would you let her pick instead of type?',
+    },
+  ),
+  slide(
+    6,
+    'case_study',
+    {
+      kind: 'audit',
+      heading: {
+        title: 'Audit 3: Point and Choose',
+        subtitle: 'Is the main button big and close? How many choices?',
+        badge: { icon: 'target', label: 'Question 3', value: 'Action' },
+      },
+      lens: 'point',
+    },
+    {
+      t: 2,
+      points: [
+        'Two findings: the Reserve button is tiny and far from the last field; the 24-room list is shown at once, unordered, with tiny rows.',
+        'Tools from today: big and close, few and ordered choices.',
+      ],
+      script:
+        'Third question: pointing and choosing. The button that matters is tiny and in a corner. And twenty-four rooms are in one long unordered list.',
+      tip: 'Reuse the Fitts and Hick practice rules aloud: big, close, few, ordered.',
+    },
+  ),
+  slide(
+    6,
+    'case_study',
+    {
+      kind: 'audit',
+      heading: {
+        title: 'Audit 4: Understand',
+        subtitle: 'What will the user expect, and what does the screen say?',
+        badge: { icon: 'layers', label: 'Question 4', value: 'Mental model' },
+      },
+      lens: 'understand',
+    },
+    {
+      t: 2,
+      points: [
+        'Two findings: Hold looks like the main action but only keeps the room for 10 minutes; after Reserve nothing visible happens and Clear wipes the form without asking.',
+        'Tools from today: what the user expects, what the system does, what the screen says; feedback that is noticeable.',
+      ],
+      script:
+        'Last question: what does Imane expect? She clicks Hold and thinks she is done. She is not: the room is released after ten minutes. And nothing on screen tells her.',
+      tip: 'Ask the three questions: expects, does, says. Then tell students: this is exactly the work of the studio, on their own project.',
+    },
+  ),
+  slide(
+    6,
+    'concept_model',
+    {
+      kind: 'table',
+      heading: {
+        title: 'Homework: Audit Your Interface',
+        subtitle: 'Apply today’s ideas to your own project',
+        badge: { icon: 'flag', label: 'Due', value: 'Before Session 3' },
+      },
+      heads: ['PART', 'PAGE', 'WHAT TO DO'],
+      rows: [
+        { a: 'Your project and its task', b: 'Page 1', c: 'Name your project and the user. Describe the task in three sentences.' },
+        { a: 'What went wrong for the user', b: 'Page 2', c: 'Your list from Step 2: every moment the user hesitated, slipped or was unsure.' },
+        { a: 'Your four findings', b: 'Page 3', c: 'One finding per question, each with a screenshot and why it hurts the user.' },
+        { a: 'Your fix ideas', b: 'Page 4', c: 'For each finding, say in words how you would fix it and which idea from today supports it.' },
+      ],
+      footer: 'One 4-page PDF per team of two. Fix ideas in words only: no new screens to draw yet.',
+    },
+    {
+      t: 3,
+      points: [
+        'Deliverable: a 4-page PDF per team of two, due before Session 3.',
+        'Pages 1 to 3 reuse the studio work. Page 4 is new: fix ideas written in words, each linked to an idea from the lecture.',
+        'Students have not learned to design interfaces yet: do not ask for redrawn screens. Drawing and prototyping come later in the course.',
+        'The project continues: the same interface will be improved again after each session.',
+      ],
+      script:
+        'Your homework is today’s audit, written up properly. Four pages. Pages one to three you mostly have from the studio. Page four: say in words how you would fix each problem and which idea supports it. No drawing yet: we will learn how to design later.',
+      tip: 'Confirm that a short template is posted on the course portal before leaving.',
+    },
+  ),
+  slide(
+    6,
+    'summary_takeaway',
+    {
+      kind: 'rules',
+      heading: { title: 'Three Ideas to Remember', subtitle: 'Carry them into every design' },
+      rules: [
+        {
+          title: 'People have limits',
+          text: 'About **a quarter of a second** to react and **4 things** in working memory. Design inside these limits.',
+          evidence: 'Never blame the user',
+        },
+        {
+          title: 'Big, close and few',
+          text: 'Big, close targets and a few well-ordered choices are faster to use.',
+          evidence: 'Fitts and Hick',
+        },
+        {
+          title: 'The screen is the teacher',
+          text: 'People learn from what the screen shows, not from your code or your intentions.',
+          evidence: 'Show it, say it, signal it',
+        },
+      ],
+    },
+    {
+      t: 2,
+      points: [
+        'Idea 1: biology sets limits. Idea 2: simple rules follow from them. Idea 3: the screen is the only teacher.',
+        'Ask students to write each idea in their notes.',
+      ],
+      script:
+        'Three sentences to keep. People have limits. Big, close and few is faster. And your screen is the only thing the user ever learns from.',
+      tip: 'Recite each idea and have the room repeat the key phrase.',
+    },
+  ),
+  slide(
+    6,
+    'preview_next',
+    {
+      kind: 'teaser',
+      label: 'Conclusion & Next Class',
+      icon: 'users',
+      kicker: 'Previewing Session 3 · Next Class',
+      title: 'The User',
+      subtitle: 'Observe · Interview · Think Aloud · Find Patterns',
+      blurb:
+        'We leave the classroom to watch real people use real interfaces. You will learn to observe, to interview, and to turn what you hear into clear design insights for your project.',
+      thanks: 'Thank you for Session 2 · Questions & Discussion Open at Lectern',
+    },
+    {
+      t: 3,
+      points: [
+        'Session 3: user research and contextual inquiry (observation, interviews, think-aloud, finding patterns).',
+        'Your audit gives you hypotheses to test with real users of your project’s interface.',
+        'Reminder: homework is due before Session 3.',
+      ],
+      script:
+        'Today you worked alone with your interface. Next time you meet the people who use it. Your audit tells you what to look for. See you then.',
+      tip: 'Stay for questions at the lectern; teams with project doubts should come to you now.',
+    },
+  ),
 ];
+
+export const SLIDES_DATA_SESSION_2: Slide2[] = RAW_SLIDES.map((s, i) => ({ ...s, id: i + 1 }));
+
+/** Act metadata with slide ranges computed from the slides themselves. */
+export const ACTS_METADATA_SESSION_2: ActMeta[] = ACTS_BASE.map((a) => {
+  const ids = SLIDES_DATA_SESSION_2.filter((x) => x.act === a.id).map((x) => x.id);
+  return { ...a, slidesRange: `Slides ${ids[0]}–${ids[ids.length - 1]}` };
+});

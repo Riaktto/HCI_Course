@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, lazy, Suspense } from 'react';
 import {
   ChevronLeft,
   ChevronRight,
@@ -20,18 +20,31 @@ import {
   Tv,
   SlidersHorizontal,
   X,
+  LayoutGrid,
 } from 'lucide-react';
 import { SLIDES_DATA, ACTS_METADATA } from '../../data/slides';
 import { SLIDES_DATA_SESSION_2, ACTS_METADATA_SESSION_2 } from '../../data/slidesSession2';
 import { SlideRenderer } from '../slides/SlideRenderer';
 import { SlideRendererSession2 } from '../slides/SlideRendererSession2';
-import { SlideDemoControlSample } from '../slides/SlideDemoControlSample';
+import { SlideDemoControlSample, DEMO_SLIDES, DEMO_SLIDE_COUNT } from '../slides/SlideDemoControlSample';
 import { PresenterNotes } from './PresenterNotes';
 import { SlideNavigator } from './SlideNavigator';
 import { ClassroomTimer } from './ClassroomTimer';
 import { SlideTransition } from '../transitions/SlideTransition';
 import { UM6PLogo } from '../brand/UM6PLogo';
 import { CurriculumModal } from './CurriculumModal';
+
+const ProjectsHub = lazy(() => import('../projects/ProjectsHub'));
+
+/** Teacher mode (presenter notes, design-standard demo slides) only with ?teacher in the URL; students never see it. */
+const IS_TEACHER = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('teacher');
+
+/** Parses #/projects and #/projects/<id>. Returns null when the hash is not a projects link. */
+const parseProjectsHash = (hash: string): { id: number | null } | null => {
+  const m = hash.match(/^#\/projects(?:\/(\d+))?\/?$/);
+  if (!m) return null;
+  return { id: m[1] ? Number(m[1]) : null };
+};
 
 export const SlideDeck: React.FC = () => {
   const [activeSessionId, setActiveSessionId] = useState<number>(2); // Default to Session 2
@@ -45,8 +58,26 @@ export const SlideDeck: React.FC = () => {
   const [timerLabel, setTimerLabel] = useState<string>('Classroom Activity');
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isFooterHidden, setIsFooterHidden] = useState<boolean>(false);
-  const [isDemoMode, setIsDemoMode] = useState<boolean>(true); // Default to Phase 1 Design Control Sample for validation
-  const [demoSlideIndex, setDemoSlideIndex] = useState<number>(0); // 0, 1, 2 for the 3 demo slides
+  const [isDemoMode, setIsDemoMode] = useState<boolean>(false); // Phase 1 demo is validated; open on the active session (demo stays reachable via DEMO STD)
+  const [demoSlideIndex, setDemoSlideIndex] = useState<number>(0); // 0 .. DEMO_SLIDE_COUNT - 1
+
+  // Projects hub (gallery + interface viewer), driven by the URL hash so every project has a shareable link
+  const [locationHash, setLocationHash] = useState<string>(typeof window !== 'undefined' ? window.location.hash : '');
+  const projectsRoute = parseProjectsHash(locationHash);
+  const projectsOpenRef = useRef<boolean>(false);
+  projectsOpenRef.current = projectsRoute !== null;
+  useEffect(() => {
+    const onHash = () => setLocationHash(window.location.hash);
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+  const openProjects = (id: number | null = null) => {
+    window.location.hash = id ? `#/projects/${id}` : '#/projects';
+  };
+  const closeProjects = () => {
+    window.history.pushState(null, '', window.location.pathname + window.location.search);
+    setLocationHash('');
+  };
 
   // Active session data source
   const activeSlides = activeSessionId === 2 ? SLIDES_DATA_SESSION_2 : SLIDES_DATA;
@@ -149,7 +180,7 @@ export const SlideDeck: React.FC = () => {
   // Slide navigation methods
   const goToNextSlide = useCallback(() => {
     if (isDemoMode) {
-      setDemoSlideIndex(prev => Math.min(2, prev + 1));
+      setDemoSlideIndex(prev => Math.min(DEMO_SLIDE_COUNT - 1, prev + 1));
       setDirection(1);
       return;
     }
@@ -213,6 +244,9 @@ export const SlideDeck: React.FC = () => {
         return;
       }
 
+      // While the projects hub is open it handles its own keys (Esc)
+      if (projectsOpenRef.current) return;
+
       switch (e.key) {
         case 'ArrowRight':
         case 'ArrowDown':
@@ -235,8 +269,14 @@ export const SlideDeck: React.FC = () => {
           e.preventDefault();
           goToSlide(SLIDES_DATA.length - 1);
           break;
+        case 'j':
+        case 'J':
+          e.preventDefault();
+          openProjects();
+          break;
         case 'p':
         case 'P':
+          if (!IS_TEACHER) break;
           e.preventDefault();
           setIsPresenterNotesOpen(prev => !prev);
           break;
@@ -411,9 +451,10 @@ export const SlideDeck: React.FC = () => {
                   {isDemoMode ? (
                     <SlideDemoControlSample
                       currentSlideIndex={demoSlideIndex}
-                      totalSlides={3}
+                      totalSlides={DEMO_SLIDE_COUNT}
                       onNext={goToNextSlide}
                       onPrev={goToPrevSlide}
+                      onSelect={setDemoSlideIndex}
                     />
                   ) : activeSessionId === 2 ? (
                     <SlideRendererSession2
@@ -443,9 +484,10 @@ export const SlideDeck: React.FC = () => {
                   {isDemoMode ? (
                     <SlideDemoControlSample
                       currentSlideIndex={demoSlideIndex}
-                      totalSlides={3}
+                      totalSlides={DEMO_SLIDE_COUNT}
                       onNext={goToNextSlide}
                       onPrev={goToPrevSlide}
+                      onSelect={setDemoSlideIndex}
                     />
                   ) : activeSessionId === 2 ? (
                     <SlideRendererSession2
@@ -496,19 +538,21 @@ export const SlideDeck: React.FC = () => {
 
             {/* Session Switcher Pills & Phase 1 Demo Control Sample */}
             <div className="flex items-center bg-[#FAF9F6] p-0.5 rounded-lg border border-[#E8E2D9]">
-              <button
-                onClick={() => {
-                  setIsDemoMode(true);
-                }}
-                className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold transition-all cursor-pointer ${
-                  isDemoMode
-                    ? 'bg-[#E5391C] text-white shadow-xs'
-                    : 'text-stone-600 hover:text-stone-900'
-                }`}
-                title="Phase 1: Comprehensive Presentation Design Standard Demo Slide"
-              >
-                🔬 DEMO STD
-              </button>
+              {IS_TEACHER && (
+                <button
+                  onClick={() => {
+                    setIsDemoMode(true);
+                  }}
+                  className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                    isDemoMode
+                      ? 'bg-[#E5391C] text-white shadow-xs'
+                      : 'text-stone-600 hover:text-stone-900'
+                  }`}
+                  title="Phase 1: Comprehensive Presentation Design Standard Demo Slide"
+                >
+                  🔬 DEMO STD
+                </button>
+              )}
               <button
                 onClick={() => {
                   setIsDemoMode(false);
@@ -554,7 +598,7 @@ export const SlideDeck: React.FC = () => {
                 {isDemoMode ? demoSlideIndex + 1 : currentIndex + 1}
               </strong>
               <span className="text-[#C5BFB7] mx-1">/</span>
-              <span>{isDemoMode ? 3 : activeSlides.length}</span>
+              <span>{isDemoMode ? DEMO_SLIDE_COUNT : activeSlides.length}</span>
             </div>
 
             {currentSlide.experimentId && !isDemoMode && (
@@ -568,11 +612,7 @@ export const SlideDeck: React.FC = () => {
           {/* Center: Slide Title Hint */}
           <div className="hidden lg:block text-[#5F5E61] text-xs font-medium max-w-sm truncate text-center">
             {isDemoMode
-              ? [
-                  'Demo 1: Concepts & Affordance vs Signifier',
-                  'Demo 2: Processing Diagram & Quantitative Chart',
-                  'Demo 3: Technical Code & Classroom Activity',
-                ][demoSlideIndex]
+              ? `Demo ${DEMO_SLIDES[demoSlideIndex].id}: ${DEMO_SLIDES[demoSlideIndex].title}`
               : currentSlide.title}
           </div>
 
@@ -747,6 +787,16 @@ export const SlideDeck: React.FC = () => {
               )}
             </div>
 
+            {/* Course projects: ten bad interfaces to improve over the semester */}
+            <button
+              onClick={() => openProjects()}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#FDF5F3] border border-[#FAD6CF] text-[#E5391C] hover:bg-[#FBE9E4] transition-colors cursor-pointer"
+              title="Course Projects (Key: J)"
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+              <span className="text-[11px] font-bold">Projects (J)</span>
+            </button>
+
             {/* 12 Sessions Curriculum Modal Toggle */}
             <button
               onClick={() => setIsCurriculumOpen(true)}
@@ -767,19 +817,23 @@ export const SlideDeck: React.FC = () => {
               <span className="hidden md:inline text-[11px] font-semibold">Navigator (G)</span>
             </button>
 
-            {/* Presenter Teleprompter Toggle (P) */}
-            <button
-              onClick={() => setIsPresenterNotesOpen(prev => !prev)}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-[11px] font-semibold transition-colors cursor-pointer ${
-                isPresenterNotesOpen
-                  ? 'bg-[#FDF5F3] border-[#E5391C] text-[#E5391C]'
-                  : 'bg-[#FAF9F6] border-[#E8E2D9] text-[#222222] hover:bg-[#F5F2ED]'
-              }`}
-              title="Presenter Notes (Key: P)"
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">Notes (P)</span>
-            </button>
+            {IS_TEACHER && (
+              <>
+                {/* Presenter Teleprompter Toggle (P) */}
+                <button
+                  onClick={() => setIsPresenterNotesOpen(prev => !prev)}
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-[11px] font-semibold transition-colors cursor-pointer ${
+                    isPresenterNotesOpen
+                      ? 'bg-[#FDF5F3] border-[#E5391C] text-[#E5391C]'
+                      : 'bg-[#FAF9F6] border-[#E8E2D9] text-[#222222] hover:bg-[#F5F2ED]'
+                  }`}
+                  title="Presenter Notes (Key: P)"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span className="hidden md:inline">Notes (P)</span>
+                </button>
+              </>
+            )}
 
             {/* Classroom Timer Toggle (T) */}
             <button
@@ -821,7 +875,7 @@ export const SlideDeck: React.FC = () => {
             {/* Next Slide Button (Official UM6P Red-Orange) */}
             <button
               onClick={goToNextSlide}
-              disabled={isDemoMode ? demoSlideIndex === 2 : currentIndex === activeSlides.length - 1}
+              disabled={isDemoMode ? demoSlideIndex === DEMO_SLIDE_COUNT - 1 : currentIndex === activeSlides.length - 1}
               className="px-3 sm:px-4 py-1.5 rounded-lg bg-[#E5391C] hover:bg-[#C92B10] text-white font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors flex items-center gap-1 shadow-sm cursor-pointer"
               title="Next Slide (Right Arrow or Space)"
             >
@@ -833,13 +887,26 @@ export const SlideDeck: React.FC = () => {
       )}
 
       {/* Presenter Teleprompter Drawer Overlay */}
-      <PresenterNotes
-        slide={currentSlide}
-        isOpen={isPresenterNotesOpen}
-        onClose={() => setIsPresenterNotesOpen(false)}
-        currentSlideIndex={currentIndex}
-        totalSlides={activeSlides.length}
-      />
+      {IS_TEACHER && (
+        <PresenterNotes
+          slide={currentSlide}
+          isOpen={isPresenterNotesOpen}
+          onClose={() => setIsPresenterNotesOpen(false)}
+          currentSlideIndex={currentIndex}
+          totalSlides={activeSlides.length}
+        />
+      )}
+
+      {/* Course projects hub (gallery + interface viewer) */}
+      {projectsRoute && (
+        <Suspense fallback={null}>
+          <ProjectsHub
+            projectId={projectsRoute.id}
+            onSelect={(id) => openProjects(id)}
+            onClose={closeProjects}
+          />
+        </Suspense>
+      )}
 
       {/* Slide Navigator Modal Overlay */}
       <SlideNavigator

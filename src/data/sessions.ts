@@ -25,13 +25,13 @@ export const COURSE_SESSIONS: SessionInfo[] = [
   {
     id: 2,
     sessionNumber: 'SESSION 02',
-    title: 'The Cognitive & Motor Machine',
-    subtitle: 'Sensory Limits, Working Memory, Fitts’s & Hick’s Laws, and Capstone Studio',
+    title: 'The Human',
+    subtitle: 'Perception, Attention, Memory, Mental Models & Cognition',
     durationHours: 4,
     status: 'active',
-    description: 'Model Human Processor, foveal tunnel, pre-attentive scanning, Gestalt laws, Baddeley working memory, Cowan’s 3–4 chunks, Fitts’s Law, Hick’s Law, Kempton’s thermostat paradox, Information Architecture, 45-min Capstone Launch Lab & Milestone 1 Brief.',
+    description: 'Model Human Processor, latency budgets, foveal vision, pre-attentive search, Gestalt laws, Baddeley working memory, chunking, cognitive load, Fitts’s and Hick’s laws, mental models and the thermostat paradox, progressive disclosure, and a 50-minute capstone studio for teams of two with the Milestone 1 brief.',
     actCount: 6,
-    slideCount: 42,
+    slideCount: 51,
   },
   {
     id: 3,
