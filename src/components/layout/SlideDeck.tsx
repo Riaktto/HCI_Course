@@ -22,7 +22,10 @@ import {
   X,
 } from 'lucide-react';
 import { SLIDES_DATA, ACTS_METADATA } from '../../data/slides';
+import { SLIDES_DATA_SESSION_2, ACTS_METADATA_SESSION_2 } from '../../data/slidesSession2';
 import { SlideRenderer } from '../slides/SlideRenderer';
+import { SlideRendererSession2 } from '../slides/SlideRendererSession2';
+import { SlideDemoControlSample } from '../slides/SlideDemoControlSample';
 import { PresenterNotes } from './PresenterNotes';
 import { SlideNavigator } from './SlideNavigator';
 import { ClassroomTimer } from './ClassroomTimer';
@@ -31,6 +34,7 @@ import { UM6PLogo } from '../brand/UM6PLogo';
 import { CurriculumModal } from './CurriculumModal';
 
 export const SlideDeck: React.FC = () => {
+  const [activeSessionId, setActiveSessionId] = useState<number>(2); // Default to Session 2
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
   const [isPresenterNotesOpen, setIsPresenterNotesOpen] = useState<boolean>(false);
@@ -41,6 +45,12 @@ export const SlideDeck: React.FC = () => {
   const [timerLabel, setTimerLabel] = useState<string>('Classroom Activity');
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isFooterHidden, setIsFooterHidden] = useState<boolean>(false);
+  const [isDemoMode, setIsDemoMode] = useState<boolean>(true); // Default to Phase 1 Design Control Sample for validation
+  const [demoSlideIndex, setDemoSlideIndex] = useState<number>(0); // 0, 1, 2 for the 3 demo slides
+
+  // Active session data source
+  const activeSlides = activeSessionId === 2 ? SLIDES_DATA_SESSION_2 : SLIDES_DATA;
+  const activeActs = activeSessionId === 2 ? ACTS_METADATA_SESSION_2 : ACTS_METADATA;
 
   // --------------------------------------------------------------------------
   // ADAPTIVE UNIVERSAL DISPLAY & PROJECTION STATE
@@ -61,9 +71,14 @@ export const SlideDeck: React.FC = () => {
   const touchStartXRef = useRef<number | null>(null);
   const touchStartYRef = useRef<number | null>(null);
 
-  const currentSlide = SLIDES_DATA[currentIndex];
-  const currentAct = ACTS_METADATA.find(a => a.id === currentSlide.act);
-  const progressPercent = ((currentIndex + 1) / SLIDES_DATA.length) * 100;
+  const currentSlide = activeSlides[currentIndex] || activeSlides[0];
+  const currentAct = activeActs.find(a => a.id === currentSlide.act);
+  const progressPercent = ((currentIndex + 1) / activeSlides.length) * 100;
+
+  const switchSession = (sessionId: number) => {
+    setActiveSessionId(sessionId);
+    setCurrentIndex(0);
+  };
 
   // --------------------------------------------------------------------------
   // RESIZE OBSERVER: Live container measurement for any projector or window
@@ -133,16 +148,26 @@ export const SlideDeck: React.FC = () => {
 
   // Slide navigation methods
   const goToNextSlide = useCallback(() => {
+    if (isDemoMode) {
+      setDemoSlideIndex(prev => Math.min(2, prev + 1));
+      setDirection(1);
+      return;
+    }
     setCurrentIndex(prev => {
-      if (prev < SLIDES_DATA.length - 1) {
+      if (prev < activeSlides.length - 1) {
         setDirection(1);
         return prev + 1;
       }
       return prev;
     });
-  }, []);
+  }, [isDemoMode, activeSlides.length]);
 
   const goToPrevSlide = useCallback(() => {
+    if (isDemoMode) {
+      setDemoSlideIndex(prev => Math.max(0, prev - 1));
+      setDirection(-1);
+      return;
+    }
     setCurrentIndex(prev => {
       if (prev > 0) {
         setDirection(-1);
@@ -150,14 +175,14 @@ export const SlideDeck: React.FC = () => {
       }
       return prev;
     });
-  }, []);
+  }, [isDemoMode]);
 
   const goToSlide = useCallback((index: number) => {
-    if (index >= 0 && index < SLIDES_DATA.length) {
+    if (index >= 0 && index < activeSlides.length) {
       setDirection(index > currentIndex ? 1 : -1);
       setCurrentIndex(index);
     }
-  }, [currentIndex]);
+  }, [currentIndex, activeSlides.length]);
 
   const openTimerWithSettings = (seconds: number, label: string) => {
     setTimerDuration(seconds);
@@ -382,12 +407,27 @@ export const SlideDeck: React.FC = () => {
                 }}
                 className="bg-white overflow-hidden flex flex-col justify-between"
               >
-                <SlideTransition slideKey={currentIndex} direction={direction}>
-                  <SlideRenderer
-                    slide={currentSlide}
-                    onNextSlide={goToNextSlide}
-                    onOpenTimer={openTimerWithSettings}
-                  />
+                <SlideTransition slideKey={isDemoMode ? `demo-standard-slide-${demoSlideIndex}` : `${activeSessionId}-${currentIndex}`} direction={direction}>
+                  {isDemoMode ? (
+                    <SlideDemoControlSample
+                      currentSlideIndex={demoSlideIndex}
+                      totalSlides={3}
+                      onNext={goToNextSlide}
+                      onPrev={goToPrevSlide}
+                    />
+                  ) : activeSessionId === 2 ? (
+                    <SlideRendererSession2
+                      slide={currentSlide}
+                      onNextSlide={goToNextSlide}
+                      onOpenTimer={openTimerWithSettings}
+                    />
+                  ) : (
+                    <SlideRenderer
+                      slide={currentSlide}
+                      onNextSlide={goToNextSlide}
+                      onOpenTimer={openTimerWithSettings}
+                    />
+                  )}
                 </SlideTransition>
               </div>
             </div>
@@ -398,13 +438,28 @@ export const SlideDeck: React.FC = () => {
           /* ========================================================================= */
           <div className="w-full h-full flex flex-col items-center overflow-y-auto p-2 sm:p-4 bg-[#F8F6F2]">
             <div className="w-full max-w-4xl bg-white rounded-2xl um6p-canvas-shadow border border-[#E8E2D9] min-h-full flex flex-col justify-between overflow-x-hidden my-auto">
-              <SlideTransition slideKey={currentIndex} direction={direction}>
+              <SlideTransition slideKey={isDemoMode ? `demo-standard-slide-${demoSlideIndex}` : `${activeSessionId}-${currentIndex}`} direction={direction}>
                 <div className="w-full min-h-full flex flex-col justify-between">
-                  <SlideRenderer
-                    slide={currentSlide}
-                    onNextSlide={goToNextSlide}
-                    onOpenTimer={openTimerWithSettings}
-                  />
+                  {isDemoMode ? (
+                    <SlideDemoControlSample
+                      currentSlideIndex={demoSlideIndex}
+                      totalSlides={3}
+                      onNext={goToNextSlide}
+                      onPrev={goToPrevSlide}
+                    />
+                  ) : activeSessionId === 2 ? (
+                    <SlideRendererSession2
+                      slide={currentSlide}
+                      onNextSlide={goToNextSlide}
+                      onOpenTimer={openTimerWithSettings}
+                    />
+                  ) : (
+                    <SlideRenderer
+                      slide={currentSlide}
+                      onNextSlide={goToNextSlide}
+                      onOpenTimer={openTimerWithSettings}
+                    />
+                  )}
                 </div>
               </SlideTransition>
             </div>
@@ -433,29 +488,76 @@ export const SlideDeck: React.FC = () => {
               : 'h-12'
           }`}
         >
-          {/* Left: UM6P Official Logo, Act Pill & Slide Counter */}
+          {/* Left: UM6P Official Logo, Session Selector, Act Pill & Slide Counter */}
           <div className="flex items-center gap-2 sm:gap-4">
             <UM6PLogo variant="compact" theme="color" className="h-6 hidden md:inline-flex" />
 
             <div className="h-4 w-[1px] bg-[#E8E2D9] hidden md:block" />
 
+            {/* Session Switcher Pills & Phase 1 Demo Control Sample */}
+            <div className="flex items-center bg-[#FAF9F6] p-0.5 rounded-lg border border-[#E8E2D9]">
+              <button
+                onClick={() => {
+                  setIsDemoMode(true);
+                }}
+                className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                  isDemoMode
+                    ? 'bg-[#E5391C] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900'
+                }`}
+                title="Phase 1: Comprehensive Presentation Design Standard Demo Slide"
+              >
+                🔬 DEMO STD
+              </button>
+              <button
+                onClick={() => {
+                  setIsDemoMode(false);
+                  switchSession(1);
+                }}
+                className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                  !isDemoMode && activeSessionId === 1
+                    ? 'bg-[#E5391C] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900'
+                }`}
+                title="Switch to Session 1: Foundations (Protected Reference)"
+              >
+                S01
+              </button>
+              <button
+                onClick={() => {
+                  setIsDemoMode(false);
+                  switchSession(2);
+                }}
+                className={`px-2 py-0.5 rounded text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                  !isDemoMode && activeSessionId === 2
+                    ? 'bg-[#E5391C] text-white shadow-xs'
+                    : 'text-stone-600 hover:text-stone-900'
+                }`}
+                title="Switch to Session 2: Cognitive & Motor Mechanics"
+              >
+                S02
+              </button>
+            </div>
+
             <div className="flex items-center gap-2">
               <span
                 className="w-2.5 h-2.5 rounded-full"
-                style={{ backgroundColor: currentAct?.color || '#E5391C' }}
+                style={{ backgroundColor: isDemoMode ? '#E5391C' : currentAct?.color || '#E5391C' }}
               />
               <span className="font-bold text-[#222222] uppercase tracking-wider text-[11px] hidden sm:inline">
-                {currentAct?.title || 'ACT 1'}
+                {isDemoMode ? 'PHASE 1 VALIDATION' : currentAct?.title || 'ACT 1'}
               </span>
             </div>
 
             <div className="text-[#5F5E61] text-xs">
-              <strong className="text-[#222222] font-bold">{currentIndex + 1}</strong>
+              <strong className="text-[#222222] font-bold">
+                {isDemoMode ? demoSlideIndex + 1 : currentIndex + 1}
+              </strong>
               <span className="text-[#C5BFB7] mx-1">/</span>
-              <span>{SLIDES_DATA.length}</span>
+              <span>{isDemoMode ? 3 : activeSlides.length}</span>
             </div>
 
-            {currentSlide.experimentId && (
+            {currentSlide.experimentId && !isDemoMode && (
               <span className="hidden xl:inline-flex items-center gap-1 text-[11px] text-[#E5391C] bg-[#FDF5F3] px-2.5 py-0.5 rounded-full border border-[#FAD6CF] font-bold">
                 <Sparkles className="w-3.5 h-3.5" />
                 Live Interactive Lab
@@ -465,7 +567,13 @@ export const SlideDeck: React.FC = () => {
 
           {/* Center: Slide Title Hint */}
           <div className="hidden lg:block text-[#5F5E61] text-xs font-medium max-w-sm truncate text-center">
-            {currentSlide.title}
+            {isDemoMode
+              ? [
+                  'Demo 1: Concepts & Affordance vs Signifier',
+                  'Demo 2: Processing Diagram & Quantitative Chart',
+                  'Demo 3: Technical Code & Classroom Activity',
+                ][demoSlideIndex]
+              : currentSlide.title}
           </div>
 
           {/* Right: Presentation Tools, Universal Display Settings & Navigation */}
@@ -703,7 +811,7 @@ export const SlideDeck: React.FC = () => {
             {/* Previous Slide Button */}
             <button
               onClick={goToPrevSlide}
-              disabled={currentIndex === 0}
+              disabled={isDemoMode ? demoSlideIndex === 0 : currentIndex === 0}
               className="p-2 rounded-lg bg-[#FAF9F6] border border-[#E8E2D9] text-[#222222] hover:bg-[#F5F2ED] disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
               title="Previous Slide (Left Arrow)"
             >
@@ -713,7 +821,7 @@ export const SlideDeck: React.FC = () => {
             {/* Next Slide Button (Official UM6P Red-Orange) */}
             <button
               onClick={goToNextSlide}
-              disabled={currentIndex === SLIDES_DATA.length - 1}
+              disabled={isDemoMode ? demoSlideIndex === 2 : currentIndex === activeSlides.length - 1}
               className="px-3 sm:px-4 py-1.5 rounded-lg bg-[#E5391C] hover:bg-[#C92B10] text-white font-bold disabled:opacity-30 disabled:cursor-not-allowed transition-colors flex items-center gap-1 shadow-sm cursor-pointer"
               title="Next Slide (Right Arrow or Space)"
             >
@@ -730,12 +838,14 @@ export const SlideDeck: React.FC = () => {
         isOpen={isPresenterNotesOpen}
         onClose={() => setIsPresenterNotesOpen(false)}
         currentSlideIndex={currentIndex}
-        totalSlides={SLIDES_DATA.length}
+        totalSlides={activeSlides.length}
       />
 
       {/* Slide Navigator Modal Overlay */}
       <SlideNavigator
-        slides={SLIDES_DATA}
+        slides={activeSlides}
+        actsMetadata={activeActs}
+        sessionTitle={activeSessionId === 2 ? 'Session 2 Master Slide Index' : 'Session 1 Master Slide Index'}
         currentIndex={currentIndex}
         isOpen={isNavigatorOpen}
         onClose={() => setIsNavigatorOpen(false)}
@@ -754,7 +864,8 @@ export const SlideDeck: React.FC = () => {
       <CurriculumModal
         isOpen={isCurriculumOpen}
         onClose={() => setIsCurriculumOpen(false)}
-        currentSessionId={1}
+        currentSessionId={activeSessionId}
+        onSelectSession={switchSession}
       />
     </div>
   );

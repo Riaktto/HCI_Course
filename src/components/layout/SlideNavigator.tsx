@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, Layers, CheckCircle } from 'lucide-react';
-import { SlideData } from '../../types';
+import { SlideData, ActMeta } from '../../types';
 import { ACTS_METADATA } from '../../data/slides';
 
 interface SlideNavigatorProps {
@@ -9,6 +9,8 @@ interface SlideNavigatorProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectSlide: (index: number) => void;
+  actsMetadata?: ActMeta[];
+  sessionTitle?: string;
 }
 
 export const SlideNavigator: React.FC<SlideNavigatorProps> = ({
@@ -17,8 +19,12 @@ export const SlideNavigator: React.FC<SlideNavigatorProps> = ({
   isOpen,
   onClose,
   onSelectSlide,
+  actsMetadata,
+  sessionTitle,
 }) => {
   if (!isOpen) return null;
+
+  const currentActs = actsMetadata || ACTS_METADATA;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-6 animate-in fade-in duration-150">
@@ -28,8 +34,10 @@ export const SlideNavigator: React.FC<SlideNavigatorProps> = ({
           <div className="flex items-center gap-3">
             <Layers className="w-5 h-5 text-[#E5391C]" />
             <div>
-              <h2 className="text-base font-bold text-[#2D2D2E] font-serif-display">Session 1 Master Slide Index</h2>
-              <p className="text-xs text-[#6E6D70]">44 Slides across 6 Pedagogical Acts</p>
+              <h2 className="text-base font-bold text-[#2D2D2E] font-serif-display">
+                {sessionTitle || 'Master Slide Index'}
+              </h2>
+              <p className="text-xs text-[#6E6D70]">{slides.length} Slides across {currentActs.length} Pedagogical Acts</p>
             </div>
           </div>
           <button
@@ -42,7 +50,7 @@ export const SlideNavigator: React.FC<SlideNavigatorProps> = ({
 
         {/* Content Body: Grouped by Act */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
-          {ACTS_METADATA.map(act => {
+          {currentActs.map(act => {
             const actSlides = slides.filter(s => s.act === act.id);
 
             return (

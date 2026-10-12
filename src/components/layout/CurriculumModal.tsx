@@ -7,9 +7,15 @@ interface CurriculumModalProps {
   isOpen: boolean;
   onClose: () => void;
   currentSessionId: number;
+  onSelectSession?: (sessionId: number) => void;
 }
 
-export const CurriculumModal: React.FC<CurriculumModalProps> = ({ isOpen, onClose, currentSessionId }) => {
+export const CurriculumModal: React.FC<CurriculumModalProps> = ({
+  isOpen,
+  onClose,
+  currentSessionId,
+  onSelectSession,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -46,10 +52,20 @@ export const CurriculumModal: React.FC<CurriculumModalProps> = ({ isOpen, onClos
               return (
                 <div
                   key={session.id}
+                  onClick={() => {
+                    if ((session.id === 1 || session.id === 2) && onSelectSession) {
+                      onSelectSession(session.id);
+                      onClose();
+                    }
+                  }}
                   className={`p-5 rounded-xl border transition-all text-left ${
+                    session.id === 1 || session.id === 2 ? 'cursor-pointer' : ''
+                  } ${
                     isActive
                       ? 'bg-white border-2 border-[#E5391C] shadow-md ring-2 ring-[#E5391C]/10'
-                      : 'bg-white border-[#E8E2D9] hover:border-[#C5BFB7] shadow-xs'
+                      : session.id === 1 || session.id === 2
+                      ? 'bg-white border-[#E8E2D9] hover:border-[#E5391C] shadow-xs'
+                      : 'bg-white border-[#E8E2D9] opacity-75 shadow-xs'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
