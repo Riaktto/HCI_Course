@@ -4,6 +4,8 @@ import { UM6PLogo } from '../brand/UM6PLogo';
 import { Icon } from '../session2/primitives';
 import { PROJECTS } from '../../data/projects';
 import { PROJECT_COMPONENTS } from './registry';
+import { ProgressStrip, ProgressTimeline, membersOf, useOverview } from './ProgressStrip';
+import type { PublicOverview } from '../../lib/backend';
 
 /** Native design size of every project interface. */
 const DESIGN_W = 1280;
@@ -19,6 +21,7 @@ interface ProjectsHubProps {
 /** Full-screen gallery of the ten course projects, and a viewer that shows one interface at a time. */
 const ProjectsHub: React.FC<ProjectsHubProps> = ({ projectId, onSelect, onClose }) => {
   const project = PROJECTS.find((p) => p.id === projectId) ?? null;
+  const overview = useOverview();
 
   // Esc: viewer -> gallery -> close
   useEffect(() => {
@@ -52,15 +55,15 @@ const ProjectsHub: React.FC<ProjectsHubProps> = ({ projectId, onSelect, onClose 
       </header>
 
       {project ? (
-        <Viewer projectId={project.id} onBack={() => onSelect(null)} onSelect={onSelect} />
+        <Viewer projectId={project.id} overview={overview} onBack={() => onSelect(null)} onSelect={onSelect} />
       ) : (
-        <Gallery onSelect={onSelect} />
+        <Gallery overview={overview} onSelect={onSelect} />
       )}
     </div>
   );
 };
 
-const Gallery: React.FC<{ onSelect: (id: number) => void }> = ({ onSelect }) => (
+const Gallery: React.FC<{ onSelect: (id: number) => void; overview: PublicOverview | null }> = ({ onSelect, overview }) => (
   <div className="flex-1 overflow-y-auto px-5 sm:px-8 py-6">
     <div className="max-w-[1400px] mx-auto">
       <h1 className="text-3xl sm:text-4xl font-serif-display font-medium text-[#2D2D2E]">The 10 projects</h1>
@@ -86,6 +89,15 @@ const Gallery: React.FC<{ onSelect: (id: number) => void }> = ({ onSelect }) => 
             <div className="text-lg font-bold leading-snug text-[#222222]">{p.title}</div>
             <div className="text-xs font-mono uppercase tracking-wider text-[#E5391C] font-bold">{p.domain}</div>
             <div className="text-sm text-[#525254] leading-snug flex-1">{p.cardLine}</div>
+            {overview && (
+              <div className="space-y-2 pt-2 border-t border-[#F0EBE3]">
+                <div className="text-xs text-[#525254] leading-snug">
+                  <span className="font-mono uppercase tracking-wider text-[#6E6D70] font-bold">Team </span>
+                  {membersOf(overview, p.id).join(', ') || <span className="italic text-[#9A968F]">not assigned yet</span>}
+                </div>
+                <ProgressStrip overview={overview} projectId={p.id} />
+              </div>
+            )}
             <div className="text-sm font-semibold text-[#E5391C] flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
               Open the interface <ArrowRight className="w-4 h-4" />
             </div>
@@ -96,8 +108,9 @@ const Gallery: React.FC<{ onSelect: (id: number) => void }> = ({ onSelect }) => 
   </div>
 );
 
-const Viewer: React.FC<{ projectId: number; onBack: () => void; onSelect: (id: number | null) => void }> = ({
+const Viewer: React.FC<{ projectId: number; overview: PublicOverview | null; onBack: () => void; onSelect: (id: number | null) => void }> = ({
   projectId,
+  overview,
   onBack,
   onSelect,
 }) => {
@@ -184,6 +197,19 @@ const Viewer: React.FC<{ projectId: number; onBack: () => void; onSelect: (id: n
             </div>
           </div>
         </div>
+
+        {overview && project.listed !== false && (
+          <div className="space-y-3 pt-1 border-t border-[#F0EBE3]">
+            <div className="text-sm">
+              <div className="font-bold text-[#222222]">Team</div>
+              <span className="text-[#525254]">{membersOf(overview, project.id).join(', ') || 'Not assigned yet'}</span>
+            </div>
+            <div className="text-sm space-y-2">
+              <div className="font-bold text-[#222222]">Progress through the course</div>
+              <ProgressTimeline overview={overview} projectId={project.id} />
+            </div>
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-2 pt-1">
           <button

@@ -21,6 +21,7 @@ import {
   SlidersHorizontal,
   X,
   LayoutGrid,
+  GraduationCap,
 } from 'lucide-react';
 import { SLIDES_DATA, ACTS_METADATA } from '../../data/slides';
 import { SLIDES_DATA_SESSION_2, ACTS_METADATA_SESSION_2 } from '../../data/slidesSession2';
@@ -30,13 +31,16 @@ import { SlideDemoControlSample, DEMO_SLIDES, DEMO_SLIDE_COUNT } from '../slides
 import { PresenterNotes } from './PresenterNotes';
 import { SlideNavigator } from './SlideNavigator';
 import { ClassroomTimer } from './ClassroomTimer';
+import { ErrorGuard } from './ErrorGuard';
 import { SlideTransition } from '../transitions/SlideTransition';
 import { UM6PLogo } from '../brand/UM6PLogo';
 import { CurriculumModal } from './CurriculumModal';
+import { TeacherGate, useTeacherAuthed } from '../teacher/TeacherGate';
 
 const ProjectsHub = lazy(() => import('../projects/ProjectsHub'));
+const TeacherPanel = lazy(() => import('../teacher/TeacherPanel'));
 
-/** Teacher mode (presenter notes, design-standard demo slides) only with ?teacher in the URL; students never see it. */
+/** Teacher mode needs ?teacher in the URL AND a verified sign-in (e-mail one-time code); students never see it. */
 const IS_TEACHER = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('teacher');
 
 /** Parses #/projects and #/projects/<id>. Returns null when the hash is not a projects link. */
@@ -78,6 +82,13 @@ export const SlideDeck: React.FC = () => {
     window.history.pushState(null, '', window.location.pathname + window.location.search);
     setLocationHash('');
   };
+
+  // Teacher mode: ?teacher plus a verified sign-in
+  const teacherAuthed = useTeacherAuthed();
+  const showTeacher = IS_TEACHER && teacherAuthed;
+  const showTeacherRef = useRef<boolean>(false);
+  showTeacherRef.current = showTeacher;
+  const [isClassOpen, setIsClassOpen] = useState<boolean>(false);
 
   // Active session data source
   const activeSlides = activeSessionId === 2 ? SLIDES_DATA_SESSION_2 : SLIDES_DATA;
@@ -276,7 +287,7 @@ export const SlideDeck: React.FC = () => {
           break;
         case 'p':
         case 'P':
-          if (!IS_TEACHER) break;
+          if (!showTeacherRef.current) break;
           e.preventDefault();
           setIsPresenterNotesOpen(prev => !prev);
           break;
@@ -447,6 +458,7 @@ export const SlideDeck: React.FC = () => {
                 }}
                 className="bg-white overflow-hidden flex flex-col justify-between"
               >
+                <ErrorGuard resetKey={`${isDemoMode ? 'd' + demoSlideIndex : activeSessionId + '-' + currentIndex}`}>
                 <SlideTransition slideKey={isDemoMode ? `demo-standard-slide-${demoSlideIndex}` : `${activeSessionId}-${currentIndex}`} direction={direction}>
                   {isDemoMode ? (
                     <SlideDemoControlSample
@@ -470,6 +482,7 @@ export const SlideDeck: React.FC = () => {
                     />
                   )}
                 </SlideTransition>
+</ErrorGuard>
               </div>
             </div>
           </div>
@@ -479,6 +492,7 @@ export const SlideDeck: React.FC = () => {
           /* ========================================================================= */
           <div className="w-full h-full flex flex-col items-center overflow-y-auto p-2 sm:p-4 bg-[#F8F6F2]">
             <div className="w-full max-w-4xl bg-white rounded-2xl um6p-canvas-shadow border border-[#E8E2D9] min-h-full flex flex-col justify-between overflow-x-hidden my-auto">
+              <ErrorGuard resetKey={`${isDemoMode ? 'd' + demoSlideIndex : activeSessionId + '-' + currentIndex}`}>
               <SlideTransition slideKey={isDemoMode ? `demo-standard-slide-${demoSlideIndex}` : `${activeSessionId}-${currentIndex}`} direction={direction}>
                 <div className="w-full min-h-full flex flex-col justify-between">
                   {isDemoMode ? (
@@ -504,6 +518,7 @@ export const SlideDeck: React.FC = () => {
                   )}
                 </div>
               </SlideTransition>
+</ErrorGuard>
             </div>
           </div>
         )}
@@ -538,7 +553,7 @@ export const SlideDeck: React.FC = () => {
 
             {/* Session Switcher Pills & Phase 1 Demo Control Sample */}
             <div className="flex items-center bg-[#FAF9F6] p-0.5 rounded-lg border border-[#E8E2D9]">
-              {IS_TEACHER && (
+              {showTeacher && (
                 <button
                   onClick={() => {
                     setIsDemoMode(true);
@@ -787,6 +802,17 @@ export const SlideDeck: React.FC = () => {
               )}
             </div>
 
+            {showTeacher && (
+              <button
+                onClick={() => setIsClassOpen(true)}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#222222] text-white hover:bg-black transition-colors cursor-pointer"
+                title="Class: teams, projects and progress (teacher)"
+              >
+                <GraduationCap className="w-3.5 h-3.5" />
+                <span className="text-[11px] font-bold">Class</span>
+              </button>
+            )}
+
             {/* Course projects: ten bad interfaces to improve over the semester */}
             <button
               onClick={() => openProjects()}
@@ -817,7 +843,7 @@ export const SlideDeck: React.FC = () => {
               <span className="hidden md:inline text-[11px] font-semibold">Navigator (G)</span>
             </button>
 
-            {IS_TEACHER && (
+            {showTeacher && (
               <>
                 {/* Presenter Teleprompter Toggle (P) */}
                 <button
@@ -887,7 +913,7 @@ export const SlideDeck: React.FC = () => {
       )}
 
       {/* Presenter Teleprompter Drawer Overlay */}
-      {IS_TEACHER && (
+      {showTeacher && (
         <PresenterNotes
           slide={currentSlide}
           isOpen={isPresenterNotesOpen}
@@ -897,8 +923,25 @@ export const SlideDeck: React.FC = () => {
         />
       )}
 
+      {/* Teacher sign-in (only with ?teacher and no verified session) */}
+      {IS_TEACHER && !teacherAuthed && (
+        <ErrorGuard>
+          <TeacherGate />
+        </ErrorGuard>
+      )}
+
+      {/* Teacher: class, teams, projects, progress */}
+      {showTeacher && isClassOpen && (
+        <ErrorGuard onFail={() => setIsClassOpen(false)}>
+          <Suspense fallback={null}>
+            <TeacherPanel onClose={() => setIsClassOpen(false)} />
+          </Suspense>
+        </ErrorGuard>
+      )}
+
       {/* Course projects hub (gallery + interface viewer) */}
       {projectsRoute && (
+        <ErrorGuard onFail={closeProjects}>
         <Suspense fallback={null}>
           <ProjectsHub
             projectId={projectsRoute.id}
@@ -906,6 +949,7 @@ export const SlideDeck: React.FC = () => {
             onClose={closeProjects}
           />
         </Suspense>
+        </ErrorGuard>
       )}
 
       {/* Slide Navigator Modal Overlay */}
